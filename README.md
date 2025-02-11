@@ -46,7 +46,14 @@ stair_detection/
 git clone https://github.com/Kemoory/Stairway-to-heaven.git
 cd Stairway-to-heaven
 ```
-2. Installer les dépendances :
+
+2. Créer un environnement virtuel et activez le :
+```bash
+python3 -m venv env
+source env/bin/activate
+```
+
+3. Installer les dépendances :
 ```bash
 pip install -r requirements.txt
 ```
@@ -55,6 +62,10 @@ pip install -r requirements.txt
 Pour exécuter la détection sur une image donnée :
 ```bash
 python main.py --image data/raw/XXX.jpg
+```
+Quand l'exécution est fini vous pouvez désactiver l'environnement avec :
+```bash
+deactivate
 ```
 
 ## Dépendances
