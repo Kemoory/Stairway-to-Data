@@ -5,7 +5,7 @@ import os
 import json
 from PIL import Image, ImageTk
 from src.preprocessing import preprocess_image
-from src.detection import detect_steps
+from src.model.detection import detect_steps
 from src.evaluation import evaluate_model
 
 class Interface(tk.Tk):

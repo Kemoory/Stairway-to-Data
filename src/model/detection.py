@@ -1,4 +1,4 @@
-# src/detection.py
+# src/model/detection.py
 import cv2
 import numpy as np
 
