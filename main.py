@@ -5,7 +5,7 @@ import os
 import json
 from PIL import Image, ImageTk
 from src.preprocessing import preprocess_image, preprocess_image_alternative, split, merge
-from src.model.detection import detect_steps, detect_steps_alternative, detect_vanishing_lines, fourier_transform
+from src.model.detection import detect_steps_segments, detect_steps_extended, detect_vanishing_lines, fourier_transform
 from src.evaluation import evaluate_model
 
 class Interface(tk.Tk):
@@ -50,8 +50,8 @@ class Interface(tk.Tk):
         self.model_var = tk.StringVar()
         self.model_combobox = ttk.Combobox(self.model_frame, textvariable=self.model_var, state='readonly')
         self.model_combobox['values'] = (
-            'HoughLinesP', 
-            'HoughLinesP Alternative', 
+            'HoughLinesP (Segmented)',  
+            'HoughLinesP (Extended)',  
             'Vanishing Lines', 
             'Fourier Transform'
         )
@@ -157,10 +157,10 @@ class Interface(tk.Tk):
 
             # Obtenir le modèle sélectionné
             model_method = self.model_var.get()
-            if model_method == 'HoughLinesP':
-                count, debug_img = detect_steps(processed, self.current_image.copy())
-            elif model_method == 'HoughLinesP Alternative':
-                count, debug_img = detect_steps_alternative(processed, self.current_image.copy())
+            if model_method == 'HoughLinesP (Segmented)':
+                count, debug_img = detect_steps_segments(processed, self.current_image.copy())
+            elif model_method == 'HoughLinesP (Extended)':
+                count, debug_img = detect_steps_extended(processed, self.current_image.copy())
             elif model_method == 'Vanishing Lines':
                 debug_img, count = detect_vanishing_lines(self.current_image.copy())
             elif model_method == 'Fourier Transform':
