@@ -1,20 +1,6 @@
-# src/preprocessing.py
+# src/preprocessing/splitAndMerge.py
 import cv2
 import numpy as np
-
-def preprocess_image(image):
-    """Convertit en niveaux de gris et applique un flou gaussien"""
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-    edges = cv2.Canny(blurred, 50, 150)
-    return edges
-
-def preprocess_image_alternative(image):
-    """Methode de pre-traitement alternative"""
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    blurred = cv2.medianBlur(gray, 11)  # Use median blur instead of Gaussian
-    edges = cv2.Canny(blurred, 75, 200)  # Different thresholds
-    return edges
 
 def split(image, threshold):
     """Divise l'image en regions basees sur la variance d'intensite"""
@@ -54,3 +40,9 @@ def merge(image, regions, threshold):
         merged_image[y:y+h, x:x+w] = mean
     print("Fin du processus de fusion.")
     return merged_image
+
+def preprocess_splitAndMerge(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    regions = split(gray, threshold=10)
+    merged = merge(gray, regions, threshold=10)
+    processed = cv2.Canny(merged, 50, 150)  # Convertir en image binaire des contours

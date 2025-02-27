@@ -4,8 +4,20 @@ import cv2
 import os
 import json
 from PIL import Image, ImageTk
-from src.preprocessing import preprocess_image, preprocess_image_alternative, split, merge
-from src.model.detection import detect_steps_segments, detect_steps_extended, detect_vanishing_lines, fourier_transform
+
+from src.preprocessing.gaussian import preprocess_gaussian
+from src.preprocessing.median import preprocess_median
+from src.preprocessing.splitAndMerge import preprocess_splitAndMerge
+from src.preprocessing.adaptive_tresholding import preprocess_adaptive_thresholding
+from src.preprocessing.gradient_orientation import preprocess_gradient_orientation
+from src.preprocessing.homorphic_filter import preprocess_homomorphic_filter
+from src.preprocessing.phase_congruency import preprocess_phase_congruency
+
+from src.model.houghLineSeg import detect_steps_houghLineSeg
+from src.model.houghLineExt import detect_steps_houghLineExt
+from src.model.fourier import fourier_transform
+from src.model.vanishingLine import detect_vanishing_lines
+
 from src.evaluation import evaluate_model
 
 class Interface(tk.Tk):
@@ -69,7 +81,11 @@ class Interface(tk.Tk):
         self.preprocess_combobox['values'] = (
             'Gaussian Blur + Canny', 
             'Median Blur + Canny', 
-            'Split and Merge'
+            'Split and Merge',
+            'Adaptive Thresholding',
+            'Gradient Orientation',
+            'Homomorphic Filter',
+            'Phase Congruency'
         )
         self.preprocess_combobox.current(0)  # Selection par defaut
         self.preprocess_combobox.pack(side='left', padx=5)
@@ -146,23 +162,28 @@ class Interface(tk.Tk):
             # Obtenir la methode de pretraitement selectionnee
             preprocessing_method = self.preprocess_var.get()
             if preprocessing_method == 'Gaussian Blur + Canny':
-                processed = preprocess_image(self.current_image)
+                processed = preprocess_gaussian(self.current_image)
             elif preprocessing_method == 'Median Blur + Canny':
-                processed = preprocess_image_alternative(self.current_image)
+                processed = preprocess_median(self.current_image)
             elif preprocessing_method == 'Split and Merge':
-                gray = cv2.cvtColor(self.current_image, cv2.COLOR_BGR2GRAY)
-                regions = split(gray, threshold=10)
-                merged = merge(gray, regions, threshold=10)
-                processed = cv2.Canny(merged, 50, 150)  # Convertir en image binaire des contours
+                processed = preprocess_splitAndMerge(self.current_image)
+            elif preprocessing_method == 'Adaptive Thresholding':
+                processed = preprocess_adaptive_thresholding(self.current_image)
+            elif preprocessing_method == 'Gradient Orientation':
+                processed = preprocess_gradient_orientation(self.current_image)
+            elif preprocessing_method == 'Homomorphic Filter':
+                processed = preprocess_homomorphic_filter(self.current_image)
+            elif preprocessing_method == 'Phase Congruency':
+                processed = preprocess_phase_congruency(self.current_image)
 
             # Obtenir le modèle sélectionné
             model_method = self.model_var.get()
             if model_method == 'HoughLinesP (Segmented)':
-                count, debug_img = detect_steps_segments(processed, self.current_image.copy())
+                count, debug_img = detect_steps_houghLineSeg(processed, self.current_image.copy())
             elif model_method == 'HoughLinesP (Extended)':
-                count, debug_img = detect_steps_extended(processed, self.current_image.copy())
+                count, debug_img = detect_steps_houghLineExt(processed, self.current_image.copy())
             elif model_method == 'Vanishing Lines':
-                debug_img, count = detect_vanishing_lines(self.current_image.copy())
+                count, debug_img = detect_vanishing_lines(self.current_image.copy())
             elif model_method == 'Fourier Transform':
                 debug_img = fourier_transform(self.current_image.copy())
                 count = 0  # Pas de comptage de marches pour la transformée de Fourier
@@ -189,9 +210,9 @@ class Interface(tk.Tk):
             # Obtenir la methode de pretraitement selectionnee
             preprocessing_method = self.preprocess_var.get()
             if preprocessing_method == 'Gaussian Blur + Canny':
-                processed = preprocess_image(img)
+                processed = preprocess_gaussian(img)
             elif preprocessing_method == 'Median Blur + Canny':
-                processed = preprocess_image_alternative(img)
+                processed = preprocess_median(img)
 
             # Obtenir le modèle sélectionné
             model_method = self.model_var.get()
