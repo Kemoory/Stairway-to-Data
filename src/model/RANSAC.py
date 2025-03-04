@@ -3,11 +3,9 @@ import cv2
 import numpy as np
 from sklearn.linear_model import RANSACRegressor
 
-def detect_steps_RANSAC(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 50, 150, apertureSize=3)
+def detect_steps_RANSAC(processed, image):
 
-    lines = cv2.HoughLinesP(edges, 1, np.pi / 180, threshold=100, minLineLength=50, maxLineGap=10)
+    lines = cv2.HoughLinesP(processed, 1, np.pi / 180, threshold=100, minLineLength=50, maxLineGap=10)
     if lines is None:
         return 0, image
 

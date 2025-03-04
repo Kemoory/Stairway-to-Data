@@ -1,6 +1,25 @@
 import json
+import os
+import cv2
+import numpy as np
 from sklearn.metrics import mean_absolute_error as mae, precision_score, recall_score, confusion_matrix
 
+# Import src.preprocessing and model functions
+from src.preprocessing.gaussian import preprocess_gaussian
+from src.preprocessing.median import preprocess_median
+from src.preprocessing.splitAndMerge import preprocess_splitAndMerge
+from src.preprocessing.adaptive_tresholding import preprocess_adaptive_thresholding
+from src.preprocessing.gradient_orientation import preprocess_gradient_orientation
+from src.preprocessing.homorphic_filter import preprocess_homomorphic_filter
+from src.preprocessing.phase_congruency import preprocess_phase_congruency
+from src.preprocessing.wavelet import preprocess_image_wavelet
+
+from src.model.houghLineSeg import detect_steps_houghLineSeg
+from src.model.houghLineExt import detect_steps_houghLineExt
+from src.model.RANSAC import detect_steps_RANSAC
+from src.model.vanishingLine import detect_vanishing_lines
+
+# Evaluation metrics
 def calculate_mean_absolute_error(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
     pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
@@ -34,3 +53,74 @@ def evaluate_model(preds, ground_truth):
     precision, recall = calculate_precision_recall(preds, ground_truth)
     conf_matrix = calculate_confusion_matrix(preds, ground_truth)
     return error, rel_error, precision, recall, conf_matrix
+
+# Function to evaluate all combinations of src.preprocessing and models
+def evaluate_all_combinations(image_paths, ground_truth):
+    results = []
+    
+    # Define all src.preprocessing methods and models
+    preprocessing_methods = {
+        '(None)': lambda img: img.copy(),
+        'Gaussian Blur + Canny': preprocess_gaussian,
+        'Median Blur + Canny': preprocess_median,
+        #'Split and Merge': preprocess_splitAndMerge,
+        'Adaptive Thresholding': preprocess_adaptive_thresholding,
+        'Gradient Orientation': preprocess_gradient_orientation,
+        'Homomorphic Filter': preprocess_homomorphic_filter,
+        'Phase Congruency': preprocess_phase_congruency,
+        'Wavelet Transform': preprocess_image_wavelet,
+    }
+    
+    models = {
+        'HoughLinesP (Segmented)': detect_steps_houghLineSeg,
+        'HoughLinesP (Extended)': detect_steps_houghLineExt,
+        'Vanishing Lines': detect_vanishing_lines,
+        'RANSAC (WIP)': detect_steps_RANSAC,
+    }
+    
+    # Iterate through all combinations
+    for preprocess_name, preprocess_func in preprocessing_methods.items():
+        for model_name, model_func in models.items():
+            print(f"Evaluating combination: {preprocess_name} + {model_name}")
+            
+            preds = {}
+            for img_path in image_paths:
+                img = cv2.imread(img_path)
+                img_name = os.path.basename(img_path)
+                
+                # Print the currently evaluated image
+                print(f"Evaluating image: {img_name}")
+                
+                # Apply src.preprocessing
+                processed = preprocess_func(img)
+                
+                # Ensure the processed image is in the correct format (grayscale, 8-bit)
+                if len(processed.shape) > 2:
+                    processed = cv2.cvtColor(processed, cv2.COLOR_BGR2GRAY)
+                if processed.dtype != np.uint8:
+                    processed = cv2.convertScaleAbs(processed)
+                
+                # Apply model
+                count, _ = model_func(processed, img.copy())
+                preds[img_name] = count
+            
+            # Evaluate predictions
+            error, rel_error, precision, recall, conf_matrix = evaluate_model(preds, ground_truth)
+            
+            # Store results
+            results.append({
+                'src.preprocessing': preprocess_name,
+                'model': model_name,
+                'MAE': error,
+                'Relative Error': rel_error,
+                'Precision': precision,
+                'Recall': recall,
+                'Confusion Matrix': conf_matrix.tolist(),
+            })
+    
+    # Save results to a JSON file
+    with open('evaluation_results.json', 'w') as f:
+        json.dump(results, f, indent=4)
+    
+    print("Evaluation complete. Results saved to 'evaluation_results.json'.")
+    return results

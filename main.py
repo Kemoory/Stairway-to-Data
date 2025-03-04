@@ -1,8 +1,10 @@
+#main.py
 import tkinter as tk
 from tkinter import filedialog, ttk
 import cv2
 import os
 import json
+import numpy as np
 from PIL import Image, ImageTk
 
 from src.preprocessing.gaussian import preprocess_gaussian
@@ -16,10 +18,10 @@ from src.preprocessing.wavelet import preprocess_image_wavelet
 
 from src.model.houghLineSeg import detect_steps_houghLineSeg
 from src.model.houghLineExt import detect_steps_houghLineExt
-from src.model.fourier import fourier_transform
+from src.model.RANSAC import detect_steps_RANSAC
 from src.model.vanishingLine import detect_vanishing_lines
 
-from src.evaluation import evaluate_model
+from src.evaluation import evaluate_all_combinations
 
 class Interface(tk.Tk):
     def __init__(self):
@@ -69,7 +71,7 @@ class Interface(tk.Tk):
             'HoughLinesP (Segmented)',  # Modèle 1 (par defaut)
             'HoughLinesP (Extended)',  # Modèle 2 (cherche des pattern de recursivité)
             'Vanishing Lines',  # Modèle 3 (peut etre opti)
-            'Fourier Transform',  # Modèle 4 (pour les fans de maths)
+            'RANSAC (WIP)',  # Modèle 4 (pour les fans de maths)
         )
         self.model_combobox.current(0)  # Sélection par défaut
         self.model_combobox.pack(side='left', padx=5)
@@ -83,14 +85,15 @@ class Interface(tk.Tk):
         self.preprocess_var = tk.StringVar()
         self.preprocess_combobox = ttk.Combobox(self.preprocess_frame, textvariable=self.preprocess_var, state='readonly')  # Combobox pour choisir le prétraitement
         self.preprocess_combobox['values'] = (
-            'Gaussian Blur + Canny',  # Prétraitement 1 (par defaut)
-            'Median Blur + Canny',  # Prétraitement 2 (le flou est plus agressif, semble donner des meileurs résultats)
-            'Split and Merge',  # Prétraitement 3 (très gourmand)
+            '(None)',  # Pas de prétraitement
+            'Gaussian Blur + Canny',  # Prétraitement 1
+            'Median Blur + Canny',  # Prétraitement 2
+            'Split and Merge',  # Prétraitement 3
             'Adaptive Thresholding',  # Prétraitement 4
             'Gradient Orientation',  # Prétraitement 5
             'Homomorphic Filter',  # Prétraitement 6
             'Phase Congruency',  # Prétraitement 7
-            'Wavelet Transform',  # Prétraitement 8 (pour les fans d'ondes)
+            'Wavelet Transform',  # Prétraitement 8
         )
         self.preprocess_combobox.current(0)  # Sélection par défaut
         self.preprocess_combobox.pack(side='left', padx=5)
@@ -118,7 +121,7 @@ class Interface(tk.Tk):
         self.info_label.pack(pady=10)
 
     def load_folder(self):
-        folder_path = filedialog.askdirectory()  # Ouvre une boîte de dialogue pour choisir un dossier
+        folder_path = filedialog.askdirectory(initialdir='data/raw')  # Ouvre une boîte de dialogue pour choisir un dossier
         if folder_path:
             self.image_paths = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.lower().endswith(('png', 'jpg', 'jpeg'))]  # Liste des images dans le dossier
             if self.image_paths:
@@ -242,6 +245,14 @@ class Interface(tk.Tk):
                 processed = preprocess_phase_congruency(self.current_image)
             elif preprocessing_method == 'Wavelet Transform':
                 processed = preprocess_image_wavelet(self.current_image)
+            else:
+                processed = self.current_image.copy()  # Pas de prétraitement
+
+            # Ensure the processed image is in the correct format (grayscale, 8-bit)
+            if len(processed.shape) > 2:
+                processed = cv2.cvtColor(processed, cv2.COLOR_BGR2GRAY)
+            if processed.dtype != np.uint8:
+                processed = cv2.convertScaleAbs(processed)
 
             # Récupère le modèle sélectionné
             model_method = self.model_var.get()
@@ -250,10 +261,9 @@ class Interface(tk.Tk):
             elif model_method == 'HoughLinesP (Extended)':
                 count, debug_img = detect_steps_houghLineExt(processed, self.current_image.copy())
             elif model_method == 'Vanishing Lines':
-                count, debug_img = detect_vanishing_lines(self.current_image.copy())
-            elif model_method == 'Fourier Transform':
-                debug_img = fourier_transform(self.current_image.copy())
-                count = 0  # Pas de comptage de marches pour la transformée de Fourier
+                count, debug_img = detect_vanishing_lines(processed, self.current_image.copy())
+            elif model_method == 'RANSAC (WIP)':
+                count, debug_img = detect_steps_RANSAC(processed, self.current_image.copy())
 
             self.processed_image = processed  # Stocke l'image traitée
             self.debug_image = debug_img  # Stocke l'image de débogage
@@ -273,28 +283,12 @@ class Interface(tk.Tk):
         if not self.ground_truth:
             self.info_label.config(text="Vérité terrain non chargée. Veuillez la charger d'abord.")  # Pas de vérité terrain, pas d'évaluation
             return
-        preds = {}
-        for img_path in self.image_paths:
-            img = cv2.imread(img_path)
-            # Récupère la méthode de prétraitement sélectionnée
-            preprocessing_method = self.preprocess_var.get()
-            if preprocessing_method == 'Gaussian Blur + Canny':
-                processed = preprocess_gaussian(img)
-            elif preprocessing_method == 'Median Blur + Canny':
-                processed = preprocess_median(img)
-
-            # Récupère le modèle sélectionné
-            model_method = self.model_var.get()
-            if model_method == 'HoughLinesP':
-                count, _ = detect_steps_houghLineSeg(processed, img.copy())
-            elif model_method == 'HoughLinesP Alternative':
-                count, _ = detect_steps_houghLineExt(processed, img.copy())
-
-            preds[os.path.basename(img_path)] = count  # Stocke la prédiction
-
-        error, rel_error, precision, recall, conf_matrix = evaluate_model(preds, self.ground_truth)  # Évalue les prédictions
-
-        self.info_label.config(text=f"Résultats de l'évaluation : MAE: {error:.2f}, Erreur relative: {rel_error:.2%}, Précision: {precision:.2%}, Rappel: {recall:.2%}")  # Affiche les résultats
+        
+        # Evaluate all combinations
+        results = evaluate_all_combinations(self.image_paths, self.ground_truth)
+        
+        # Display a summary of the results
+        self.info_label.config(text="Évaluation terminée. Résultats sauvegardés dans 'evaluation_results.json'.")
 
     def next_image(self, event=None):
         if self.image_paths:

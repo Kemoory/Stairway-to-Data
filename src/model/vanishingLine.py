@@ -1,129 +1,87 @@
-# src/model/vanishingLine.py
 import cv2
 import numpy as np
 
-def detect_vanishing_point(image):
-    """Détecter le point de fuite en utilisant les lignes de Hough."""
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 50, 150)
-    lines = cv2.HoughLines(edges, 1, np.pi / 180, 200)
-
+def detect_vanishing_lines(processed, image):
+    """
+    Détecter les escaliers en utilisant la méthode du point de fuite.
+    
+    Args:
+        image (numpy.ndarray): Image d'entrée
+    
+    Returns:
+        tuple: (nombre d'escaliers, image de débogage avec les lignes détectées)
+    """    
+    # Détecter les lignes avec la Transformée de Hough Probabiliste
+    lines = cv2.HoughLinesP(
+        processed, 
+        rho=1, 
+        theta=np.pi/180, 
+        threshold=100, 
+        minLineLength=50, 
+        maxLineGap=10
+    )
+    
     if lines is None:
-        return None
-
-    # Trouver les points d'intersection de toutes les lignes
-    intersections = []
-    for i in range(len(lines)):
-        for j in range(i + 1, len(lines)):
-            rho1, theta1 = lines[i][0]
-            rho2, theta2 = lines[j][0]
-            A = np.array([
-                [np.cos(theta1), np.sin(theta1)],
-                [np.cos(theta2), np.sin(theta2)]
-            ])
-            b = np.array([[rho1], [rho2]])
-            try:
-                x, y = np.linalg.solve(A, b)
-                intersections.append((int(x), int(y)))
-            except np.linalg.LinAlgError:
-                continue
-
-    if not intersections:
-        return None
-
-    # Estimer le point de fuite comme la médiane de toutes les intersections
-    vanishing_point = np.median(intersections, axis=0).astype(int)
-    return vanishing_point
-
-def detect_vanishing_lines(image):
-    """Détecter l'escalier et compter les marches en utilisant le point de fuite et les lignes horizontales."""
-    print("Début de la détection des lignes de fuite...")
-    vanishing_point = detect_vanishing_point(image)
-    if vanishing_point is None:
-        print("Aucun point de fuite détecté. Sortie.")
-        return image, 0
-
-    # Dessiner le point de fuite
-    vx, vy = vanishing_point
-    cv2.circle(image, (vx, vy), 10, (0, 0, 255), -1)  # Dessiner le point de fuite en rouge
-    print(f"Point de fuite dessiné à ({vx}, {vy})")
-
-    # Détecter et compter les marches
-    debug_img, count = detect_staircase_steps(image, vanishing_point)
-    print("Détection des lignes de fuite terminée.")
-    return debug_img, count
-
-def detect_vanishing_point(image):
-    """Détecter le point de fuite en utilisant les lignes de Hough."""
-    print("Détection du point de fuite...")
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 50, 150)
-    lines = cv2.HoughLines(edges, 1, np.pi / 180, 200)
-
-    if lines is None:
-        print("Aucune ligne détectée. Le point de fuite ne peut pas être déterminé.")
-        return None
-
-    print(f"{len(lines)} lignes détectées. Recherche des points d'intersection...")
-    intersections = []
-    for i in range(len(lines)):
-        for j in range(i + 1, len(lines)):
-            rho1, theta1 = lines[i][0]
-            rho2, theta2 = lines[j][0]
-            A = np.array([
-                [np.cos(theta1), np.sin(theta1)],
-                [np.cos(theta2), np.sin(theta2)]
-            ])
-            b = np.array([[rho1], [rho2]])
-            try:
-                x, y = np.linalg.solve(A, b)
-                intersections.append((int(x), int(y)))
-                print(f"Intersection trouvée à ({x}, {y})")
-            except np.linalg.LinAlgError:
-                print("Aucune intersection trouvée pour cette paire de lignes.")
-                continue
-
-    if not intersections:
-        print("Aucune intersection trouvée. Le point de fuite ne peut pas être déterminé.")
-        return None
-
-    # Estimer le point de fuite comme la médiane de toutes les intersections
-    vanishing_point = np.median(intersections, axis=0).astype(int)
-    print(f"Point de fuite estimé à ({vanishing_point[0]}, {vanishing_point[1]})")
-    return vanishing_point
-
-def detect_staircase_steps(image, vanishing_point):
-    """Détecter les lignes horizontales et compter les marches dans la région de l'escalier."""
-    print("Détection des marches d'escalier...")
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 50, 150)
-    lines = cv2.HoughLinesP(edges, 1, np.pi / 180, 100, minLineLength=100, maxLineGap=10)
-
-    if lines is None:
-        print("Aucune ligne détectée. Aucune marche trouvée.")
-        return image, 0
-
-    print(f"{len(lines)} lignes détectées. Filtrage des lignes horizontales...")
+        return 0, image
+    
+    # Filtrer les lignes horizontales et quasi-horizontales (avec un petit angle)
     horizontal_lines = []
     for line in lines:
         x1, y1, x2, y2 = line[0]
-        angle = np.arctan2(y2 - y1, x2 - x1) * 180 / np.pi
-        if -10 < angle < 10:  # Lignes horizontales
-            horizontal_lines.append((x1, y1, x2, y2))
-            print(f"Ligne horizontale détectée de ({x1}, {y1}) à ({x2}, {y2})")
-
-    # Filtrer les lignes qui sont dans la région de l'escalier (en dessous du point de fuite)
-    if vanishing_point is not None:
-        vx, vy = vanishing_point
-        print(f"Filtrage des lignes en dessous du point de fuite ({vx}, {vy})...")
-        horizontal_lines = [line for line in horizontal_lines if line[1] > vy and line[3] > vy]
-        print(f"{len(horizontal_lines)} lignes horizontales restent après filtrage.")
-
-    # Dessiner les lignes horizontales et compter les marches
-    for x1, y1, x2, y2 in horizontal_lines:
-        cv2.line(image, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Dessiner en vert
-        print(f"Dessin de la ligne de marche de ({x1}, {y1}) à ({x2}, {y2})")
-
-    print(f"Nombre total de marches détectées : {len(horizontal_lines)}")
-    return image, len(horizontal_lines)
-
+        angle = np.degrees(np.arctan2(y2 - y1, x2 - x1))
+        
+        # Considérer les lignes avec un angle proche de l'horizontale (entre -10 et 10 degrés)
+        if abs(angle) <= 10:
+            horizontal_lines.append((y1, y2, x1, x2))
+    
+    # Si pas assez de lignes horizontales trouvées, retourner 0
+    if len(horizontal_lines) < 2:
+        return 0, image
+    
+    # Trier les lignes par coordonnée y pour regrouper les lignes potentielles des escaliers
+    horizontal_lines.sort(key=lambda x: (x[0] + x[1]) / 2)
+    
+    # Regrouper les lignes pour détecter des escaliers distincts
+    stairs = []
+    current_cluster = [horizontal_lines[0]]
+    
+    for line in horizontal_lines[1:]:
+        # Vérifier si la nouvelle ligne est assez proche de la dernière ligne du groupe
+        last_line = current_cluster[-1]
+        y_distance = abs((line[0] + line[1]) / 2 - (last_line[0] + last_line[1]) / 2)
+        
+        if y_distance <= 50:  # Ajuster ce seuil selon les caractéristiques de votre image
+            current_cluster.append(line)
+        else:
+            # Si la distance est trop grande, commencer un nouveau groupe
+            if len(current_cluster) > 1:
+                # Calculer la coordonnée y moyenne pour le groupe
+                avg_y = np.mean([(l[0] + l[1]) / 2 for l in current_cluster])
+                stairs.append(avg_y)
+            
+            current_cluster = [line]
+    
+    # Ajouter le dernier groupe s'il a plusieurs lignes
+    if len(current_cluster) > 1:
+        avg_y = np.mean([(l[0] + l[1]) / 2 for l in current_cluster])
+        stairs.append(avg_y)
+    
+    # Dessiner les escaliers détectés sur l'image de débogage
+    debug_image = image.copy()
+    height, width = image.shape[:2]
+    
+    for y in stairs:
+        cv2.line(debug_image, (0, int(y)), (width, int(y)), (0, 255, 0), 2)
+    
+    # Optionnel : Dessiner le point de fuite
+    if stairs:
+        # Estimation simple du point de fuite (moyenne des coordonnées x)
+        x_points = []
+        for line in horizontal_lines:
+            x_points.extend([line[2], line[3]])
+        
+        vanishing_x = int(np.mean(x_points))
+        vanishing_y = int(np.mean(stairs))
+        cv2.circle(debug_image, (vanishing_x, vanishing_y), 10, (255, 0, 0), -1)
+    
+    return len(stairs), debug_image
