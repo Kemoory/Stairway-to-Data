@@ -29,7 +29,7 @@ def split(image, threshold):
     print("Fin du processus de division.")
     return regions
 
-def merge(image, regions, threshold):
+def merge(image, regions):
     """Fusionne les regions avec des intensites semblables"""
     merged_image = np.zeros_like(image)
     print("Debut du processus de fusion...")
@@ -44,5 +44,6 @@ def merge(image, regions, threshold):
 def preprocess_splitAndMerge(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     regions = split(gray, threshold=10)
-    merged = merge(gray, regions, threshold=10)
+    merged = merge(gray, regions)
     processed = cv2.Canny(merged, 50, 150)  # Convertir en image binaire des contours
+    return processed
