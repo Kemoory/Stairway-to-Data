@@ -4,7 +4,6 @@ import cv2
 import numpy as np
 from sklearn.metrics import mean_absolute_error as mae, precision_score, recall_score, confusion_matrix
 
-# Import src.preprocessing and model functions
 from src.preprocessing.gaussian import preprocess_gaussian
 from src.preprocessing.median import preprocess_median
 from src.preprocessing.splitAndMerge import preprocess_splitAndMerge
@@ -19,7 +18,6 @@ from src.model.houghLineExt import detect_steps_houghLineExt
 from src.model.RANSAC import detect_steps_RANSAC
 from src.model.vanishingLine import detect_vanishing_lines
 
-# Evaluation metrics
 def calculate_mean_absolute_error(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
     pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
@@ -54,16 +52,16 @@ def evaluate_model(preds, ground_truth):
     conf_matrix = calculate_confusion_matrix(preds, ground_truth)
     return error, rel_error, precision, recall, conf_matrix
 
-# Function to evaluate all combinations of src.preprocessing and models
+# Fonction pour evaluer toutes les combinaisons de src.preprocessing et de modeles
 def evaluate_all_combinations(image_paths, ground_truth):
     results = []
     
-    # Define all src.preprocessing methods and models
+    # Definition des modeles et des preprocessing
     preprocessing_methods = {
         '(None)': lambda img: img.copy(),
         'Gaussian Blur + Canny': preprocess_gaussian,
         'Median Blur + Canny': preprocess_median,
-        #'Split and Merge': preprocess_splitAndMerge,
+        #'Split and Merge': preprocess_splitAndMerge, #Trop Lourd
         'Adaptive Thresholding': preprocess_adaptive_thresholding,
         'Gradient Orientation': preprocess_gradient_orientation,
         'Homomorphic Filter': preprocess_homomorphic_filter,
@@ -78,7 +76,7 @@ def evaluate_all_combinations(image_paths, ground_truth):
         'RANSAC (WIP)': detect_steps_RANSAC,
     }
     
-    # Iterate through all combinations
+    # Iteretion sur toutes les combinaisons de preprocessing et de modeles
     for preprocess_name, preprocess_func in preprocessing_methods.items():
         for model_name, model_func in models.items():
             print(f"Evaluating combination: {preprocess_name} + {model_name}")
@@ -88,26 +86,26 @@ def evaluate_all_combinations(image_paths, ground_truth):
                 img = cv2.imread(img_path)
                 img_name = os.path.basename(img_path)
                 
-                # Print the currently evaluated image
+                # Print l'image en cours de traitement
                 print(f"Evaluating image: {img_name}")
                 
-                # Apply src.preprocessing
+                # Preprocess image
                 processed = preprocess_func(img)
                 
-                # Ensure the processed image is in the correct format (grayscale, 8-bit)
+                # S'assure que l'image est en niveaux de gris et en uint8
                 if len(processed.shape) > 2:
                     processed = cv2.cvtColor(processed, cv2.COLOR_BGR2GRAY)
                 if processed.dtype != np.uint8:
                     processed = cv2.convertScaleAbs(processed)
                 
-                # Apply model
+                # Applique le modele
                 count, _ = model_func(processed, img.copy())
                 preds[img_name] = count
             
-            # Evaluate predictions
+            # Evaluation des resultats
             error, rel_error, precision, recall, conf_matrix = evaluate_model(preds, ground_truth)
             
-            # Store results
+            # Sauvegarde des resultats
             results.append({
                 'src.preprocessing': preprocess_name,
                 'model': model_name,
@@ -118,7 +116,7 @@ def evaluate_all_combinations(image_paths, ground_truth):
                 'Confusion Matrix': conf_matrix.tolist(),
             })
     
-    # Save results to a JSON file
+    # Balance les resultats dans un fichier JSON
     with open('evaluation_results.json', 'w') as f:
         json.dump(results, f, indent=4)
     

@@ -248,7 +248,7 @@ class Interface(tk.Tk):
             else:
                 processed = self.current_image.copy()  # Pas de prétraitement
 
-            # Ensure the processed image is in the correct format (grayscale, 8-bit)
+            # Assure que l'image est en niveaux de gris et en uint8
             if len(processed.shape) > 2:
                 processed = cv2.cvtColor(processed, cv2.COLOR_BGR2GRAY)
             if processed.dtype != np.uint8:
