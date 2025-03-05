@@ -6,14 +6,8 @@ def preprocess_phase_congruency(image):
     Utilise la congruence de phase pour détecter les caractéristiques indépendamment du contraste.
     C'est utile pour les escaliers avec des éclairages ou des contrastes variables.
     
-    Note : Ceci est une implémentation simplifiée de la congruence de phase.
+    (implémentation simplifiée de la congruence de phase)
     Une implémentation complète utiliserait des bibliothèques comme pynformation ou similaires.
-    
-    Args:
-        image: Image BGR en entrée
-        
-    Returns:
-        edges: Image binaire des bords traités
     """
     # Convertit l'image en niveaux de gris (parce que la couleur, c'est trop compliqué)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

@@ -4,12 +4,6 @@ import numpy as np
 def detect_vanishing_lines(processed, image):
     """
     Détecter les escaliers en utilisant la méthode du point de fuite.
-    
-    Args:
-        image (numpy.ndarray): Image d'entrée
-    
-    Returns:
-        tuple: (nombre d'escaliers, image de débogage avec les lignes détectées)
     """    
     # Détecter les lignes avec la Transformée de Hough Probabiliste
     lines = cv2.HoughLinesP(

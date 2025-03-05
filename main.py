@@ -20,6 +20,9 @@ from src.model.houghLineSeg import detect_steps_houghLineSeg
 from src.model.houghLineExt import detect_steps_houghLineExt
 from src.model.RANSAC import detect_steps_RANSAC
 from src.model.vanishingLine import detect_vanishing_lines
+from src.model.edgeDistance import detect_steps_edge_distance
+from src.model.intensityProfile import detect_steps_intensity_profile
+from src.model.countourHierarchy import detect_steps_contour_hierarchy
 
 from src.evaluation import evaluate_all_combinations
 
@@ -72,6 +75,9 @@ class Interface(tk.Tk):
             'HoughLinesP (Extended)',  # Modèle 2 (cherche des pattern de recursivité)
             'Vanishing Lines',  # Modèle 3 (peut etre opti)
             'RANSAC (WIP)',  # Modèle 4 (pour les fans de maths)
+            'Edge Distance (WIP)',  # Modèle 5 (pour les goons)
+            'Intensity Profile (WIP)',  # Modèle 6 (pour les fous de la lumière)
+            'Contour Hierarchy (WIP)',  # Modèle 7 (pour les artistes)
         )
         self.model_combobox.current(0)  # Sélection par défaut
         self.model_combobox.pack(side='left', padx=5)
@@ -264,6 +270,12 @@ class Interface(tk.Tk):
                 count, debug_img = detect_vanishing_lines(processed, self.current_image.copy())
             elif model_method == 'RANSAC (WIP)':
                 count, debug_img = detect_steps_RANSAC(processed, self.current_image.copy())
+            elif model_method == 'Edge Distance (WIP)':
+                count, debug_img = detect_steps_edge_distance(processed, self.current_image.copy())
+            elif model_method == 'Intensity Profile (WIP)':
+                count, debug_img = detect_steps_intensity_profile(processed, self.current_image.copy())
+            elif model_method == 'Contour Hierarchy (WIP)':
+                count, debug_img = detect_steps_contour_hierarchy(processed, self.current_image.copy())
 
             self.processed_image = processed  # Stocke l'image traitée
             self.debug_image = debug_img  # Stocke l'image de débogage

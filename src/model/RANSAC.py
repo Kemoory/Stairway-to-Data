@@ -4,6 +4,9 @@ import numpy as np
 from sklearn.linear_model import RANSACRegressor
 
 def detect_steps_RANSAC(processed, image):
+    '''
+    Algo de détection de marches basé sur RANSAC. (Random Sample Consensus) (WIP)
+    '''
 
     lines = cv2.HoughLinesP(processed, 1, np.pi / 180, threshold=100, minLineLength=50, maxLineGap=10)
     if lines is None:

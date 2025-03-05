@@ -1,5 +1,3 @@
-# Nouveaux prétraitements pour le comptage de marches
-
 import cv2
 import numpy as np
 from skimage import filters, feature, color, exposure
