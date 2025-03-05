@@ -2,7 +2,7 @@ import json
 import os
 import cv2
 import numpy as np
-from sklearn.metrics import mean_absolute_error as mae, precision_score, recall_score, confusion_matrix
+from sklearn.metrics import mean_absolute_error as mae, precision_score, recall_score
 
 from src.preprocessing.gaussian import preprocess_gaussian
 from src.preprocessing.median import preprocess_median
@@ -40,17 +40,11 @@ def calculate_precision_recall(preds, ground_truth):
     recall = recall_score(gt_values, pred_values, average='macro', zero_division=0)
     return precision, recall
 
-def calculate_confusion_matrix(preds, ground_truth):
-    gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
-    pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
-    return confusion_matrix(gt_values, pred_values)
-
 def evaluate_model(preds, ground_truth):
     error = calculate_mean_absolute_error(preds, ground_truth)
     rel_error = calculate_relative_error(preds, ground_truth)
     precision, recall = calculate_precision_recall(preds, ground_truth)
-    conf_matrix = calculate_confusion_matrix(preds, ground_truth)
-    return error, rel_error, precision, recall, conf_matrix
+    return error, rel_error, precision, recall
 
 # Fonction pour evaluer toutes les combinaisons de src.preprocessing et de modeles
 def evaluate_all_combinations(image_paths, ground_truth):
@@ -103,7 +97,7 @@ def evaluate_all_combinations(image_paths, ground_truth):
                 preds[img_name] = count
             
             # Evaluation des resultats
-            error, rel_error, precision, recall, conf_matrix = evaluate_model(preds, ground_truth)
+            error, rel_error, precision, recall = evaluate_model(preds, ground_truth)
             
             # Sauvegarde des resultats
             results.append({
@@ -113,7 +107,6 @@ def evaluate_all_combinations(image_paths, ground_truth):
                 'Relative Error': rel_error,
                 'Precision': precision,
                 'Recall': recall,
-                'Confusion Matrix': conf_matrix.tolist(),
             })
     
     # Balance les resultats dans un fichier JSON

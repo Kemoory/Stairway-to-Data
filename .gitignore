@@ -1,3 +1,4 @@
 /env
 src/__pycache__/
 src/model/__pycache__/
+src/preprocessing/__pycache__/
