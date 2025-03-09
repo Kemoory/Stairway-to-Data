@@ -1,0 +1,155 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.2
+-- Dumped by pg_dump version 17.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+ALTER TABLE ONLY public.images_data DROP CONSTRAINT images_data_pkey;
+DROP TABLE public.images_data;
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: images_data; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.images_data (
+    image_name text NOT NULL,
+    image_path text NOT NULL,
+    nombre_de_marches integer NOT NULL,
+    identifiant_equipe text NOT NULL
+);
+
+
+--
+-- Data for Name: images_data; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.images_data (image_name, image_path, nombre_de_marches, identifiant_equipe) FROM stdin;
+Groupe2_Image1.jpeg	./data/raw/Groupe2_Image1.jpeg	4	Groupe2
+Groupe2_Image2.jpeg	./data/raw/Groupe2_Image2.jpeg	7	Groupe2
+Groupe2_Image3.jpeg	./data/raw/Groupe2_Image3.jpeg	9	Groupe2
+Groupe2_Image4.png	./data/raw/Groupe2_Image4.png	6	Groupe2
+Groupe2_Image5.jpeg	./data/raw/Groupe2_Image5.jpeg	8	Groupe2
+Groupe2_Image6.jpeg	./data/raw/Groupe2_Image6.jpeg	10	Groupe2
+Groupe2_Image7.jpeg	./data/raw/Groupe2_Image7.jpeg	10	Groupe2
+Groupe2_Image8.png	./data/raw/Groupe2_Image8.png	9	Groupe2
+Groupe2_Image9.png	./data/raw/Groupe2_Image9.png	9	Groupe2
+Groupe2_Image10.png	./data/raw/Groupe2_Image10.png	10	Groupe2
+Groupe2_Image11.jpg	./data/raw/Groupe2_Image11.jpg	9	Groupe2
+Groupe2_Image12.png	./data/raw/Groupe2_Image12.png	7	Groupe2
+Groupe2_Image13.png	./data/raw/Groupe2_Image13.png	16	Groupe2
+t3i1.jpg	./data/raw/t3i1.jpg	11	Groupe3
+t3i2.jpg	./data/raw/t3i2.jpg	12	Groupe3
+t3i3.jpg	./data/raw/t3i3.jpg	7	Groupe3
+t3i4.jpg	./data/raw/t3i4.jpg	10	Groupe3
+t3i5.jpg	./data/raw/t3i5.jpg	5	Groupe3
+t3i6.jpg	./data/raw/t3i6.jpg	4	Groupe3
+t3i7.jpg	./data/raw/t3i7.jpg	22	Groupe3
+t3i8.jpg	./data/raw/t3i8.jpg	17	Groupe3
+t3i9.jpg	./data/raw/t3i9.jpg	21	Groupe3
+t3i10.jpg	./data/raw/t3i10.jpg	34	Groupe3
+t3i11.jpeg	./data/raw/t3i11.jpeg	6	Groupe3
+t3i12.jpg	./data/raw/t3i12.jpg	5	Groupe3
+t3i13.jpg	./data/raw/t3i13.jpg	4	Groupe3
+t3i14.jpeg	./data/raw/t3i14.jpeg	4	Groupe3
+t3i15.jpg	./data/raw/t3i15.jpg	5	Groupe3
+t3i16.png	./data/raw/t3i16.png	4	Groupe3
+t3i17.png	./data/raw/t3i17.png	3	Groupe3
+t3i18.png	./data/raw/t3i18.png	3	Groupe3
+t3i19.png	./data/raw/t3i19.png	4	Groupe3
+t3i20.png	./data/raw/t3i20.png	2	Groupe3
+t3i21.jpeg	./data/raw/t3i21.jpeg	14	Groupe3
+t3i22.png	./data/raw/t3i22.png	7	Groupe3
+t3i23.jpg	./data/raw/t3i23.jpg	12	Groupe3
+t3i24.jpg	./data/raw/t3i24.jpg	10	Groupe3
+t3i25.png	./data/raw/t3i25.png	7	Groupe3
+t3i26.png	./data/raw/t3i26.png	8	Groupe3
+t3i27.png	./data/raw/t3i27.png	7	Groupe3
+t3i28.png	./data/raw/t3i28.png	8	Groupe3
+t3i29.png	./data/raw/t3i29.png	12	Groupe3
+t3i30.png	./data/raw/t3i30.png	7	Groupe3
+Groupe6_Image1.jpg	./data/raw/Groupe6_Image1.jpg	15	Groupe6
+Groupe6_Image2.jpg	./data/raw/Groupe6_Image2.jpg	7	Groupe6
+Groupe6_Image3.jpg	./data/raw/Groupe6_Image3.jpg	11	Groupe6
+Groupe6_Image4.jpg	./data/raw/Groupe6_Image4.jpg	9	Groupe6
+Groupe6_Image5.jpg	./data/raw/Groupe6_Image5.jpg	7	Groupe6
+Groupe6_Image6.jpg	./data/raw/Groupe6_Image6.jpg	9	Groupe6
+Groupe6_Image7.jpg	./data/raw/Groupe6_Image7.jpg	7	Groupe6
+Groupe6_Image8.jpg	./data/raw/Groupe6_Image8.jpg	10	Groupe6
+Groupe6_Image9.jpg	./data/raw/Groupe6_Image9.jpg	10	Groupe6
+Groupe6_Image10.jpg	./data/raw/Groupe6_Image10.jpg	8	Groupe6
+Groupe1_Image1.jpg	./data/raw/Groupe1_Image1.jpg	11	Groupe1
+Groupe1_Image2.jpg	./data/raw/Groupe1_Image2.jpg	8	Groupe1
+Groupe1_Image3.jpg	./data/raw/Groupe1_Image3.jpg	13	Groupe1
+Groupe1_Image4.jpg	./data/raw/Groupe1_Image4.jpg	12	Groupe1
+Groupe1_Image5.jpg	./data/raw/Groupe1_Image5.jpg	12	Groupe1
+Groupe1_Image6.jpg	./data/raw/Groupe1_Image6.jpg	6	Groupe1
+Groupe1_Image7.jpg	./data/raw/Groupe1_Image7.jpg	6	Groupe1
+Groupe1_Image8.jpg	./data/raw/Groupe1_Image8.jpg	17	Groupe1
+Groupe1_Image9.jpg	./data/raw/Groupe1_Image9.jpg	9	Groupe1
+Groupe1_Image10.jpg	./data/raw/Groupe1_Image10.jpg	15	Groupe1
+img1.png	./data/raw/img1.png	8	Groupe4
+img2.jpg	./data/raw/img2.jpg	10	Groupe4
+img3.png	./data/raw/img3.png	22	Groupe4
+img4.jpg	./data/raw/img4.jpg	37	Groupe4
+img5.jpg	./data/raw/img5.jpg	5	Groupe4
+img6.jpg	./data/raw/img6.jpg	11	Groupe4
+img7.png	./data/raw/img7.png	11	Groupe4
+img8.png	./data/raw/img8.png	10	Groupe4
+img9.png	./data/raw/img9.png	12	Groupe4
+grp7img10.jpg	./data/raw/grp7img10.jpg	10	Groupe 7
+grp7img11.jpg	./data/raw/grp7img11.jpg	6	Groupe 7
+grp7img12.jpg	./data/raw/grp7img12.jpg	22	Groupe 7
+Groupe5_image01.jpg	./data/raw/Groupe5_image01.jpg	9	Groupe 5
+Groupe5_image02.jpg	./data/raw/Groupe5_image02.jpg	4	Groupe 5
+Groupe5_image03.jpg	./data/raw/Groupe5_image03.jpg	38	Groupe 5
+Groupe5_image04.jpg	./data/raw/Groupe5_image04.jpg	6	Groupe 5
+Groupe5_image05.jpg	./data/raw/Groupe5_image05.jpg	7	Groupe 5
+Groupe5_image06.jpg	./data/raw/Groupe5_image06.jpg	5	Groupe 5
+Groupe5_image07.jpg	./data/raw/Groupe5_image07.jpg	11	Groupe 5
+Groupe5_image08.jpg	./data/raw/Groupe5_image08.jpg	14	Groupe 5
+Groupe5_image09.jpg	./data/raw/Groupe5_image09.jpg	8	Groupe 5
+Groupe5_image10.jpeg	./data/raw/Groupe5_image10.jpeg	14	Groupe 5
+Groupe5_image11.jpeg	./data/raw/Groupe5_image11.jpeg	13	Groupe 5
+Groupe5_image12.jpeg	./data/raw/Groupe5_image12.jpeg	15	Groupe 5
+Groupe5_image13.jpeg	./data/raw/Groupe5_image13.jpeg	3	Groupe 5
+Groupe5_image14.jpeg	./data/raw/Groupe5_image14.jpeg	4	Groupe 5
+Groupe5_image15.jpeg	./data/raw/Groupe5_image15.jpeg	8	Groupe 5
+Groupe5_image16.jpeg	./data/raw/Groupe5_image16.jpeg	10	Groupe 5
+Groupe5_image17.jpeg	./data/raw/Groupe5_image17.jpeg	13	Groupe 5
+Groupe5_image18.jpeg	./data/raw/Groupe5_image18.jpeg	8	Groupe 5
+grp7img3.jpg	./data/raw/grp7img3.jpg	15	groupe 7
+grp7img4.jpg	./data/raw/grp7img4.jpg	2	groupe 7
+grp7img5.jpg	./data/raw/grp7img5.jpg	10	groupe 7
+grp7img2.jpg	./data/raw/grp7img2.jpg	11	groupe 7
+grp7img1.jpg	./data/raw/grp7img1.jpg	15	groupe 7
+\.
+
+
+--
+-- Name: images_data images_data_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.images_data
+    ADD CONSTRAINT images_data_pkey PRIMARY KEY (image_name);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
