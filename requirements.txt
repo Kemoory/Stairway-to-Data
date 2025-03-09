@@ -6,3 +6,4 @@ odfpy
 pillow
 scikit-image
 PyWavelets
+matplotlib
