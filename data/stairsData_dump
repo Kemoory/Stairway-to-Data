@@ -47,9 +47,9 @@ Groupe2_Image4.png	./data/raw/Groupe2_Image4.png	6	Groupe2
 Groupe2_Image5.jpeg	./data/raw/Groupe2_Image5.jpeg	8	Groupe2
 Groupe2_Image6.jpeg	./data/raw/Groupe2_Image6.jpeg	10	Groupe2
 Groupe2_Image7.jpeg	./data/raw/Groupe2_Image7.jpeg	10	Groupe2
-Groupe2_Image8.png	./data/raw/Groupe2_Image8.png	9	Groupe2
-Groupe2_Image9.png	./data/raw/Groupe2_Image9.png	9	Groupe2
-Groupe2_Image10.png	./data/raw/Groupe2_Image10.png	10	Groupe2
+Groupe2_Image8.jpg	./data/raw/Groupe2_Image8.jpg	9	Groupe2
+Groupe2_Image9.jpg	./data/raw/Groupe2_Image9.jpg	9	Groupe2
+Groupe2_Image10.jpg	./data/raw/Groupe2_Image10.jpg	10	Groupe2
 Groupe2_Image11.jpg	./data/raw/Groupe2_Image11.jpg	9	Groupe2
 Groupe2_Image12.png	./data/raw/Groupe2_Image12.png	7	Groupe2
 Groupe2_Image13.png	./data/raw/Groupe2_Image13.png	16	Groupe2
@@ -77,22 +77,22 @@ t3i21.jpeg	./data/raw/t3i21.jpeg	14	Groupe3
 t3i22.png	./data/raw/t3i22.png	7	Groupe3
 t3i23.jpg	./data/raw/t3i23.jpg	12	Groupe3
 t3i24.jpg	./data/raw/t3i24.jpg	10	Groupe3
-t3i25.png	./data/raw/t3i25.png	7	Groupe3
-t3i26.png	./data/raw/t3i26.png	8	Groupe3
-t3i27.png	./data/raw/t3i27.png	7	Groupe3
-t3i28.png	./data/raw/t3i28.png	8	Groupe3
-t3i29.png	./data/raw/t3i29.png	12	Groupe3
-t3i30.png	./data/raw/t3i30.png	7	Groupe3
-Groupe6_Image1.jpg	./data/raw/Groupe6_Image1.jpg	15	Groupe6
-Groupe6_Image2.jpg	./data/raw/Groupe6_Image2.jpg	7	Groupe6
-Groupe6_Image3.jpg	./data/raw/Groupe6_Image3.jpg	11	Groupe6
-Groupe6_Image4.jpg	./data/raw/Groupe6_Image4.jpg	9	Groupe6
-Groupe6_Image5.jpg	./data/raw/Groupe6_Image5.jpg	7	Groupe6
-Groupe6_Image6.jpg	./data/raw/Groupe6_Image6.jpg	9	Groupe6
-Groupe6_Image7.jpg	./data/raw/Groupe6_Image7.jpg	7	Groupe6
-Groupe6_Image8.jpg	./data/raw/Groupe6_Image8.jpg	10	Groupe6
-Groupe6_Image9.jpg	./data/raw/Groupe6_Image9.jpg	10	Groupe6
-Groupe6_Image10.jpg	./data/raw/Groupe6_Image10.jpg	8	Groupe6
+t3i25.jpg	./data/raw/t3i25.jpg	7	Groupe3
+t3i26.jpg	./data/raw/t3i26.jpg	8	Groupe3
+t3i27.jpg	./data/raw/t3i27.jpg	7	Groupe3
+t3i28.jpg	./data/raw/t3i28.jpg	8	Groupe3
+t3i29.jpg	./data/raw/t3i29.jpg	12	Groupe3
+t3i30.jpg	./data/raw/t3i30.jpg	7	Groupe3
+Groupe6_Image1.jpg	./data/raw/Groupe6_image1.jpg	15	Groupe6
+Groupe6_Image2.jpg	./data/raw/Groupe6_image2.jpg	7	Groupe6
+Groupe6_Image3.jpg	./data/raw/Groupe6_image3.jpg	11	Groupe6
+Groupe6_Image4.jpg	./data/raw/Groupe6_image4.jpg	9	Groupe6
+Groupe6_Image5.jpg	./data/raw/Groupe6_image5.jpg	7	Groupe6
+Groupe6_Image6.jpg	./data/raw/Groupe6_image6.jpg	9	Groupe6
+Groupe6_Image7.jpg	./data/raw/Groupe6_image7.jpg	7	Groupe6
+Groupe6_Image8.jpg	./data/raw/Groupe6_image8.jpg	10	Groupe6
+Groupe6_Image9.jpg	./data/raw/Groupe6_image9.jpg	10	Groupe6
+Groupe6_Image10.jpg	./data/raw/Groupe6_image10.jpg	8	Groupe6
 Groupe1_Image1.jpg	./data/raw/Groupe1_Image1.jpg	11	Groupe1
 Groupe1_Image2.jpg	./data/raw/Groupe1_Image2.jpg	8	Groupe1
 Groupe1_Image3.jpg	./data/raw/Groupe1_Image3.jpg	13	Groupe1
@@ -133,11 +133,11 @@ Groupe5_image15.jpeg	./data/raw/Groupe5_image15.jpeg	8	Groupe 5
 Groupe5_image16.jpeg	./data/raw/Groupe5_image16.jpeg	10	Groupe 5
 Groupe5_image17.jpeg	./data/raw/Groupe5_image17.jpeg	13	Groupe 5
 Groupe5_image18.jpeg	./data/raw/Groupe5_image18.jpeg	8	Groupe 5
-grp7img3.jpg	./data/raw/grp7img3.jpg	15	groupe 7
-grp7img4.jpg	./data/raw/grp7img4.jpg	2	groupe 7
-grp7img5.jpg	./data/raw/grp7img5.jpg	10	groupe 7
-grp7img2.jpg	./data/raw/grp7img2.jpg	11	groupe 7
-grp7img1.jpg	./data/raw/grp7img1.jpg	15	groupe 7
+grp7img3.jpeg	./data/raw/grp7img3.jpeg	15	groupe 7
+grp7img4.jpeg	./data/raw/grp7img4.jpeg	2	groupe 7
+grp7img5.jpeg	./data/raw/grp7img5.jpeg	10	groupe 7
+grp7img2.jpeg	./data/raw/grp7img2.jpeg	11	groupe 7
+grp7img1.jpeg	./data/raw/grp7img1.jpeg	15	groupe 7
 \.
 
 
