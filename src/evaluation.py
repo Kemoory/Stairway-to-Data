@@ -2,7 +2,7 @@ import json
 import os
 import cv2
 import numpy as np
-from sklearn.metrics import mean_absolute_error as mae, precision_score, recall_score
+from sklearn.metrics import mean_absolute_error as mae,mean_squared_error as mse, root_mean_squared_error as rmse, r2_score
 
 from src.preprocessing.gaussian import preprocess_gaussian
 from src.preprocessing.median import preprocess_median
@@ -23,6 +23,21 @@ def calculate_mean_absolute_error(preds, ground_truth):
     pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
     return mae(gt_values, pred_values)
 
+def calculate_mean_squared_error(preds, ground_truth):
+    gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
+    pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
+    return mse(gt_values, pred_values)
+
+def calculate_root_mean_squared_error(preds, ground_truth):
+    gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
+    pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
+    return rmse(gt_values, pred_values)
+
+def calculate_r2_score(preds, ground_truth):
+    gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
+    pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
+    return r2_score(gt_values, pred_values)
+
 def calculate_relative_error(preds, ground_truth):
     errors = []
     for img in preds.keys():
@@ -33,18 +48,14 @@ def calculate_relative_error(preds, ground_truth):
                 errors.append(abs(pred - gt) / gt)
     return sum(errors) / len(errors) if errors else 0
 
-def calculate_precision_recall(preds, ground_truth):
-    gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
-    pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
-    precision = precision_score(gt_values, pred_values, average='macro', zero_division=0)
-    recall = recall_score(gt_values, pred_values, average='macro', zero_division=0)
-    return precision, recall
 
 def evaluate_model(preds, ground_truth):
-    error = calculate_mean_absolute_error(preds, ground_truth)
+    mae = calculate_mean_absolute_error(preds, ground_truth)
+    mse = calculate_mean_squared_error(preds,ground_truth)
+    rmse = calculate_root_mean_squared_error(preds,ground_truth)
+    r2 = calculate_r2_score(preds,ground_truth)
     rel_error = calculate_relative_error(preds, ground_truth)
-    precision, recall = calculate_precision_recall(preds, ground_truth)
-    return error, rel_error, precision, recall
+    return mae, mse, rmse, r2, rel_error
 
 # Fonction pour evaluer toutes les combinaisons de src.preprocessing et de modeles
 def evaluate_all_combinations(image_paths, ground_truth):
@@ -52,15 +63,15 @@ def evaluate_all_combinations(image_paths, ground_truth):
     
     # Definition des modeles et des preprocessing
     preprocessing_methods = {
-        '(None)': lambda img: img.copy(),
-        'Gaussian Blur + Canny': preprocess_gaussian,
-        'Median Blur + Canny': preprocess_median,
+        #'(None)': lambda img: img.copy(),
+        #'Gaussian Blur + Canny': preprocess_gaussian,
+        #'Median Blur + Canny': preprocess_median,
         #'Split and Merge': preprocess_splitAndMerge, #Trop Lourd
-        'Adaptive Thresholding': preprocess_adaptive_thresholding,
-        'Gradient Orientation': preprocess_gradient_orientation,
-        'Homomorphic Filter': preprocess_homomorphic_filter,
+        #'Adaptive Thresholding': preprocess_adaptive_thresholding,
+        #'Gradient Orientation': preprocess_gradient_orientation,
+        #'Homomorphic Filter': preprocess_homomorphic_filter,
         'Phase Congruency': preprocess_phase_congruency,
-        'Wavelet Transform': preprocess_image_wavelet,
+        #'Wavelet Transform': preprocess_image_wavelet,
     }
     
     models = {
@@ -97,16 +108,17 @@ def evaluate_all_combinations(image_paths, ground_truth):
                 preds[img_name] = count
             
             # Evaluation des resultats
-            error, rel_error, precision, recall = evaluate_model(preds, ground_truth)
+            mae, mse, rmse, r2, rel_error = evaluate_model(preds, ground_truth)
             
             # Sauvegarde des resultats
             results.append({
-                'src.preprocessing': preprocess_name,
+                'preprocessing': preprocess_name,
                 'model': model_name,
-                'MAE': error,
+                'MAE': mae, #plus c'est bas mieux c'est
+                'MSE': mse, #plus c'est bas mieux c'est
+                'RMSE': rmse, #plus c'est bas mieux c'est
+                'R2_score': r2, #plus c'est haut mieux c'est
                 'Relative Error': rel_error,
-                'Precision': precision,
-                'Recall': recall,
             })
     
     # Balance les resultats dans un fichier JSON
