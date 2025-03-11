@@ -18,6 +18,10 @@ from src.model.houghLineExt import detect_steps_houghLineExt
 from src.model.RANSAC import detect_steps_RANSAC
 from src.model.vanishingLine import detect_vanishing_lines
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
 def calculate_mean_absolute_error(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
     pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
@@ -124,6 +128,52 @@ def evaluate_all_combinations(image_paths, ground_truth):
     # Balance les resultats dans un fichier JSON
     with open('evaluation_results.json', 'w') as f:
         json.dump(results, f, indent=4)
-    
+
     print("Evaluation complete. Results saved to 'evaluation_results.json'.")
+
+    # Charger les résultats du fichier JSON
+    with open('evaluation_results.json', 'r') as f:
+        results = json.load(f)
+
+    # Convertir en DataFrame pour un affichage facile
+    df = pd.DataFrame(results)
+
+    # Configuration du style
+    sns.set_theme(style="whitegrid")
+
+    # Graphique en barres pour comparer les modèles
+    plt.figure(figsize=(12, 6))
+    metrics = ["MAE", "MSE", "RMSE", "R2_score", "Relative Error"]
+    df_melted = df.melt(id_vars=["preprocessing", "model"], value_vars=metrics, var_name="Metric", value_name="Score")
+
+    sns.barplot(data=df_melted, x="Metric", y="Score", hue="model")
+    plt.title("Comparaison des modèles en fonction des métriques")
+    plt.xticks(rotation=45)
+    plt.legend(title="Modèle", bbox_to_anchor=(1, 1))
+    plt.tight_layout()
+    plt.show()
+
+    # Heatmap des erreurs MAE
+    plt.figure(figsize=(10, 5))
+    heatmap_data = df.pivot(index="model", columns="preprocessing", values="MAE")
+    sns.heatmap(heatmap_data, annot=True, cmap="coolwarm", linewidths=0.5)
+    plt.title("Heatmap des erreurs MAE pour chaque combinaison")
+    plt.ylabel("Modèle")
+    plt.xlabel("Prétraitement")
+    plt.show()
+
+    # Courbe des erreurs MAE
+    plt.figure(figsize=(10, 5))
+    for model in df["model"].unique():
+        subset = df[df["model"] == model]
+        plt.plot(subset["preprocessing"], subset["MAE"], marker="o", label=model)
+
+    plt.xlabel("Prétraitement")
+    plt.ylabel("MAE")
+    plt.title("Comparaison des erreurs MAE en fonction du prétraitement")
+    plt.legend()
+    plt.xticks(rotation=45)
+    plt.grid()
+    plt.show()
+
     return results
