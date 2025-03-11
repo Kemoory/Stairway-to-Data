@@ -6,20 +6,20 @@ from sklearn.metrics import mean_absolute_error as mae, mean_squared_error as ms
 
 from src.preprocessing.gaussian import preprocess_gaussian
 from src.preprocessing.median import preprocess_median
-from src.preprocessing.splitAndMerge import preprocess_splitAndMerge
-from src.preprocessing.adaptive_tresholding import preprocess_adaptive_thresholding
+from preprocessing.split_and_merge import preprocess_splitAndMerge
+from preprocessing.adaptive_thresholding import preprocess_adaptive_thresholding
 from src.preprocessing.gradient_orientation import preprocess_gradient_orientation
-from src.preprocessing.homorphic_filter import preprocess_homomorphic_filter
+from preprocessing.homomorphic_filter import preprocess_homomorphic_filter
 from src.preprocessing.phase_congruency import preprocess_phase_congruency
 from src.preprocessing.wavelet import preprocess_image_wavelet
 
-from src.model.houghLineSeg import detect_steps_houghLineSeg
-from src.model.houghLineExt import detect_steps_houghLineExt
-from src.model.RANSAC import detect_steps_RANSAC
-from src.model.vanishingLine import detect_vanishing_lines
-from src.model.intensityProfile import detect_steps_intensity_profile
-from src.model.countourHierarchy import detect_steps_contour_hierarchy
-from src.model.edgeDistance import detect_steps_edge_distance
+from model.hough_line_seg import detect_steps_houghLineSeg
+from model.hough_line_ext import detect_steps_houghLineExt
+from src.model.ransac import detect_steps_RANSAC
+from model.vanishing_line import detect_vanishing_lines
+from model.intensity_profile import detect_steps_intensity_profile
+from model.contour_hierarchy import detect_steps_contour_hierarchy
+from model.edge_distance import detect_steps_edge_distance
 
 import matplotlib.pyplot as plt
 import seaborn as sns
