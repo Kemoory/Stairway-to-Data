@@ -2,7 +2,7 @@ import json
 import os
 import cv2
 import numpy as np
-from sklearn.metrics import mean_absolute_error as mae,mean_squared_error as mse, root_mean_squared_error as rmse, r2_score
+from sklearn.metrics import mean_absolute_error as mae, mean_squared_error as mse, r2_score
 
 from src.preprocessing.gaussian import preprocess_gaussian
 from src.preprocessing.median import preprocess_median
@@ -17,6 +17,9 @@ from src.model.houghLineSeg import detect_steps_houghLineSeg
 from src.model.houghLineExt import detect_steps_houghLineExt
 from src.model.RANSAC import detect_steps_RANSAC
 from src.model.vanishingLine import detect_vanishing_lines
+from src.model.intensityProfile import detect_steps_intensity_profile
+from src.model.countourHierarchy import detect_steps_contour_hierarchy
+from src.model.edgeDistance import detect_steps_edge_distance
 
 def calculate_mean_absolute_error(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
@@ -31,7 +34,7 @@ def calculate_mean_squared_error(preds, ground_truth):
 def calculate_root_mean_squared_error(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
     pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
-    return rmse(gt_values, pred_values)
+    return np.sqrt(mse(gt_values, pred_values))
 
 def calculate_r2_score(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
@@ -48,37 +51,44 @@ def calculate_relative_error(preds, ground_truth):
                 errors.append(abs(pred - gt) / gt)
     return sum(errors) / len(errors) if errors else 0
 
-
 def evaluate_model(preds, ground_truth):
     mae = calculate_mean_absolute_error(preds, ground_truth)
-    mse = calculate_mean_squared_error(preds,ground_truth)
-    rmse = calculate_root_mean_squared_error(preds,ground_truth)
-    r2 = calculate_r2_score(preds,ground_truth)
+    mse = calculate_mean_squared_error(preds, ground_truth)
+    rmse = calculate_root_mean_squared_error(preds, ground_truth)
+    r2 = calculate_r2_score(preds, ground_truth)
     rel_error = calculate_relative_error(preds, ground_truth)
     return mae, mse, rmse, r2, rel_error
 
 # Fonction pour evaluer toutes les combinaisons de src.preprocessing et de modeles
 def evaluate_all_combinations(image_paths, ground_truth):
     results = []
+    image_results = {}
+    
+    # Count the total number of images
+    total_images = len(image_paths)
+    print(f"Total number of images: {total_images}")
     
     # Definition des modeles et des preprocessing
     preprocessing_methods = {
         #'(None)': lambda img: img.copy(),
-        #'Gaussian Blur + Canny': preprocess_gaussian,
-        #'Median Blur + Canny': preprocess_median,
+        'Gaussian Blur + Canny': preprocess_gaussian,
+        'Median Blur + Canny': preprocess_median,
         #'Split and Merge': preprocess_splitAndMerge, #Trop Lourd
-        #'Adaptive Thresholding': preprocess_adaptive_thresholding,
-        #'Gradient Orientation': preprocess_gradient_orientation,
-        #'Homomorphic Filter': preprocess_homomorphic_filter,
+        'Adaptive Thresholding': preprocess_adaptive_thresholding,
+        'Gradient Orientation': preprocess_gradient_orientation,
+        'Homomorphic Filter': preprocess_homomorphic_filter,
         'Phase Congruency': preprocess_phase_congruency,
-        #'Wavelet Transform': preprocess_image_wavelet,
+        'Wavelet Transform': preprocess_image_wavelet,
     }
     
     models = {
         'HoughLinesP (Segmented)': detect_steps_houghLineSeg,
         'HoughLinesP (Extended)': detect_steps_houghLineExt,
-        'Vanishing Lines': detect_vanishing_lines,
+        #'Vanishing Lines': detect_vanishing_lines,
         'RANSAC (WIP)': detect_steps_RANSAC,
+        'Intensity Profile': detect_steps_intensity_profile,
+        'Contour Hierarchy': detect_steps_contour_hierarchy,
+        'Edge Distance': detect_steps_edge_distance,
     }
     
     # Iteretion sur toutes les combinaisons de preprocessing et de modeles
@@ -120,10 +130,26 @@ def evaluate_all_combinations(image_paths, ground_truth):
                 'R2_score': r2, #plus c'est haut mieux c'est
                 'Relative Error': rel_error,
             })
+            
+            # Sauvegarde des resultats par image
+            for img_name in preds.keys():
+                if img_name in ground_truth:
+                    if img_name not in image_results:
+                        image_results[img_name] = []
+                    image_results[img_name].append({
+                        'preprocessing': preprocess_name,
+                        'model': model_name,
+                        'prediction': preds[img_name],
+                        'ground_truth': ground_truth[img_name]
+                    })
     
     # Balance les resultats dans un fichier JSON
     with open('evaluation_results.json', 'w') as f:
         json.dump(results, f, indent=4)
     
-    print("Evaluation complete. Results saved to 'evaluation_results.json'.")
-    return results
+    # Balance les resultats par image dans un fichier JSON
+    with open('image_results.json', 'w') as f:
+        json.dump(image_results, f, indent=4)
+    
+    print("Evaluation complete. Results saved to 'evaluation_results.json' and 'image_results.json'.")
+    return results, image_results
