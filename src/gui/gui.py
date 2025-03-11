@@ -136,7 +136,7 @@ class Interface(tk.Tk):
                 self.show_image()  # Affiche la première image
 
     def load_ground_truth(self):
-        gt_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])  # Ouvre une boîte de dialogue pour charger un fichier JSON
+        gt_path = filedialog.askopenfilename(initialdir='data', filetypes=[("JSON files", "*.json")])  # Ouvre une boîte de dialogue pour charger un fichier JSON
         if gt_path:
             with open(gt_path, 'r') as f:
                 data = json.load(f)
