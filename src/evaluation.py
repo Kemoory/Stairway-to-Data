@@ -21,6 +21,10 @@ from src.models.intensity_profile import detect_steps_intensity_profile
 from src.models.contour_hierarchy import detect_steps_contour_hierarchy
 from src.models.edge_distance import detect_steps_edge_distance
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
 def calculate_mean_absolute_error(preds, ground_truth):
     gt_values = [ground_truth[img] for img in preds.keys() if img in ground_truth]
     pred_values = [preds[img] for img in preds.keys() if img in ground_truth]
@@ -146,6 +150,7 @@ def evaluate_all_combinations(image_paths, ground_truth):
     # Balance les resultats dans un fichier JSON
     with open('evaluation_results.json', 'w') as f:
         json.dump(results, f, indent=4)
+<<<<<<< HEAD
     
     # Balance les resultats par image dans un fichier JSON
     with open('image_results.json', 'w') as f:
@@ -153,3 +158,54 @@ def evaluate_all_combinations(image_paths, ground_truth):
     
     print("Evaluation complete. Results saved to 'evaluation_results.json' and 'image_results.json'.")
     return results, image_results
+=======
+
+    print("Evaluation complete. Results saved to 'evaluation_results.json'.")
+
+    # Charger les résultats du fichier JSON
+    with open('evaluation_results.json', 'r') as f:
+        results = json.load(f)
+
+    # Convertir en DataFrame pour un affichage facile
+    df = pd.DataFrame(results)
+
+    # Configuration du style
+    sns.set_theme(style="whitegrid")
+
+    # Graphique en barres pour comparer les modèles
+    plt.figure(figsize=(12, 6))
+    metrics = ["MAE", "MSE", "RMSE", "R2_score", "Relative Error"]
+    df_melted = df.melt(id_vars=["preprocessing", "model"], value_vars=metrics, var_name="Metric", value_name="Score")
+
+    sns.barplot(data=df_melted, x="Metric", y="Score", hue="model")
+    plt.title("Comparaison des modèles en fonction des métriques")
+    plt.xticks(rotation=45)
+    plt.legend(title="Modèle", bbox_to_anchor=(1, 1))
+    plt.tight_layout()
+    plt.show()
+
+    # Heatmap des erreurs MAE
+    plt.figure(figsize=(10, 5))
+    heatmap_data = df.pivot(index="model", columns="preprocessing", values="MAE")
+    sns.heatmap(heatmap_data, annot=True, cmap="coolwarm", linewidths=0.5)
+    plt.title("Heatmap des erreurs MAE pour chaque combinaison")
+    plt.ylabel("Modèle")
+    plt.xlabel("Prétraitement")
+    plt.show()
+
+    # Courbe des erreurs MAE
+    plt.figure(figsize=(10, 5))
+    for model in df["model"].unique():
+        subset = df[df["model"] == model]
+        plt.plot(subset["preprocessing"], subset["MAE"], marker="o", label=model)
+
+    plt.xlabel("Prétraitement")
+    plt.ylabel("MAE")
+    plt.title("Comparaison des erreurs MAE en fonction du prétraitement")
+    plt.legend()
+    plt.xticks(rotation=45)
+    plt.grid()
+    plt.show()
+
+    return results
+>>>>>>> b400b32 (Ajout de la visualisation des résultats de l'évaluation)
