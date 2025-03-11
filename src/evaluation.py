@@ -74,7 +74,7 @@ def evaluate_all_combinations(image_paths, ground_truth):
     
     # Definition des modeles et des preprocessing
     preprocessing_methods = {
-        #'(None)': lambda img: img.copy(),
+        '(None)': lambda img: img.copy(),
         'Gaussian Blur + Canny': preprocess_gaussian,
         'Median Blur + Canny': preprocess_median,
         #'Split and Merge': preprocess_splitAndMerge, #Trop Lourd
@@ -88,7 +88,7 @@ def evaluate_all_combinations(image_paths, ground_truth):
     models = {
         'HoughLinesP (Segmented)': detect_steps_houghLineSeg,
         'HoughLinesP (Extended)': detect_steps_houghLineExt,
-        #'Vanishing Lines': detect_vanishing_lines,
+        'Vanishing Lines': detect_vanishing_lines,
         'RANSAC (WIP)': detect_steps_RANSAC,
         'Intensity Profile': detect_steps_intensity_profile,
         'Contour Hierarchy': detect_steps_contour_hierarchy,
