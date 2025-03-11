@@ -2,10 +2,28 @@ import os
 import numpy as np
 import cv2
 import joblib
+from skimage.feature import local_binary_pattern
 from sklearn.model_selection import KFold
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib.pyplot as plt
+
+def compute_lbp(gray_image, radius=1, points=8):
+    """
+    Compute the Local Binary Pattern (LBP) histogram of an image.
+    :param gray_image: Grayscale image
+    :param radius: Radius of the circular neighborhood
+    :param points: Number of neighboring points
+    :return: Flattened LBP histogram
+    """
+    lbp = local_binary_pattern(gray_image, points, radius, method="uniform")
+    (hist, _) = np.histogram(lbp.ravel(), bins=np.arange(0, points + 3), range=(0, points + 2))
+    
+    # Normalisation de l'histogramme
+    hist = hist.astype("float")
+    hist /= (hist.sum() + 1e-6)  # Évite la division par zéro
+    
+    return hist
 
 def extract_features(image_path):
     """
@@ -24,6 +42,9 @@ def extract_features(image_path):
     # Resize to a standard size
     resized = cv2.resize(gray, (200, 200))
     
+    # Compute LBP features
+    lbp_hist = compute_lbp(resized)
+
     # Edge detection - useful for finding stair edges
     edges = cv2.Canny(resized, 50, 150)
     
@@ -69,10 +90,11 @@ def extract_features(image_path):
     # Reduce dimensionality of HOG features (take a subset)
     hog_features_reduced = hog_features[::20].flatten()
     
-    # Combine all features
-    all_features = np.concatenate([custom_features, hog_features_reduced])
+    # Combine all features, including LBP
+    all_features = np.concatenate([custom_features, hog_features_reduced, lbp_hist])
     
     return all_features
+
 
 def prepare_dataset(image_paths, labels):
     """
@@ -124,7 +146,15 @@ def train_ml(features, labels):
         print(f"Training with {X_train.shape[0]} samples, testing with {X_test.shape[0]} samples")
         
         # Train a Random Forest Regressor
-        model = RandomForestRegressor(n_estimators=100, random_state=42)
+        # Random Forest avec régularisation pour réduire l'overfitting
+        model = RandomForestRegressor(
+            n_estimators=50,         # Moins d'arbres pour éviter l'overfitting
+            max_depth=10,            # Limite la profondeur des arbres
+            min_samples_split=5,     # Un nœud doit contenir au moins 5 échantillons pour se diviser
+            min_samples_leaf=3,      # Une feuille doit contenir au moins 3 échantillons
+            random_state=42
+        )
+
         model.fit(X_train, y_train)
         
         # Evaluate the model
