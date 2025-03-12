@@ -1,5 +1,6 @@
 /env
 src/__pycache__/
-src/model/__pycache__/
+src/models/__pycache__/
 src/preprocessing/__pycache__/
-*.json
+src/gui/__pycache__/
+experiment/__pycache__
