@@ -3,9 +3,18 @@ src/__pycache__/
 src/models/__pycache__/
 src/preprocessing/__pycache__/
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.json
 *.pkl
 =======
 src/gui/__pycache__/
 experiment/__pycache__
 >>>>>>> 662ffcf (added JSON so that's it's easier to test)
+=======
+src/gui/__pycache__/
+experiment/__pycache__
+=======
+*.json
+*.pkl
+>>>>>>> 7b8fffc (update)
+>>>>>>> e7172d5 (update)
