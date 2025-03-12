@@ -1,6 +1,11 @@
 /env
 src/__pycache__/
-src/model/__pycache__/
+src/models/__pycache__/
 src/preprocessing/__pycache__/
+<<<<<<< HEAD
 *.json
 *.pkl
+=======
+src/gui/__pycache__/
+experiment/__pycache__
+>>>>>>> 662ffcf (added JSON so that's it's easier to test)
