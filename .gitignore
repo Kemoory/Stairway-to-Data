@@ -2,5 +2,10 @@
 src/__pycache__/
 src/models/__pycache__/
 src/preprocessing/__pycache__/
+<<<<<<< HEAD
 src/gui/__pycache__/
 experiment/__pycache__
+=======
+*.json
+*.pkl
+>>>>>>> 7b8fffc (update)
