@@ -1,0 +1,2550 @@
+{
+    "Groupe2_Image1.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 9.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 8.97
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 8.764919624044925
+        }
+    ],
+    "Groupe2_Image5.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 6.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 14.06
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.72249010834967
+        }
+    ],
+    "Groupe2_Image11.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 13.99
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.212595643014431
+        }
+    ],
+    "Groupe2_Image13.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 16.0,
+            "prediction": 10.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 16.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 16.0,
+            "prediction": 11.44
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 16.0,
+            "prediction": 11.116209322040561
+        }
+    ],
+    "t3i6.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 8.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 11.2
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 9.69330397882559
+        }
+    ],
+    "t3i10.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 34.0,
+            "prediction": 19.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 34.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 34.0,
+            "prediction": 12.79
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 34.0,
+            "prediction": 9.99007764417766
+        }
+    ],
+    "t3i14.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 16.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 12.46
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 9.674041968825652
+        }
+    ],
+    "t3i19.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 5.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 9.32
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 8.697560185906582
+        }
+    ],
+    "t3i28.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 9.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 12.85
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.871005920089878
+        }
+    ],
+    "t3i30.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.56
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.181424519401284
+        }
+    ],
+    "Groupe6_image2.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 11.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.86
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.085447904763255
+        }
+    ],
+    "Groupe6_image5.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.23
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.8652257326298
+        }
+    ],
+    "Groupe1_Image10.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 11.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 14.33
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 10.77301364078283
+        }
+    ],
+    "img2.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 12.42
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.926273683201334
+        }
+    ],
+    "grp7img11.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 10.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 8.24
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 10.784855770674854
+        }
+    ],
+    "Groupe5_image01.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.95
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.909168217533068
+        }
+    ],
+    "Groupe5_image07.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 10.12
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 9.13442719555887
+        }
+    ],
+    "Groupe5_image09.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 5.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 10.34
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 9.138066185587139
+        }
+    ],
+    "Groupe5_image16.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.62
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.156964928892426
+        }
+    ],
+    "grp7img4.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 9.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 9.42
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 9.626045679178645
+        }
+    ],
+    "Groupe2_Image6.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 7.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 10.82
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.094827716081817
+        }
+    ],
+    "Groupe2_Image10.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 10.39
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.010011057577625
+        }
+    ],
+    "Groupe2_Image12.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 7.9
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.35035089095689
+        }
+    ],
+    "t3i3.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 17.44
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.810634986726354
+        }
+    ],
+    "t3i4.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.06
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.877746422181408
+        }
+    ],
+    "t3i16.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 4.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 7.59
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 8.015100582245328
+        }
+    ],
+    "t3i18.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 4.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 8.09
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 8.011866518493694
+        }
+    ],
+    "t3i21.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 7.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 8.07
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 9.941516494241231
+        }
+    ],
+    "t3i23.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 8.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 9.52
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 8.394979083612483
+        }
+    ],
+    "t3i27.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.33
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.343698897176868
+        }
+    ],
+    "Groupe6_image3.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 7.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.71
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 7.979041483039111
+        }
+    ],
+    "Groupe6_image7.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 9.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.55
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.403905318736848
+        }
+    ],
+    "img3.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 10.64
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 10.16447746958842
+        }
+    ],
+    "img6.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 9.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.95
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.605927579421127
+        }
+    ],
+    "img7.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 9.61
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.042150854539699
+        }
+    ],
+    "img8.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 10.72
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.644656122789469
+        }
+    ],
+    "grp7img10.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 16.75
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.521854399391332
+        }
+    ],
+    "Groupe5_image06.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 7.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 7.86
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 8.59651374130592
+        }
+    ],
+    "Groupe5_image14.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 7.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 16.28
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 8.461593348865621
+        }
+    ],
+    "grp7img3.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 9.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 8.48
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 8.149588829001212
+        }
+    ],
+    "Groupe2_Image4.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 7.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 11.81
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 9.37896589013435
+        }
+    ],
+    "Groupe2_Image7.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 7.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 7.94
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 7.946678107775403
+        }
+    ],
+    "Groupe2_Image8.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 6.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 10.66
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.267668779845266
+        }
+    ],
+    "Groupe2_Image9.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 7.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.74
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 8.782996952293782
+        }
+    ],
+    "t3i1.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 12.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 11.24
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 10.044056945580754
+        }
+    ],
+    "t3i5.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 24.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 12.83
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 10.944822101668578
+        }
+    ],
+    "t3i7.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 11.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 10.45
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 8.673306079681714
+        }
+    ],
+    "t3i12.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 11.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 10.04
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 9.89785633829868
+        }
+    ],
+    "t3i13.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 12.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 10.44
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 10.796189778452876
+        }
+    ],
+    "t3i15.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 12.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 10.65
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 9.99351660885911
+        }
+    ],
+    "t3i22.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 11.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.27
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.357687572731571
+        }
+    ],
+    "t3i24.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 11.64
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.50756102141937
+        }
+    ],
+    "t3i26.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 12.17
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 9.664737929187929
+        }
+    ],
+    "Groupe1_Image1.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 13.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 12.7
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 11.347375823711676
+        }
+    ],
+    "Groupe1_Image3.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 10.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 12.62
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 9.597507806301092
+        }
+    ],
+    "Groupe1_Image4.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 13.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 10.04
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 10.657109535882396
+        }
+    ],
+    "Groupe5_image02.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 20.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 10.41
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 4.0,
+            "prediction": 10.308090995863767
+        }
+    ],
+    "Groupe5_image04.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 18.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 9.83
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 10.746706037678347
+        }
+    ],
+    "Groupe5_image05.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 19.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.55
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 11.260586384247615
+        }
+    ],
+    "Groupe5_image11.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 10.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 11.78
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 9.805947447179348
+        }
+    ],
+    "t3i20.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 3.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 6.74
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 2.0,
+            "prediction": 8.131813567884185
+        }
+    ],
+    "t3i29.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 10.98
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 10.160111505151129
+        }
+    ],
+    "Groupe6_image1.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 9.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 8.95
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 9.577785806722803
+        }
+    ],
+    "Groupe6_image4.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 7.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 11.36
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 7.989620707233006
+        }
+    ],
+    "Groupe6_image6.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 13.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 10.22
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 11.473381857281135
+        }
+    ],
+    "Groupe6_image8.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 7.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 11.68
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 8.537623259511678
+        }
+    ],
+    "Groupe1_Image2.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 11.34
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.27748822076245
+        }
+    ],
+    "Groupe1_Image5.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 11.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 10.01
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 11.40673492546518
+        }
+    ],
+    "Groupe1_Image6.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 7.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 10.89
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 8.890642329401107
+        }
+    ],
+    "Groupe1_Image7.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 9.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 9.78
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 8.281891878021451
+        }
+    ],
+    "Groupe1_Image9.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 6.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 11.51
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 8.102206223077307
+        }
+    ],
+    "img1.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 11.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 10.75
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.517239119105884
+        }
+    ],
+    "img4.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 37.0,
+            "prediction": 5.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 37.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 37.0,
+            "prediction": 8.1
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 37.0,
+            "prediction": 8.503903403442747
+        }
+    ],
+    "img5.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 8.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 7.4
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 5.0,
+            "prediction": 8.962208016995376
+        }
+    ],
+    "Groupe5_image03.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 38.0,
+            "prediction": 11.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 38.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 38.0,
+            "prediction": 11.89
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 38.0,
+            "prediction": 8.991582599166097
+        }
+    ],
+    "Groupe5_image10.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 9.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 3.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 10.79
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 8.540393711164434
+        }
+    ],
+    "grp7img5.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 14.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 12.36
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 11.735867791764102
+        }
+    ],
+    "grp7img2.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.72
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 11.0,
+            "prediction": 8.405205834323665
+        }
+    ],
+    "grp7img1.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 11.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 8.3
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 8.420429239031845
+        }
+    ],
+    "Groupe2_Image2.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 7.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 7.41
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.999415074726743
+        }
+    ],
+    "Groupe2_Image3.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 9.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 12.72
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 9.0,
+            "prediction": 8.154377569080605
+        }
+    ],
+    "t3i2.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 11.42
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 9.916628600592555
+        }
+    ],
+    "t3i8.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 12.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 9.15
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 10.621422110636544
+        }
+    ],
+    "t3i9.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 21.0,
+            "prediction": 18.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 21.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 21.0,
+            "prediction": 13.12
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 21.0,
+            "prediction": 9.17708849872995
+        }
+    ],
+    "t3i11.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 10.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 6.74
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 6.0,
+            "prediction": 10.28992199305726
+        }
+    ],
+    "t3i17.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 4.6
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 8.21
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 8.125911149005372
+        }
+    ],
+    "t3i25.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 10.93
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 7.0,
+            "prediction": 8.432477049538484
+        }
+    ],
+    "Groupe6_image9.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 7.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 10.62
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 10.0,
+            "prediction": 9.232660552229632
+        }
+    ],
+    "Groupe6_image10.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 11.05
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.757672898535247
+        }
+    ],
+    "Groupe1_Image8.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 7.4
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 9.91
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 17.0,
+            "prediction": 10.259495169999617
+        }
+    ],
+    "img9.png": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 7.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 11.7
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 12.0,
+            "prediction": 9.095788736899323
+        }
+    ],
+    "grp7img12.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 13.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 2.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 11.34
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 22.0,
+            "prediction": 9.23085049799583
+        }
+    ],
+    "Groupe5_image08.jpg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 7.8
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 11.6
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 14.0,
+            "prediction": 8.602507045755292
+        }
+    ],
+    "Groupe5_image12.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 9.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 4.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 12.79
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 15.0,
+            "prediction": 9.940656952153068
+        }
+    ],
+    "Groupe5_image13.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 7.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 9.54
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 3.0,
+            "prediction": 8.863862944880147
+        }
+    ],
+    "Groupe5_image15.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 12.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 9.87
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.537608933896927
+        }
+    ],
+    "Groupe5_image17.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 10.0
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 1.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 8.55
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 13.0,
+            "prediction": 8.30879969939684
+        }
+    ],
+    "Groupe5_image18.jpeg": [
+        {
+            "model": "knn",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 10.2
+        },
+        {
+            "model": "kmeans",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 0.0
+        },
+        {
+            "model": "random_forest",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 9.68
+        },
+        {
+            "model": "svr",
+            "preprocessing": "standard",
+            "ground_truth": 8.0,
+            "prediction": 8.579759694608097
+        }
+    ]
+}

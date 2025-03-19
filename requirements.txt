@@ -8,3 +8,4 @@ scikit-image
 PyWavelets
 matplotlib
 seaborn
+joblib

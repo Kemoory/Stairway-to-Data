@@ -3,24 +3,24 @@ import numpy as np
 
 def detect_steps_edge_distance(edges, original_image):
     """
-    Detects steps by measuring vertical distances between horizontal edges
+    Détecte les marches en mesurant les distances verticales entre les bords horizontaux
     """
-    # Find horizontal edges
+    # Trouver les bords horizontaux (aka les lignes qui aiment se poser à plat)
     horizontal_edges = []
     height, width = edges.shape
     
     for y in range(height):
-        # Count horizontal edge pixels in this row
+        # Compter les pixels de bord horizontal dans cette ligne
         edge_count = np.sum(edges[y, :] > 0)
-        if edge_count > width * 0.3:  # Significant horizontal edge
+        if edge_count > width * 0.3:  # Bord horizontal significatif
             horizontal_edges.append(y)
     
-    # Group edges that are close together
+    # Grouper les bords proches (parce que l'union fait la force)
     steps = []
     if horizontal_edges:
         current_group = [horizontal_edges[0]]
         for edge in horizontal_edges[1:]:
-            if edge - current_group[-1] > 50:  # Large vertical gap
+            if edge - current_group[-1] > 50:  # Grand écart vertical
                 steps.append(int(np.mean(current_group)))
                 current_group = [edge]
             else:
@@ -28,7 +28,7 @@ def detect_steps_edge_distance(edges, original_image):
         
         steps.append(int(np.mean(current_group)))
         
-        # Draw detected steps
+        # Dessiner les marches détectées (parce que c'est plus joli avec des lignes vertes)
         for y in steps:
             cv2.line(original_image, (0, y), (width-1, y), (0, 255, 0), 2)
         
