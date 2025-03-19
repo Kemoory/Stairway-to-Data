@@ -3,91 +3,140 @@
 __Detection et Comptage de Marches d'Escalier__
 
 ## Description
-Ce projet a pour objectif de détecter et de compter automatiquement le nombre de marches d'un escalier à partir d'une image capturée par un téléphone. L'image fournie est centrée sur les marches et possède un fond relativement homogène.
+Ce projet a pour objectif de détecter et de compter automatiquement le nombre de marches d'un escalier à partir d'une image capturée par un téléphone. L'approche combine des méthodes de vision par ordinateur et des modèles d'apprentissage machine.
 
 ## Objectifs
-- **Acquisition des images** : Construire un jeu de données avec des annotations manuelles (vérité terrain).
-- **Détection et comptage des marches** : Développer une méthode permettant d'identifier et de compter les marches.
-- **Évaluation des performances** : Comparer les résultats obtenus avec la vérité terrain.
-- **Proposition d'améliorations** : Analyser les résultats et suggérer des optimisations.
+- **Acquisition des images** : Base de données structurée avec annotations manuelles
+- **Prétraitement avancé** : Filtrage adaptatif, ondelettes et techniques d'amélioration de contraste
+- **Détection multi-méthodes** : Combinaison de contours, lignes et approches géométriques
+- **Modèles ML** : Implémentation de K-means, KNN, Random Forest et SVR
+- **Évaluation rigoureuse** : Métriques de régression et analyse comparative
+- **Interface utilisateur** : GUI interactive pour exploration des résultats
 
-## Arborescence du projet
+## Arborescence du projet (simplifiée)
 ```
-stair_detection/
-│── data/                    # Dossier contenant les images et annotations
-│   ├── raw/                 # Images brutes capturées
-│   ├── processed/           # Images prétraitées
-│   ├── labels.json          # Vérité terrain (nombre de marches par image)
+.
+├── data/                  # Données brutes et traitées
+│   ├── raw/               # Images originales
+│   ├── processed/         # Images prétraitées
+│   ├── data_annotations.json # Vérité terrain
+│ 
+├── src/                   # Code source principal
+│   ├── preprocessing/     # Techniques de prétraitement
+│   ├── models/            # Algorithmes de détection
+│   ├── evaluation/        # Métriques et évaluation
+│   ├── gui/               # Interface graphique
+│   └── utils.py           # Fonctions utilitaires
 │
-│── src/                     # Code source principal
-│   ├── preprocessing.py      # Prétraitement des images (filtrage, seuillage, etc.)
-│   ├── detection.py          # Algorithme de détection et comptage des marches
-│   ├── evaluation.py         # Évaluation des performances du modèle
-│   ├── visualization.py      # Affichage des résultats et overlays
-│   ├── utils.py              # Fonctions utilitaires
+├── results/               # Résultats d'expérimentation
+│   ├── algorithm/         # Résultats méthodes classiques
+│   └── machine_learning/  # Performances des modèles ML
 │
-│── tests/                    # Tests unitaires
-│   ├── test_detection.py
-│   ├── test_preprocessing.py
-│   ├── test_evaluation.py
-│
-│── results/                  # Dossier pour les résultats des expériences
-│
-│── main.py                   # Script principal pour exécuter le pipeline
-│── requirements.txt           # Dépendances Python
-│── README.md                  # Explication du projet et de son exécution
-│── report.pdf                 # Rapport du projet (optionnel)
-│── presentation.pptx          # Présentation finale
+├── experiments/           Scripts d'expérimentation
+├── tests/                 Tests unitaires
+└── main.py                Point d'entrée principal
 ```
 
 ## Installation
-1. Cloner le projet :
 ```bash
 git clone https://github.com/Kemoory/Stairway-to-heaven.git
 cd Stairway-to-heaven
-```
-
-2. Créer un environnement virtuel et activez le :
-```bash
 python3 -m venv env
 source env/bin/activate
-```
-
-3. Installer les dépendances :
-```bash
 pip install -r requirements.txt
 ```
 
 ## Utilisation
-Pour exécuter la détection sur une image donnée :
+Exécuter le pipeline complet avec interface graphique :
 ```bash
-python main.py --image data/raw/XXX.jpg
-```
-Quand l'exécution est fini vous pouvez désactiver l'environnement avec :
-```bash
-deactivate
+python main.py --gui
 ```
 
-## Dépendances
-- Python 3.8+
-- OpenCV
-- NumPy
-- Matplotlib
-- Scikit-image
-- SciPy
+## Dépendances principales
+- OpenCV 4.5+ (traitement d'image)
+- Scikit-learn 1.0+ (modèles ML)
+- PyWavelets (prétraitement)
+- Matplotlib/Seaborn (visualisation)
+- Joblib (optimisation)
 
-## Évaluation
-L'évaluation des performances est réalisée en comparant les résultats obtenus avec la vérité terrain. Les métriques utilisées incluent :
-- **Erreur absolue moyenne**
-- **Précision / Rappel / F1-score**
+## Évaluation des performances
+Les performances sont évaluées à l'aide de métriques de régression adaptées au comptage d'images :
+
+```python
+from src.evaluation.utils import (
+    calculate_mean_absolute_error,
+    calculate_mean_squared_error,
+    calculate_root_mean_squared_error,
+    calculate_r2_score,
+    calculate_relative_error
+)
+```
+
+**Métriques clés :**
+- MAE (Erreur Absolue Moyenne)
+- MSE (Erreur Quadratique Moyenne)
+- RMSE (Racine de l'Erreur Quadratique Moyenne)
+- R² (Coefficient de Détermination)
+- Erreur Relative Moyenne
+
+**Stratégie d'évaluation :**
+1. Validation croisée sur les données
+2. Comparaison algorithmes vs modèles ML
+3. Analyse des erreurs en identifiant les images problématique
+4. Visualisation des prédictions problématiques
+
+## Résultats
+Les performances sont stockées dans :
+```
+results/
+├── algorithm/
+│   ├── evaluation_results.json
+│   └── visualisations/
+└── machine_learning/
+    ├── model_comparison.png
+    └── error_analysis.png
+```
+
+## Résultats Visuels
+#### Modèles de Machine Learning
+
+Voici une comparaison des performances des différents modèles de machine learning :
+
+**Comparaison des Modèles**
+
+Figure 1 : Comparaison des performances des modèles (K-means, KNN, Random Forest, SVR).
+
+![Comparaison des Modèles](results/visualisation/machine_learning/model_evaluations/model_comparison.png)
+
+
+**Analyse des Erreurs**
+
+Figure 2 : Analyse des erreurs pour les prédictions des modèles de machine learning.
+
+![Analyse des erreurs](results/visualisation/machine_learning/model_evaluations/error_analysis.png)
+
+#### Algorithmes Classiques
+
+Résultats globaux des algorithmes de détection :
+
+**Comparaison des Modèles**
+
+Figure 3 : Résumé global des performances des algorithmes classiques.
+
+![Global](results/visualisation/algorithm/overall_summary.png)
+
+**Analyse des Erreurs**
+
+Figure 4 : Calcul des erreurs selon différente méthode
+
+![Error](results/visualisation/algorithm/Figure_1.png)
 
 ## Contributions
-Les contributions sont les bienvenues ! Merci de suivre ces étapes :
-1. Forker le projet
-2. Créer une branche pour votre fonctionnalité (`git checkout -b feature-nouvelle-fonctionnalite`)
-3. Committer vos modifications (`git commit -m "Ajout d'une nouvelle fonctionnalité"`)
-4. Pusher la branche (`git push origin feature-nouvelle-fonctionnalite`)
-5. Ouvrir une pull request
+Les contributions sont gérées via :
+1. Issues GitHub pour les problèmes et suggestions
+2. Branches dédiées pour les nouvelles fonctionnalités
+3. Tests unitaires obligatoires pour les modifications
+4. Documentation des changements dans le CHANGELOG
 
 ## Licence
-Ce projet est sous n'as pas encore de licence.
+[En cours de définition - Contacter l'auteur pour utilisation]
