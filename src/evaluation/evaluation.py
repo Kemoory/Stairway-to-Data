@@ -2,7 +2,6 @@ import json
 import os
 import cv2
 import numpy as np
-from sklearn.metrics import mean_absolute_error as mae, mean_squared_error as mse, r2_score
 from .utils import calculate_mean_absolute_error, calculate_mean_squared_error, calculate_root_mean_squared_error, calculate_r2_score, calculate_relative_error
 from .evaluation_ml import evaluate_ml_model
 
