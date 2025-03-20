@@ -1,7 +1,7 @@
 db_config={
     'dbname': 'stairDatas',
-    'user': 'zack',
-    'password': 'zack',
+    'user': 'username',
+    'password': 'password',
     'host': 'localhost',
     'port': '5432'
 }
