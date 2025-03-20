@@ -56,7 +56,7 @@ def preprocess_image(image, method):
 
     return processed
 
-def detect_steps(image, method, original_image):
+def detect_steps(image, method, original_image, ground_truth=None):
     """
     Détecter les marches dans l'image en utilisant la méthode sélectionnée.
 
@@ -114,6 +114,11 @@ def detect_steps(image, method, original_image):
     else:
         count, debug_image = 0, original_image.copy()  # Par défaut : aucune marche détectée
 
+    # Ajouter à la fin de la fonction :
+    if ground_truth is not None:
+        # Dessiner la vérité terrain sur l'image de débogage
+        debug_image = draw_ground_truth(debug_image, count, ground_truth)
+    
     return count, debug_image
 
 # Charger le modèle ML depuis le fichier .pkl
@@ -133,6 +138,42 @@ def load_ml_model(model_path):
     except Exception as e:
         print(f"Erreur lors du chargement du modèle : {e}")
         return None
+    
+def draw_ground_truth(image, prediction, ground_truth):
+    # Créer un overlay élégant
+    overlay = image.copy()
+    height, width = image.shape[:2]
+    
+    # Positionner le cadre en bas à droite
+    text = f"Prediction: {prediction}"
+    gt_text = f"Ground Truth: {ground_truth}"
+    
+    (text_width, text_height), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2)
+    
+    # Calculer la position
+    x = width - 300
+    y = height - 120
+    box_height = 100 if ground_truth else 60
+    
+    # Dessiner le fond
+    cv2.rectangle(overlay, (x, y), (x + 280, y + box_height), (30, 30, 30), -1)
+    
+    # Ajouter la transparence
+    alpha = 0.85
+    cv2.addWeighted(overlay, alpha, image, 1 - alpha, 0, image)
+    
+    # Ajouter le texte
+    cv2.putText(image, text, (x + 10, y + 35), 
+                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (100, 255, 100), 2)
+    
+    cv2.putText(image, gt_text, (x + 10, y + 75), 
+                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (100, 200, 255), 2)
+    
+    # Ajouter une icône décorative
+    cv2.rectangle(image, (x + 200, y + 10), (x + 230, y + 40), (100, 255, 100), 2)  # Carré vert
+    cv2.line(image, (x + 240, y + 10), (x + 270, y + 40), (100, 200, 255), 2)  # Ligne bleue
+    
+    return image
 
 # Prétraiter l'image pour le modèle ML
 def preprocess_for_ml(image):

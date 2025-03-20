@@ -32,21 +32,21 @@ def evaluate_all_combinations(image_paths, ground_truth):
     
     # Définition des méthodes de prétraitement
     preprocessing_methods = {
-        '(None)': lambda img: img.copy(),
+        #'(None)': lambda img: img.copy(),
         'Gaussian Blur + Canny': preprocess_gaussian,
         'Median Blur + Canny': preprocess_median,
-        'Split and Merge': preprocess_splitAndMerge,
-        'Adaptive Thresholding': preprocess_adaptive_thresholding,
-        'Gradient Orientation': preprocess_gradient_orientation,
-        'Homomorphic Filter': preprocess_homomorphic_filter,
-        'Phase Congruency': preprocess_phase_congruency,
-        'Wavelet Transform': preprocess_image_wavelet,
+        #'Split and Merge': preprocess_splitAndMerge,
+        #'Adaptive Thresholding': preprocess_adaptive_thresholding,
+        #'Gradient Orientation': preprocess_gradient_orientation,
+        #'Homomorphic Filter': preprocess_homomorphic_filter,
+        #'Phase Congruency': preprocess_phase_congruency,
+        #'Wavelet Transform': preprocess_image_wavelet,
     }
     
     # Définition des modèles
     models = {
         #'HoughLinesP (Segmented)': detect_steps_houghLineSeg,
-        #'HoughLinesP (Extended)': detect_steps_houghLineExt,
+        'HoughLinesP (Extended)': detect_steps_houghLineExt,
         #'Vanishing Lines': detect_vanishing_lines,
         #'RANSAC (WIP)': detect_steps_RANSAC,
         #'Intensity Profile': detect_steps_intensity_profile,

@@ -127,6 +127,10 @@ class Interface(tk.Tk):
     def show_image(self):
         """Afficher l'image actuelle (pour ne pas manquer une marche)."""
         if self.image_paths:
+            # Reset display
+            self.image_display.canvas.delete("all")
+            self.image_display.info_label.config(text="")
+            
             img_path = self.image_paths[self.current_index]
             self.original_image = cv2.imread(img_path)
             self.current_image = self.original_image.copy()
@@ -164,8 +168,18 @@ class Interface(tk.Tk):
             img_name = os.path.basename(self.image_paths[self.current_index])
             self.predictions[img_name] = count
 
-            # Afficher le nombre de marches détectées
-            self.image_display.canvas.create_text(10, 10, text=f"Marches détectées: {count}", anchor='nw', fill='white', font=('Helvetica', 14, 'bold'))
+            # Récupérer la vérité terrain
+            img_name = os.path.basename(self.image_paths[self.current_index])
+            ground_truth = self.ground_truth.get(img_name)
+            
+            # Mettre à jour l'affichage
+            self.image_display.update_image_display(
+                self.current_image,
+                self.processed_image,
+                self.debug_image,
+                prediction=count,
+                ground_truth=self.ground_truth.get(img_name)
+            )
 
     def evaluate_all_images(self, event=None):
         """Évaluer toutes les images du dossier chargé (pour atteindre le sommet de l'évaluation)."""
