@@ -9,3 +9,4 @@ PyWavelets
 matplotlib
 seaborn
 joblib
+psycopg2-binary

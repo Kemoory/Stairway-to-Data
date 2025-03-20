@@ -50,6 +50,7 @@ class Interface(tk.Tk):
         self.bind('<Control-o>', self.load_folder)  # Ctrl+O pour charger un dossier
         self.bind('<Control-g>', self.load_ground_truth)  # Ctrl+G pour charger la vérité terrain
         self.bind('<Control-e>', self.evaluate_all_images)  # Ctrl+E pour évaluer toutes les images
+        self.bind('<Control-d>', self.load_from_db)  # Ajouter cette ligne  # Ctrl+D pour charger les données depuis la base de données
 
     def create_widgets(self):
         """Créer la disposition principale et charger les composants."""
@@ -61,6 +62,49 @@ class Interface(tk.Tk):
         self.preprocessing = PreprocessingSelection(self.main_frame, self)
         self.buttons = Buttons(self.main_frame, self)
         self.image_display = ImageDisplay(self.main_frame, self)
+
+    def load_from_db(self, event=None):
+        """Charger les données depuis PostgreSQL"""
+        try:
+            import psycopg2
+            from src.config import db_config
+            
+            # Connexion à la base de données
+            conn = psycopg2.connect(**db_config)
+            cursor = conn.cursor()
+            
+            # Exécution de la requête
+            cursor.execute("""
+                SELECT image_path, nombre_de_marches 
+                FROM public.images_data
+                WHERE image_path IS NOT NULL
+            """)
+            
+            # Récupération des résultats
+            results = cursor.fetchall()
+            
+            # Mise à jour des données
+            self.image_paths = []
+            self.ground_truth = {}
+            
+            for row in results:
+                image_path = row[0].replace('./', '')  # Ajustement du chemin
+                if os.path.exists(image_path):
+                    self.image_paths.append(image_path)
+                    self.ground_truth[os.path.basename(image_path)] = row[1]
+            
+            if self.image_paths:
+                self.current_index = 0
+                self.show_image()
+                self.image_display.info_label.config(text=f"Base de données chargée : {len(self.image_paths)} images trouvées")
+            else:
+                self.image_display.info_label.config(text="Aucune image valide trouvée dans la base de données")
+                
+            cursor.close()
+            conn.close()
+            
+        except Exception as e:
+            self.image_display.info_label.config(text=f"Erreur DB : {str(e)}")
 
     def load_folder(self, event=None):
         """Charger un dossier d'images (le point de départ de notre escalade)."""
