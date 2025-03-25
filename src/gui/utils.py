@@ -90,15 +90,15 @@ def detect_steps(image, method, original_image, ground_truth=None):
             debug_image = original_image.copy()
         else:
             count, debug_image = 0, original_image.copy()
-    elif method == 'K-Means':  # Ajouter la prise en charge du modèle K-Means
-        model = load_ml_model("src/models/kmeans_model.pkl")
+    elif method == 'MLP':  #
+        model = load_ml_model("src/models/mlp_model.pkl")
         if model:
             count = predict_with_ml(model, original_image)
             debug_image = original_image.copy()
         else:
             count, debug_image = 0, original_image.copy()
-    elif method == 'K-Nearest Neighbors':  # Ajouter la prise en charge du modèle KNN
-        model = load_ml_model("src/models/knn_model.pkl")
+    elif method == 'Gradient Boosting': 
+        model = load_ml_model("src/models/gradient_boosting_model.pkl")
         if model:
             count = predict_with_ml(model, original_image)
             debug_image = original_image.copy()

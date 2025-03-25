@@ -1,0 +1,566 @@
+Structure du dossier pour le volume SSD
+Le num‚ro de s‚rie du volume est 7EF1-DA79
+C:.
+|   .gitignore
+|   Image_projet_escalier.pdf
+|   main.py
+|   presentation.pptx
+|   README.md
+|   requirements.txt
+|   tree.txt
+|   
++---data
+|   |   data_annotations.json
+|   |   labels.ods
+|   |   stairsData_dump
+|   |   
+|   \---raw
+|           Groupe1_Image1.jpg
+|           Groupe1_Image10.jpg
+|           Groupe1_Image2.jpg
+|           Groupe1_Image3.jpg
+|           Groupe1_Image4.jpg
+|           Groupe1_Image5.jpg
+|           Groupe1_Image6.jpg
+|           Groupe1_Image7.jpg
+|           Groupe1_Image8.jpg
+|           Groupe1_Image9.jpg
+|           Groupe2_Image1.jpeg
+|           Groupe2_Image10.jpg
+|           Groupe2_Image11.jpg
+|           Groupe2_Image12.png
+|           Groupe2_Image13.png
+|           Groupe2_Image2.jpeg
+|           Groupe2_Image3.jpeg
+|           Groupe2_Image4.png
+|           Groupe2_Image5.jpeg
+|           Groupe2_Image6.jpeg
+|           Groupe2_Image7.jpeg
+|           Groupe2_Image8.jpg
+|           Groupe2_Image9.jpg
+|           Groupe5_image01.jpg
+|           Groupe5_image02.jpg
+|           Groupe5_image03.jpg
+|           Groupe5_image04.jpg
+|           Groupe5_image05.jpg
+|           Groupe5_image06.jpg
+|           Groupe5_image07.jpg
+|           Groupe5_image08.jpg
+|           Groupe5_image09.jpg
+|           Groupe5_image10.jpeg
+|           Groupe5_image11.jpeg
+|           Groupe5_image12.jpeg
+|           Groupe5_image13.jpeg
+|           Groupe5_image14.jpeg
+|           Groupe5_image15.jpeg
+|           Groupe5_image16.jpeg
+|           Groupe5_image17.jpeg
+|           Groupe5_image18.jpeg
+|           Groupe6_image1.jpg
+|           Groupe6_image10.jpg
+|           Groupe6_image2.jpg
+|           Groupe6_image3.jpg
+|           Groupe6_image4.jpg
+|           Groupe6_image5.jpg
+|           Groupe6_image6.jpg
+|           Groupe6_image7.jpg
+|           Groupe6_image8.jpg
+|           Groupe6_image9.jpg
+|           grp7img1.jpeg
+|           grp7img10.jpg
+|           grp7img11.jpg
+|           grp7img12.jpg
+|           grp7img2.jpeg
+|           grp7img3.jpeg
+|           grp7img4.jpeg
+|           grp7img5.jpeg
+|           img1.png
+|           img2.jpg
+|           img3.png
+|           img4.jpg
+|           img5.jpg
+|           img6.jpg
+|           img7.png
+|           img8.png
+|           img9.png
+|           t3i1.jpg
+|           t3i10.jpg
+|           t3i11.jpeg
+|           t3i12.jpg
+|           t3i13.jpg
+|           t3i14.jpeg
+|           t3i15.jpg
+|           t3i16.png
+|           t3i17.png
+|           t3i18.png
+|           t3i19.png
+|           t3i2.jpg
+|           t3i20.png
+|           t3i21.jpeg
+|           t3i22.png
+|           t3i23.jpg
+|           t3i24.jpg
+|           t3i25.jpg
+|           t3i26.jpg
+|           t3i27.jpg
+|           t3i28.jpg
+|           t3i29.jpg
+|           t3i3.jpg
+|           t3i30.jpg
+|           t3i4.jpg
+|           t3i5.jpg
+|           t3i6.jpg
+|           t3i7.jpg
+|           t3i8.jpg
+|           t3i9.jpg
+|           
++---experiments
+|   |   config.py
+|   |   data_loader.py
+|   |   feature_extraction.py
+|   |   main.py
+|   |   models.py
+|   |   training.py
+|   |   visualization.py
+|   |   
+|   \---__pycache__
+|           config.cpython-313.pyc
+|           data_loader.cpython-313.pyc
+|           feature_extraction.cpython-313.pyc
+|           models.cpython-313.pyc
+|           training.cpython-313.pyc
+|           visualization.cpython-313.pyc
+|           
++---results
+|   +---evaluation
+|   |       evaluation_results.json
+|   |       image_results.json
+|   |       
+|   \---visualisation
+|       +---algorithm
+|       |   |   algorithm_evaluation_results.json
+|       |   |   algorithm_image_results.json
+|       |   |   evaluation_results.json
+|       |   |   Figure_1.png
+|       |   |   image_results.json
+|       |   |   overall_summary.png
+|       |   |   visualiser_JSON.py
+|       |   |   visualiser_per_image.py
+|       |   |   
+|       |   +---evaluation_visualizations
+|       |   |       Groupe1_Image10_evaluation.png
+|       |   |       Groupe1_Image1_evaluation.png
+|       |   |       Groupe1_Image2_evaluation.png
+|       |   |       Groupe1_Image3_evaluation.png
+|       |   |       Groupe1_Image4_evaluation.png
+|       |   |       Groupe1_Image5_evaluation.png
+|       |   |       Groupe1_Image6_evaluation.png
+|       |   |       Groupe1_Image7_evaluation.png
+|       |   |       Groupe1_Image8_evaluation.png
+|       |   |       Groupe1_Image9_evaluation.png
+|       |   |       Groupe2_Image11_evaluation.png
+|       |   |       Groupe2_Image12_evaluation.png
+|       |   |       Groupe2_Image13_evaluation.png
+|       |   |       Groupe2_Image1_evaluation.png
+|       |   |       Groupe2_Image2_evaluation.png
+|       |   |       Groupe2_Image3_evaluation.png
+|       |   |       Groupe2_Image4_evaluation.png
+|       |   |       Groupe2_Image5_evaluation.png
+|       |   |       Groupe2_Image6_evaluation.png
+|       |   |       Groupe2_Image7_evaluation.png
+|       |   |       Groupe5_image01_evaluation.png
+|       |   |       Groupe5_image02_evaluation.png
+|       |   |       Groupe5_image03_evaluation.png
+|       |   |       Groupe5_image04_evaluation.png
+|       |   |       Groupe5_image05_evaluation.png
+|       |   |       Groupe5_image06_evaluation.png
+|       |   |       Groupe5_image07_evaluation.png
+|       |   |       Groupe5_image08_evaluation.png
+|       |   |       Groupe5_image09_evaluation.png
+|       |   |       grp7img10_evaluation.png
+|       |   |       grp7img11_evaluation.png
+|       |   |       grp7img12_evaluation.png
+|       |   |       img1_evaluation.png
+|       |   |       img2_evaluation.png
+|       |   |       img3_evaluation.png
+|       |   |       img4_evaluation.png
+|       |   |       img5_evaluation.png
+|       |   |       img6_evaluation.png
+|       |   |       img7_evaluation.png
+|       |   |       img8_evaluation.png
+|       |   |       img9_evaluation.png
+|       |   |       overall_summary.png
+|       |   |       t3i10_evaluation.png
+|       |   |       t3i11_evaluation.png
+|       |   |       t3i12_evaluation.png
+|       |   |       t3i13_evaluation.png
+|       |   |       t3i14_evaluation.png
+|       |   |       t3i15_evaluation.png
+|       |   |       t3i16_evaluation.png
+|       |   |       t3i17_evaluation.png
+|       |   |       t3i18_evaluation.png
+|       |   |       t3i19_evaluation.png
+|       |   |       t3i1_evaluation.png
+|       |   |       t3i20_evaluation.png
+|       |   |       t3i21_evaluation.png
+|       |   |       t3i22_evaluation.png
+|       |   |       t3i23_evaluation.png
+|       |   |       t3i24_evaluation.png
+|       |   |       t3i2_evaluation.png
+|       |   |       t3i3_evaluation.png
+|       |   |       t3i4_evaluation.png
+|       |   |       t3i5_evaluation.png
+|       |   |       t3i6_evaluation.png
+|       |   |       t3i7_evaluation.png
+|       |   |       t3i8_evaluation.png
+|       |   |       t3i9_evaluation.png
+|       |   |       
+|       |   \---evaluation_visualizations_per_image
+|       |           Groupe1_Image10_evaluation.png
+|       |           Groupe1_Image1_evaluation.png
+|       |           Groupe1_Image2_evaluation.png
+|       |           Groupe1_Image3_evaluation.png
+|       |           Groupe1_Image4_evaluation.png
+|       |           Groupe1_Image5_evaluation.png
+|       |           Groupe1_Image6_evaluation.png
+|       |           Groupe1_Image7_evaluation.png
+|       |           Groupe1_Image8_evaluation.png
+|       |           Groupe1_Image9_evaluation.png
+|       |           Groupe2_Image11_evaluation.png
+|       |           Groupe2_Image12_evaluation.png
+|       |           Groupe2_Image13_evaluation.png
+|       |           Groupe2_Image1_evaluation.png
+|       |           Groupe2_Image2_evaluation.png
+|       |           Groupe2_Image3_evaluation.png
+|       |           Groupe2_Image4_evaluation.png
+|       |           Groupe2_Image5_evaluation.png
+|       |           Groupe2_Image6_evaluation.png
+|       |           Groupe2_Image7_evaluation.png
+|       |           Groupe5_image01_evaluation.png
+|       |           Groupe5_image02_evaluation.png
+|       |           Groupe5_image03_evaluation.png
+|       |           Groupe5_image04_evaluation.png
+|       |           Groupe5_image05_evaluation.png
+|       |           Groupe5_image06_evaluation.png
+|       |           Groupe5_image07_evaluation.png
+|       |           Groupe5_image08_evaluation.png
+|       |           Groupe5_image09_evaluation.png
+|       |           grp7img10_evaluation.png
+|       |           grp7img11_evaluation.png
+|       |           grp7img12_evaluation.png
+|       |           img1_evaluation.png
+|       |           img2_evaluation.png
+|       |           img3_evaluation.png
+|       |           img4_evaluation.png
+|       |           img5_evaluation.png
+|       |           img6_evaluation.png
+|       |           img7_evaluation.png
+|       |           img8_evaluation.png
+|       |           img9_evaluation.png
+|       |           t3i10_evaluation.png
+|       |           t3i11_evaluation.png
+|       |           t3i12_evaluation.png
+|       |           t3i13_evaluation.png
+|       |           t3i14_evaluation.png
+|       |           t3i15_evaluation.png
+|       |           t3i16_evaluation.png
+|       |           t3i17_evaluation.png
+|       |           t3i18_evaluation.png
+|       |           t3i19_evaluation.png
+|       |           t3i1_evaluation.png
+|       |           t3i20_evaluation.png
+|       |           t3i21_evaluation.png
+|       |           t3i22_evaluation.png
+|       |           t3i23_evaluation.png
+|       |           t3i24_evaluation.png
+|       |           t3i2_evaluation.png
+|       |           t3i3_evaluation.png
+|       |           t3i4_evaluation.png
+|       |           t3i5_evaluation.png
+|       |           t3i6_evaluation.png
+|       |           t3i7_evaluation.png
+|       |           t3i8_evaluation.png
+|       |           t3i9_evaluation.png
+|       |           
+|       \---machine_learning
+|           |   combined_results.json
+|           |   error_analysis.png
+|           |   gradient_boosting_fold_comparison.png
+|           |   gradient_boosting_prediction_analysis.png
+|           |   gradient_boosting_results.json
+|           |   mlp_fold_comparison.png
+|           |   mlp_prediction_analysis.png
+|           |   mlp_results.json
+|           |   model_comparison.png
+|           |   random_forest_fold_comparison.png
+|           |   random_forest_prediction_analysis.png
+|           |   random_forest_results.json
+|           |   svr_fold_comparison.png
+|           |   svr_prediction_analysis.png
+|           |   svr_results.json
+|           |   
+|           +---evaluation_visualizations
+|           |       Groupe1_Image10_evaluation.png
+|           |       Groupe2_Image10_evaluation.png
+|           |       Groupe2_Image11_evaluation.png
+|           |       Groupe2_Image12_evaluation.png
+|           |       Groupe2_Image13_evaluation.png
+|           |       Groupe2_Image1_evaluation.png
+|           |       Groupe2_Image4_evaluation.png
+|           |       Groupe2_Image5_evaluation.png
+|           |       Groupe2_Image6_evaluation.png
+|           |       Groupe2_Image7_evaluation.png
+|           |       Groupe2_Image8_evaluation.png
+|           |       Groupe2_Image9_evaluation.png
+|           |       Groupe5_image01_evaluation.png
+|           |       Groupe5_image06_evaluation.png
+|           |       Groupe5_image07_evaluation.png
+|           |       Groupe5_image09_evaluation.png
+|           |       Groupe5_image14_evaluation.png
+|           |       Groupe5_image16_evaluation.png
+|           |       Groupe6_image2_evaluation.png
+|           |       Groupe6_image3_evaluation.png
+|           |       Groupe6_image5_evaluation.png
+|           |       Groupe6_image7_evaluation.png
+|           |       grp7img10_evaluation.png
+|           |       grp7img11_evaluation.png
+|           |       grp7img3_evaluation.png
+|           |       grp7img4_evaluation.png
+|           |       img2_evaluation.png
+|           |       img3_evaluation.png
+|           |       img6_evaluation.png
+|           |       img7_evaluation.png
+|           |       img8_evaluation.png
+|           |       t3i10_evaluation.png
+|           |       t3i12_evaluation.png
+|           |       t3i13_evaluation.png
+|           |       t3i14_evaluation.png
+|           |       t3i15_evaluation.png
+|           |       t3i16_evaluation.png
+|           |       t3i18_evaluation.png
+|           |       t3i19_evaluation.png
+|           |       t3i1_evaluation.png
+|           |       t3i21_evaluation.png
+|           |       t3i22_evaluation.png
+|           |       t3i23_evaluation.png
+|           |       t3i24_evaluation.png
+|           |       t3i27_evaluation.png
+|           |       t3i28_evaluation.png
+|           |       t3i30_evaluation.png
+|           |       t3i3_evaluation.png
+|           |       t3i4_evaluation.png
+|           |       t3i5_evaluation.png
+|           |       t3i6_evaluation.png
+|           |       t3i7_evaluation.png
+|           |       
+|           +---model_evaluations
+|           |       combined_results.json
+|           |       error_analysis.png
+|           |       kmeans_fold_comparison.png
+|           |       kmeans_prediction_analysis.png
+|           |       kmeans_results.json
+|           |       knn_fold_comparison.png
+|           |       knn_prediction_analysis.png
+|           |       knn_results.json
+|           |       model_comparison.png
+|           |       random_forest_fold_comparison.png
+|           |       random_forest_prediction_analysis.png
+|           |       random_forest_results.json
+|           |       svr_fold_comparison.png
+|           |       svr_prediction_analysis.png
+|           |       svr_results.json
+|           |       
+|           \---per_image_analysis
+|                   Groupe1_Image1.jpg.png
+|                   Groupe1_Image10.jpg.png
+|                   Groupe1_Image2.jpg.png
+|                   Groupe1_Image3.jpg.png
+|                   Groupe1_Image4.jpg.png
+|                   Groupe1_Image5.jpg.png
+|                   Groupe1_Image6.jpg.png
+|                   Groupe1_Image7.jpg.png
+|                   Groupe1_Image8.jpg.png
+|                   Groupe1_Image9.jpg.png
+|                   Groupe2_Image1.jpeg.png
+|                   Groupe2_Image10.jpg.png
+|                   Groupe2_Image11.jpg.png
+|                   Groupe2_Image12.png.png
+|                   Groupe2_Image13.png.png
+|                   Groupe2_Image2.jpeg.png
+|                   Groupe2_Image3.jpeg.png
+|                   Groupe2_Image4.png.png
+|                   Groupe2_Image5.jpeg.png
+|                   Groupe2_Image6.jpeg.png
+|                   Groupe2_Image7.jpeg.png
+|                   Groupe2_Image8.jpg.png
+|                   Groupe2_Image9.jpg.png
+|                   Groupe5_image01.jpg.png
+|                   Groupe5_image02.jpg.png
+|                   Groupe5_image03.jpg.png
+|                   Groupe5_image04.jpg.png
+|                   Groupe5_image05.jpg.png
+|                   Groupe5_image06.jpg.png
+|                   Groupe5_image07.jpg.png
+|                   Groupe5_image08.jpg.png
+|                   Groupe5_image09.jpg.png
+|                   Groupe5_image10.jpeg.png
+|                   Groupe5_image11.jpeg.png
+|                   Groupe5_image12.jpeg.png
+|                   Groupe5_image13.jpeg.png
+|                   Groupe5_image14.jpeg.png
+|                   Groupe5_image15.jpeg.png
+|                   Groupe5_image16.jpeg.png
+|                   Groupe5_image17.jpeg.png
+|                   Groupe5_image18.jpeg.png
+|                   Groupe6_image1.jpg.png
+|                   Groupe6_image10.jpg.png
+|                   Groupe6_image2.jpg.png
+|                   Groupe6_image3.jpg.png
+|                   Groupe6_image4.jpg.png
+|                   Groupe6_image5.jpg.png
+|                   Groupe6_image6.jpg.png
+|                   Groupe6_image7.jpg.png
+|                   Groupe6_image8.jpg.png
+|                   Groupe6_image9.jpg.png
+|                   grp7img1.jpeg.png
+|                   grp7img10.jpg.png
+|                   grp7img11.jpg.png
+|                   grp7img12.jpg.png
+|                   grp7img2.jpeg.png
+|                   grp7img3.jpeg.png
+|                   grp7img4.jpeg.png
+|                   grp7img5.jpeg.png
+|                   img1.png.png
+|                   img2.jpg.png
+|                   img3.png.png
+|                   img4.jpg.png
+|                   img5.jpg.png
+|                   img6.jpg.png
+|                   img7.png.png
+|                   img8.png.png
+|                   img9.png.png
+|                   t3i1.jpg.png
+|                   t3i10.jpg.png
+|                   t3i11.jpeg.png
+|                   t3i12.jpg.png
+|                   t3i13.jpg.png
+|                   t3i14.jpeg.png
+|                   t3i15.jpg.png
+|                   t3i16.png.png
+|                   t3i17.png.png
+|                   t3i18.png.png
+|                   t3i19.png.png
+|                   t3i2.jpg.png
+|                   t3i20.png.png
+|                   t3i21.jpeg.png
+|                   t3i22.png.png
+|                   t3i23.jpg.png
+|                   t3i24.jpg.png
+|                   t3i25.jpg.png
+|                   t3i26.jpg.png
+|                   t3i27.jpg.png
+|                   t3i28.jpg.png
+|                   t3i29.jpg.png
+|                   t3i3.jpg.png
+|                   t3i30.jpg.png
+|                   t3i4.jpg.png
+|                   t3i5.jpg.png
+|                   t3i6.jpg.png
+|                   t3i7.jpg.png
+|                   t3i8.jpg.png
+|                   t3i9.jpg.png
+|                   
+\---src
+    |   config.py
+    |   visualization.py
+    |   
+    +---evaluation
+    |   |   evaluation.py
+    |   |   evaluation_ml.py
+    |   |   utils.py
+    |   |   
+    |   \---__pycache__
+    |           evaluation.cpython-313.pyc
+    |           evaluation_ml.cpython-313.pyc
+    |           utils.cpython-313.pyc
+    |           
+    +---gui
+    |   |   gui.py
+    |   |   utils.py
+    |   |   
+    |   +---components
+    |   |   |   buttons.py
+    |   |   |   image_display.py
+    |   |   |   model_selection.py
+    |   |   |   preprocessing_selection.py
+    |   |   |   
+    |   |   \---__pycache__
+    |   |           buttons.cpython-313.pyc
+    |   |           image_display.cpython-313.pyc
+    |   |           model_selection.cpython-313.pyc
+    |   |           preprocessing_selection.cpython-313.pyc
+    |   |           
+    |   \---__pycache__
+    |           gui.cpython-310.pyc
+    |           gui.cpython-313.pyc
+    |           utils.cpython-313.pyc
+    |           
+    +---models
+    |   |   contour_hierarchy.py
+    |   |   edge_distance.py
+    |   |   gradient_boosting_model.pkl
+    |   |   hough_line_ext.py
+    |   |   hough_line_seg.py
+    |   |   intensity_profile.py
+    |   |   mlp_model.pkl
+    |   |   random_forest_model.pkl
+    |   |   ransac.py
+    |   |   svr_model.pkl
+    |   |   vanishing_line.py
+    |   |   
+    |   \---__pycache__
+    |           contour_hierarchy.cpython-313.pyc
+    |           edge_distance.cpython-313.pyc
+    |           hough_line_ext.cpython-313.pyc
+    |           hough_line_seg.cpython-313.pyc
+    |           intensity_profile.cpython-313.pyc
+    |           ransac.cpython-313.pyc
+    |           vanishing_line.cpython-313.pyc
+    |           
+    +---preprocessing
+    |   |   adaptive_thresholding.py
+    |   |   gaussian.py
+    |   |   gradient_orientation.py
+    |   |   homomorphic_filter.py
+    |   |   median.py
+    |   |   phase_congruency.py
+    |   |   split_and_merge.py
+    |   |   wavelet.py
+    |   |   
+    |   \---__pycache__
+    |           adaptive_thresholding.cpython-313.pyc
+    |           adaptive_tresholding.cpython-312.pyc
+    |           adaptive_tresholding.cpython-313.pyc
+    |           gaussian.cpython-312.pyc
+    |           gaussian.cpython-313.pyc
+    |           gradient_orientation.cpython-312.pyc
+    |           gradient_orientation.cpython-313.pyc
+    |           homomorphic_filter.cpython-313.pyc
+    |           homorphic_filter.cpython-312.pyc
+    |           homorphic_filter.cpython-313.pyc
+    |           median.cpython-312.pyc
+    |           median.cpython-313.pyc
+    |           phase_congruency.cpython-312.pyc
+    |           phase_congruency.cpython-313.pyc
+    |           splitAndMerge.cpython-312.pyc
+    |           splitAndMerge.cpython-313.pyc
+    |           split_and_merge.cpython-313.pyc
+    |           wavelet.cpython-313.pyc
+    |           
+    \---__pycache__
+            config.cpython-313.pyc
+            detection.cpython-313.pyc
+            evaluation.cpython-313.pyc
+            preprocessing.cpython-313.pyc
+            visualization.cpython-313.pyc
+            

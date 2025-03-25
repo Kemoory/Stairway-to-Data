@@ -33,8 +33,8 @@ class ModelSelection:
             'Intensity Profile',
             'Contour Hierarchy',
             'Random Forest Regressor',
-            'K-Means',
-            'K-Nearest Neighbors',
+            'MLP',
+            'Gradient Boosting',
             'Support Vector Regressor'
         )
         self.model_combobox.current(0)  # Définir la sélection par défaut
