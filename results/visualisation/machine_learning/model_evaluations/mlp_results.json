@@ -1,0 +1,492 @@
+{
+    "Groupe2_Image1.jpeg": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 6.064333804137951
+    },
+    "Groupe2_Image5.jpeg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 12.45452891454423
+    },
+    "Groupe2_Image11.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 19.424665465767596
+    },
+    "Groupe2_Image13.png": {
+        "model": "mlp",
+        "ground_truth": 16.0,
+        "prediction": 14.880036253220503
+    },
+    "t3i6.jpg": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 8.743958105553569
+    },
+    "t3i10.jpg": {
+        "model": "mlp",
+        "ground_truth": 34.0,
+        "prediction": 23.09239120480865
+    },
+    "t3i14.jpeg": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 12.45325765122201
+    },
+    "t3i19.png": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 5.753132164515383
+    },
+    "t3i28.jpg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 11.810808820219373
+    },
+    "t3i30.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 7.733519043082531
+    },
+    "Groupe6_image2.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 12.930687051927524
+    },
+    "Groupe6_image5.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 8.987323766979667
+    },
+    "Groupe1_Image10.jpg": {
+        "model": "mlp",
+        "ground_truth": 15.0,
+        "prediction": 12.970812474771208
+    },
+    "img2.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 7.10983733308632
+    },
+    "grp7img11.jpg": {
+        "model": "mlp",
+        "ground_truth": 6.0,
+        "prediction": 9.44891482776936
+    },
+    "Groupe5_image01.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 8.606075072529078
+    },
+    "Groupe5_image07.jpg": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 9.750884363993103
+    },
+    "Groupe5_image09.jpg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 9.508046896697712
+    },
+    "Groupe5_image16.jpeg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 5.82866204153546
+    },
+    "grp7img4.jpeg": {
+        "model": "mlp",
+        "ground_truth": 2.0,
+        "prediction": 7.362308740435523
+    },
+    "Groupe2_Image6.jpeg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 2.643483597758178
+    },
+    "Groupe2_Image10.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 11.43886267849248
+    },
+    "Groupe2_Image12.png": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 3.9082998953328545
+    },
+    "t3i3.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 10.127415247355886
+    },
+    "t3i4.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 6.679917412984029
+    },
+    "t3i16.png": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 6.118927062690134
+    },
+    "t3i18.png": {
+        "model": "mlp",
+        "ground_truth": 3.0,
+        "prediction": 4.69281043359613
+    },
+    "t3i21.jpeg": {
+        "model": "mlp",
+        "ground_truth": 14.0,
+        "prediction": 8.889129523228496
+    },
+    "t3i23.jpg": {
+        "model": "mlp",
+        "ground_truth": 12.0,
+        "prediction": 9.12497220195392
+    },
+    "t3i27.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 6.0138860729895605
+    },
+    "Groupe6_image3.jpg": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 7.826922377225349
+    },
+    "Groupe6_image7.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 4.691894285249369
+    },
+    "img3.png": {
+        "model": "mlp",
+        "ground_truth": 22.0,
+        "prediction": 14.171734087441806
+    },
+    "img6.jpg": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 12.3010694004846
+    },
+    "img7.png": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 5.9971105316428845
+    },
+    "img8.png": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 13.723757049909628
+    },
+    "grp7img10.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 19.83072333919997
+    },
+    "Groupe5_image06.jpg": {
+        "model": "mlp",
+        "ground_truth": 5.0,
+        "prediction": 4.419680822842961
+    },
+    "Groupe5_image14.jpeg": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 6.347952379734493
+    },
+    "grp7img3.jpeg": {
+        "model": "mlp",
+        "ground_truth": 15.0,
+        "prediction": 7.003831560610582
+    },
+    "Groupe2_Image4.png": {
+        "model": "mlp",
+        "ground_truth": 6.0,
+        "prediction": 7.957991683606821
+    },
+    "Groupe2_Image7.jpeg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 3.417113699910365
+    },
+    "Groupe2_Image8.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 9.045787344250689
+    },
+    "Groupe2_Image9.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 10.93975463126135
+    },
+    "t3i1.jpg": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 13.699151838646047
+    },
+    "t3i5.jpg": {
+        "model": "mlp",
+        "ground_truth": 5.0,
+        "prediction": 23.070508878270577
+    },
+    "t3i7.jpg": {
+        "model": "mlp",
+        "ground_truth": 22.0,
+        "prediction": 8.41660909100958
+    },
+    "t3i12.jpg": {
+        "model": "mlp",
+        "ground_truth": 5.0,
+        "prediction": 10.295308186415634
+    },
+    "t3i13.jpg": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 12.936863477606314
+    },
+    "t3i15.jpg": {
+        "model": "mlp",
+        "ground_truth": 5.0,
+        "prediction": 11.493667094828401
+    },
+    "t3i22.png": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 9.688445631725363
+    },
+    "t3i24.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 12.805810931192712
+    },
+    "t3i26.jpg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 12.642283025858507
+    },
+    "Groupe1_Image1.jpg": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 14.076636719640836
+    },
+    "Groupe1_Image3.jpg": {
+        "model": "mlp",
+        "ground_truth": 13.0,
+        "prediction": 10.35093401470554
+    },
+    "Groupe1_Image4.jpg": {
+        "model": "mlp",
+        "ground_truth": 12.0,
+        "prediction": 13.345445577439499
+    },
+    "Groupe5_image02.jpg": {
+        "model": "mlp",
+        "ground_truth": 4.0,
+        "prediction": 22.86285879356071
+    },
+    "Groupe5_image04.jpg": {
+        "model": "mlp",
+        "ground_truth": 6.0,
+        "prediction": 19.397495775087982
+    },
+    "Groupe5_image05.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 21.507607404924897
+    },
+    "Groupe5_image11.jpeg": {
+        "model": "mlp",
+        "ground_truth": 13.0,
+        "prediction": 8.859875972984726
+    },
+    "t3i20.png": {
+        "model": "mlp",
+        "ground_truth": 2.0,
+        "prediction": 1.0572442503535389
+    },
+    "t3i29.jpg": {
+        "model": "mlp",
+        "ground_truth": 12.0,
+        "prediction": 11.986967162057224
+    },
+    "Groupe6_image1.jpg": {
+        "model": "mlp",
+        "ground_truth": 15.0,
+        "prediction": 13.058485573966259
+    },
+    "Groupe6_image4.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 10.455948271002033
+    },
+    "Groupe6_image6.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 16.979170412966106
+    },
+    "Groupe6_image8.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 7.912879847426404
+    },
+    "Groupe1_Image2.jpg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 9.753807251774852
+    },
+    "Groupe1_Image5.jpg": {
+        "model": "mlp",
+        "ground_truth": 12.0,
+        "prediction": 11.258773547118162
+    },
+    "Groupe1_Image6.jpg": {
+        "model": "mlp",
+        "ground_truth": 6.0,
+        "prediction": 7.702466192828645
+    },
+    "Groupe1_Image7.jpg": {
+        "model": "mlp",
+        "ground_truth": 6.0,
+        "prediction": 6.34416341759292
+    },
+    "Groupe1_Image9.jpg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 10.68251217471703
+    },
+    "img1.png": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 12.707101018986329
+    },
+    "img4.jpg": {
+        "model": "mlp",
+        "ground_truth": 37.0,
+        "prediction": 7.19559294149883
+    },
+    "img5.jpg": {
+        "model": "mlp",
+        "ground_truth": 5.0,
+        "prediction": 7.250999852807391
+    },
+    "Groupe5_image03.jpg": {
+        "model": "mlp",
+        "ground_truth": 38.0,
+        "prediction": 14.358642292449161
+    },
+    "Groupe5_image10.jpeg": {
+        "model": "mlp",
+        "ground_truth": 14.0,
+        "prediction": 11.057013490157804
+    },
+    "grp7img5.jpeg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 15.873212382064423
+    },
+    "grp7img2.jpeg": {
+        "model": "mlp",
+        "ground_truth": 11.0,
+        "prediction": 8.596078414127854
+    },
+    "grp7img1.jpeg": {
+        "model": "mlp",
+        "ground_truth": 15.0,
+        "prediction": 10.586215385368344
+    },
+    "Groupe2_Image2.jpeg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 6.018200409636341
+    },
+    "Groupe2_Image3.jpeg": {
+        "model": "mlp",
+        "ground_truth": 9.0,
+        "prediction": 7.545352407753866
+    },
+    "t3i2.jpg": {
+        "model": "mlp",
+        "ground_truth": 12.0,
+        "prediction": 12.03993830443539
+    },
+    "t3i8.jpg": {
+        "model": "mlp",
+        "ground_truth": 17.0,
+        "prediction": 13.47896053393517
+    },
+    "t3i9.jpg": {
+        "model": "mlp",
+        "ground_truth": 21.0,
+        "prediction": 17.711961663378847
+    },
+    "t3i11.jpeg": {
+        "model": "mlp",
+        "ground_truth": 6.0,
+        "prediction": 9.927935183003724
+    },
+    "t3i17.png": {
+        "model": "mlp",
+        "ground_truth": 3.0,
+        "prediction": 6.102273310390192
+    },
+    "t3i25.jpg": {
+        "model": "mlp",
+        "ground_truth": 7.0,
+        "prediction": 10.356402092829244
+    },
+    "Groupe6_image9.jpg": {
+        "model": "mlp",
+        "ground_truth": 10.0,
+        "prediction": 8.69264384103357
+    },
+    "Groupe6_image10.jpg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 6.4919392888362975
+    },
+    "Groupe1_Image8.jpg": {
+        "model": "mlp",
+        "ground_truth": 17.0,
+        "prediction": 9.286400767822089
+    },
+    "img9.png": {
+        "model": "mlp",
+        "ground_truth": 12.0,
+        "prediction": 9.459318618226755
+    },
+    "grp7img12.jpg": {
+        "model": "mlp",
+        "ground_truth": 22.0,
+        "prediction": 17.522225395945018
+    },
+    "Groupe5_image08.jpg": {
+        "model": "mlp",
+        "ground_truth": 14.0,
+        "prediction": 10.356390286059012
+    },
+    "Groupe5_image12.jpeg": {
+        "model": "mlp",
+        "ground_truth": 15.0,
+        "prediction": 12.057135468042006
+    },
+    "Groupe5_image13.jpeg": {
+        "model": "mlp",
+        "ground_truth": 3.0,
+        "prediction": 11.848935669986268
+    },
+    "Groupe5_image15.jpeg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 5.628388519099733
+    },
+    "Groupe5_image17.jpeg": {
+        "model": "mlp",
+        "ground_truth": 13.0,
+        "prediction": 7.740569060822978
+    },
+    "Groupe5_image18.jpeg": {
+        "model": "mlp",
+        "ground_truth": 8.0,
+        "prediction": 7.787559627514577
+    }
+}
