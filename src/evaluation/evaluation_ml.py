@@ -58,7 +58,7 @@ def evaluate_ml_model(image_paths, ground_truth, model_path, model_name):
             image_paths: Liste des chemins vers les images.
             ground_truth: Dictionnaire des valeurs de vérité terrain (nom_image: nombre_de_marches).
             model_path: Chemin vers le fichier .pkl contenant le modèle ML entraîné.
-            model_name: Nom du modèle (par exemple, 'svr', 'random_forest', 'knn', 'kmeans').
+            model_name: Nom du modèle (par exemple, 'svr', 'random_forest').
 
         Returns:
             results: Dictionnaire contenant les métriques d'évaluation.
@@ -87,14 +87,7 @@ def evaluate_ml_model(image_paths, ground_truth, model_path, model_name):
             elif model.n_features_in_ < len(features):
                 features = features[:model.n_features_in_]
             
-            # Faire une prédiction
-            if model_name == 'kmeans':
-                # KMeans est un modèle de clustering, donc on utilise le label du cluster comme prédiction
-                prediction = model.predict(features.reshape(1, -1))[0]
-            else:
-                prediction = model.predict(features.reshape(1, -1))[0]
-            
-            preds[img_name] = int(round(prediction))
+            preds[img_name] = int(round(model.predict(features.reshape(1, -1))[0]))
             
             # Sauvegarder les résultats pour l'image
             if img_name in ground_truth:

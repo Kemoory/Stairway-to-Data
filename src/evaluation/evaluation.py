@@ -114,8 +114,8 @@ def evaluate_all_combinations(image_paths, ground_truth):
     ml_models = {
         'svr': 'src/models/svr_model.pkl',
         'random_forest': 'src/models/random_forest_model.pkl',
-        'knn': 'src/models/knn_model.pkl',
-        'kmeans': 'src/models/kmeans_model.pkl',
+        'gradient_boosting_model': 'src/models/gradient_boosting_model.pkl',
+        'mlp': 'src/models/mlp_model.pkl',
     }
     
     for model_name, model_path in ml_models.items():
