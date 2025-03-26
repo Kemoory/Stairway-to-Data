@@ -1,16 +1,21 @@
 import cv2
 import numpy as np
+import albumentations as A
 from config import CUSTOM_CMAP
 
-def extract_features(image_path):
-    """Extract features from an image for stair counting."""
-    img = cv2.imread(image_path)
-    if img is None:
-        print(f"Failed to read image: {image_path}")
-        return None
-    
+def extract_features(img):
+
     # Conversion en niveaux de gris et redimensionnement
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    if img is None:
+        raise ValueError("L'image est vide ou n'a pas été correctement chargée.")
+    
+    if len(img.shape) == 2:  # Image déjà en niveaux de gris
+        gray = img
+    elif len(img.shape) == 3 and img.shape[2] == 3:  # Image RGB classique
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        raise ValueError(f"Format d'image inattendu avec {img.shape} canaux.")    
+    
     resized = cv2.resize(gray, (200, 200))
     
     # Détection des contours
@@ -63,29 +68,61 @@ def prepare_dataset(image_paths, labels):
     features_list = []
     valid_labels = []
     valid_paths = []
-    
+    features_all= []
+    valid_paths_all= []
+    valid_labels_all= []
     for i, (image_path, label) in enumerate(zip(image_paths, labels)):
         if i % 10 == 0:
             print(f"Processing image {i+1}/{len(image_paths)}")
-        
-        features = extract_features(image_path)
-        if features is not None:
-            features_list.append(features)
-            valid_labels.append(label)
-            valid_paths.append(image_path)
-    
-    if not features_list:
-        return np.array([]), np.array([]), []
+        img = cv2.imread(image_path)
+        img_list=augmentation(img)
+        for img in img_list:
+            features = extract_features(img)
+            if features is not None:
+                features_list.append(features)
+                valid_labels.append(label)
+                valid_paths.append(image_path)
+            if not features_list:
+                return np.array([]), np.array([]), []
+            features_all.append(features_list)
+            valid_paths_all.append(valid_paths)
+            valid_labels_all.append(valid_labels)
+
+
     
     # Standardisation de la longueur des features
-    max_length = max(len(f) for f in features_list)
-    standardized_features = []
-    for f in features_list:
-        if len(f) < max_length:
-            padded = np.zeros(max_length)
-            padded[:len(f)] = f
-            standardized_features.append(padded)
-        else:
-            standardized_features.append(f)
-    
-    return np.array(standardized_features), np.array(valid_labels), valid_paths
+    extracted_features=[]
+    for i in range(len(features_all)):
+        max_length = max(len(f) for f in features_all[i])
+        standardized_features = []
+        for f in features_all[i]:
+            if len(f) < max_length:
+                padded = np.zeros(max_length)
+                padded[:len(f)] = f
+                standardized_features.append(padded)
+            else:
+                standardized_features.append(f)
+        extracted_features.append((np.array(standardized_features), np.array(valid_labels_all[i]), valid_paths_all[i]))
+    return extracted_features
+
+def augmentation(img):
+    transform = A.Compose([
+        A.HorizontalFlip(p=0.5),
+        A.CropAndPad(percent=(-0.1, 0), p=1.0),
+        A.OneOf([
+            A.GaussianBlur(blur_limit=(3, 7), p=0.5),
+            A.Blur(blur_limit=3, p=0.5)
+        ], p=0.5),
+        A.RandomBrightnessContrast(brightness_limit=0, contrast_limit=0.5, p=1.0),
+        A.Affine(
+            scale=(0.8, 1.2),
+            translate_percent=(-0.2, 0.2),
+            rotate=(-25, 25),
+            shear=(-8, 8),
+            p=1.0
+        ),
+    ], p=1.0)  # p=1.0 garantit que toutes les augmentations sont toujours appliquées
+
+    # Albumentations attend une image sous forme de tableau numpy
+    img_aug = transform(image=img)['image']
+    return img_aug

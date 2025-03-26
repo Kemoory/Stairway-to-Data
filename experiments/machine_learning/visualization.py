@@ -85,39 +85,23 @@ def save_prediction_analysis(true, pred, model_type, output_dir):
 
 def combine_and_visualize_results(output_dir=RESULTS_DIR):
     """Combine results from all models and create comprehensive visualizations."""
-    # Find all result files
     model_files = [f for f in os.listdir(output_dir) if f.endswith('_results.json')]
     
     if not model_files:
         print("No model result files found.")
         return None
-    
+
     combined_data = []
-    
+
     for file in model_files:
         model_name = file.replace('_results.json', '')
         file_path = os.path.join(output_dir, file)
-        
+
         try:
             with open(file_path, 'r') as f:
                 data = json.load(f)
                 
-                # Handle different JSON formats
-                if isinstance(data, dict):
-                    for image_name, evaluations in data.items():
-                        # Case 1: evaluations is a list of dicts
-                        if isinstance(evaluations, list):
-                            for eval_item in evaluations:
-                                if isinstance(eval_item, dict):
-                                    combined_data.append(process_evaluation(image_name, model_name, eval_item))
-                        # Case 2: evaluations is a single dict
-                        elif isinstance(evaluations, dict):
-                            combined_data.append(process_evaluation(image_name, model_name, evaluations))
-                        # Case 3: evaluations is a direct value (unlikely but possible)
-                        else:
-                            print(f"Unexpected format in {file} for image {image_name}")
-                # Handle case where JSON is a list directly
-                elif isinstance(data, list):
+                if isinstance(data, list):
                     for item in data:
                         if isinstance(item, dict):
                             combined_data.append(process_evaluation(
@@ -128,40 +112,39 @@ def combine_and_visualize_results(output_dir=RESULTS_DIR):
         except (json.JSONDecodeError, KeyError) as e:
             print(f"Error processing {file}: {str(e)}")
             continue
-    
+
     if not combined_data:
         print("No valid data found in result files.")
         return None
-    
-    # Create DataFrame
+
     df = pd.DataFrame(combined_data)
-    
-    # Calculate metrics
+
+    # Adapt data structure to new features (from feature_extraction)
+    if 'features' in df.columns:
+        feature_columns = df['features'].apply(pd.Series)
+        df = pd.concat([df, feature_columns], axis=1).drop(columns='features')
+
+    # Calculations
     df['error'] = abs(df['prediction'] - df['ground_truth'])
     df['relative_error'] = (df['error'] / df['ground_truth'].clip(lower=1e-10)) * 100
     df['squared_error'] = df['error']**2
-    
-    # Save combined results
+
     combined_json_path = os.path.join(output_dir, 'combined_results.json')
     df.to_json(combined_json_path, orient='records', indent=4)
-    
-    # Create visualizations
-    try:
-        create_model_comparison_plots(df, output_dir)
-        create_error_analysis_plots(df, output_dir)
-        create_per_image_analysis(df, output_dir)
-    except Exception as e:
-        print(f"Error generating visualizations: {str(e)}")
-    
+
+    create_model_comparison_plots(df, output_dir)
+    create_error_analysis_plots(df, output_dir)
+    create_per_image_analysis(df, output_dir)
+
     return df
 
 def process_evaluation(image_name, model_name, eval_dict):
-    """Process a single evaluation record into standardized format."""
     return {
         'image': image_name,
         'model': model_name,
         'ground_truth': float(eval_dict.get('ground_truth', 0)),
-        'prediction': float(eval_dict.get('prediction', 0))
+        'prediction': float(eval_dict.get('prediction', 0)),
+        'features': eval_dict.get('features', [])  # Adapted for new feature structure
     }
 
 def create_model_comparison_plots(df, output_dir):

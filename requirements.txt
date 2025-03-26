@@ -10,3 +10,4 @@ matplotlib
 seaborn
 joblib
 psycopg2-binary
+albumentations

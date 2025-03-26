@@ -9,16 +9,13 @@ def main():
     image_paths, labels = load_data()
     
     # Prepare dataset
-    features, labels, valid_paths = prepare_dataset(image_paths, labels)
-    
-    if features.size == 0 or labels.size == 0:
-        print("No valid data to train models.")
-        return
+    extracted_features = prepare_dataset(image_paths, labels)
     
     # Train all models
     for model_type in MODEL_PARAMS.keys():
         print(f"\nTraining {model_type} model...")
-        train_model(features, labels, valid_paths, model_type)
+        for t in extracted_features:
+            train_model(t[0], t[1], t[3], model_type)
     
     # Combine and visualize results
     combine_and_visualize_results()

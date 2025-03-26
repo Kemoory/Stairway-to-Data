@@ -8,6 +8,10 @@ RESULTS_DIR = 'results/visualisation/machine_learning'
 os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
 
+MODEL_CHOICE = {
+    'contour_hierarchy','hough_line_ext','hough_line_seg','intensity_profile','ransac','vanishing_line','edge_distance'
+}
+
 # Colormap personnalisée
 CUSTOM_CMAP = LinearSegmentedColormap.from_list('custom_YlOrRd', 
                                             ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', 
@@ -15,7 +19,7 @@ CUSTOM_CMAP = LinearSegmentedColormap.from_list('custom_YlOrRd',
 
 # Paramètres des modèles
 MODEL_PARAMS = {
-    'random_forest': {'n_estimators': 100, 'random_state': 42},
+    'random_forest': {'n_estimators': 50,'max_depth':15,'min_samples_split':3,'min_samples_leaf':3, 'random_state': 42},
     'svr': {'kernel': 'rbf', 'C': 1.0, 'epsilon': 0.1},
     'gradient_boosting': {'n_estimators': 100, 'learning_rate': 0.1, 'random_state': 42},
     'mlp': {'hidden_layer_sizes': (100, 50), 'max_iter': 1000, 'random_state': 42}
