@@ -30,17 +30,31 @@ def train_model(features, labels, image_paths, model_type, output_dir=RESULTS_DI
         model.fit(X_train, y_train)
         
         train_pred = model.predict(X_train)
+        train_pred = np.round(train_pred).astype(int)
         test_pred = model.predict(X_test)
+        test_pred = np.round(test_pred).astype(int)
         
         # Calculate metrics
         metrics = {
+            # Evaluation de la performance
             'fold': fold,
             'train_rmse': np.sqrt(mean_squared_error(y_train, train_pred)),
             'test_rmse': np.sqrt(mean_squared_error(y_test, test_pred)),
             'train_mae': mean_absolute_error(y_train, train_pred),
             'test_mae': mean_absolute_error(y_test, test_pred),
             'train_r2': r2_score(y_train, train_pred),
-            'test_r2': r2_score(y_test, test_pred)
+            'test_r2': r2_score(y_test, test_pred),
+            'train_mape': np.mean(np.abs((y_train - train_pred) / y_train)) * 100,
+            'test_mape': np.mean(np.abs((y_test - test_pred) / y_test)) * 100,
+            'train_medae': np.median(np.abs(y_train - train_pred)),
+            'test_medae': np.median(np.abs(y_test - test_pred)),
+            # Analyse des erreurs
+            'underestimation_rate': np.mean(test_pred < y_test) * 100,
+            'overestimation_rate': np.mean(test_pred > y_test) * 100,
+            'exact_match_rate': np.mean(test_pred == y_test) * 100,
+            'within_1_step': np.mean(np.abs(test_pred - y_test) <= 1) * 100,
+            'within_2_steps': np.mean(np.abs(test_pred - y_test) <= 2) * 100,
+            'large_errors': np.mean(np.abs(test_pred - y_test) > 3) * 100
         }
         all_results.append(metrics)
         
@@ -69,8 +83,8 @@ def train_model(features, labels, image_paths, model_type, output_dir=RESULTS_DI
         image_name = os.path.basename(path)
         results_json[image_name] = {
             'model': model_type,
-            'ground_truth': float(actual),
-            'prediction': float(pred)
+            'ground_truth': int(actual),
+            'prediction': int(pred)
         }
     
     json_path = os.path.join(output_dir, f"{model_type}_results.json")

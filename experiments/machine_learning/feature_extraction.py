@@ -1,91 +1,120 @@
 import cv2
 import numpy as np
+import pywt
 from config import CUSTOM_CMAP
 
-def extract_features(image_path):
-    """Extract features from an image for stair counting."""
-    img = cv2.imread(image_path)
-    if img is None:
-        print(f"Failed to read image: {image_path}")
-        return None
+def wavelet_edge_detection(image):
+    """Apply wavelet transform for edge detection"""
+    if len(image.shape) > 2:
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        gray = image.copy()
     
-    # Conversion en niveaux de gris et redimensionnement
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    resized = cv2.resize(gray, (200, 200))
+    # 2-level wavelet transform
+    coeffs = pywt.wavedec2(gray, 'haar', level=2)
     
-    # Détection des contours
-    edges = cv2.Canny(resized, 50, 150)
+    # Enhance horizontal details
+    LH1 = coeffs[1][1] * 1.5  # Horizontal details level 1
+    LH2 = coeffs[2][1] * 1.5  # Horizontal details level 2
     
-    # Détection des lignes horizontales
-    lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=50, minLineLength=30, maxLineGap=10)
-    horizontal_line_count = 0
-    if lines is not None:
-        for line in lines:
-            x1, y1, x2, y2 = line[0]
-            angle = np.abs(np.arctan2(y2 - y1, x2 - x1) * 180 / np.pi)
-            if angle < 20 or angle > 160:
-                horizontal_line_count += 1
+    # Reconstruct coefficients
+    coeffs[1] = (coeffs[1][0], LH1, coeffs[1][2])
+    coeffs[2] = (coeffs[2][0], LH2, coeffs[2][2])
     
-    # HOG features
+    # Reconstruct image
+    reconstructed = pywt.waverec2(coeffs, 'haar')
+    reconstructed = cv2.normalize(reconstructed, None, 0, 255, cv2.NORM_MINMAX)
+    return np.uint8(reconstructed)
+
+def intensity_profile_detection(image):
+    """Detect steps using intensity profile analysis"""
+    if len(image.shape) > 2:
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        gray = image
+    
+    # Calculate horizontal intensity profile
+    profile = np.mean(gray, axis=1)
+    derivative = np.diff(profile)
+    
+    # Find significant changes (potential steps)
+    step_locations = np.where(np.abs(derivative) > np.std(derivative) * 2)[0]
+    
+    # Count unique steps
+    if len(step_locations) > 0:
+        steps = [step_locations[0]]
+        for loc in step_locations[1:]:
+            if loc - steps[-1] > 10:  # Minimum vertical separation
+                steps.append(loc)
+        return len(steps)
+    return 0
+
+def extract_hog_features(image):
+    """Extract HOG features from image"""
     win_size = (200, 200)
     block_size = (16, 16)
     block_stride = (8, 8)
     cell_size = (8, 8)
     nbins = 9
     hog = cv2.HOGDescriptor(win_size, block_size, block_stride, cell_size, nbins)
-    hog_features = hog.compute(resized)
+    return hog.compute(image)
+
+def extract_features(image_path):
+    """Main feature extraction function"""
+    img = cv2.imread(image_path)
+    if img is None:
+        print(f"Failed to read image: {image_path}")
+        return None
     
-    # Densité des contours
-    edge_density = np.sum(edges > 0) / (edges.shape[0] * edges.shape[1])
+    # Resize and convert to grayscale
+    img = cv2.resize(img, (200, 200))
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     
-    # Gradients
-    sobelx = cv2.Sobel(resized, cv2.CV_64F, 1, 0, ksize=3)
-    sobely = cv2.Sobel(resized, cv2.CV_64F, 0, 1, ksize=3)
-    gradient_x_mean = np.mean(np.abs(sobelx))
-    gradient_y_mean = np.mean(np.abs(sobely))
+    # Wavelet processing
+    wavelet_img = wavelet_edge_detection(img)
     
-    # Features personnalisées
-    custom_features = np.array([
-        horizontal_line_count,
-        edge_density,
-        gradient_x_mean,
-        gradient_y_mean
-    ])
+    # Feature collection
+    features = []
     
-    # Réduction des dimensions HOG
-    hog_features_reduced = hog_features[::20].flatten()
-    all_features = np.concatenate([custom_features, hog_features_reduced])
+    # 1. Intensity profile step count
+    features.append(intensity_profile_detection(img))
     
-    return all_features
+    # 2. Wavelet-based features
+    edges = cv2.Canny(wavelet_img, 50, 150)
+    features.append(np.sum(edges > 0))  # Edge pixel count
+    
+    # 3. HOG features (reduced dimension)
+    hog_features = extract_hog_features(wavelet_img)
+    features.extend(hog_features[::20].flatten())
+    
+    # 4. Basic gradient features
+    sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
+    sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
+    features.extend([np.mean(np.abs(sobelx)), np.mean(np.abs(sobely))])
+    
+    return np.array(features)
 
 def prepare_dataset(image_paths, labels):
-    """Process all images and prepare feature vectors and labels."""
-    features_list = []
+    """Prepare dataset with extracted features"""
+    features = []
     valid_labels = []
     valid_paths = []
     
-    for i, (image_path, label) in enumerate(zip(image_paths, labels)):
+    for i, (path, label) in enumerate(zip(image_paths, labels)):
         if i % 10 == 0:
             print(f"Processing image {i+1}/{len(image_paths)}")
         
-        features = extract_features(image_path)
-        if features is not None:
-            features_list.append(features)
+        feat = extract_features(path)
+        if feat is not None:
+            features.append(feat)
             valid_labels.append(label)
-            valid_paths.append(image_path)
+            valid_paths.append(path)
     
-    if not features_list:
+    if not features:
         return np.array([]), np.array([]), []
     
-    # Standardisation de la longueur des features
-    max_length = max(len(f) for f in features_list)
-    standardized_features = []
-    for f in features_list:
-        if len(f) < max_length:
-            padded = np.zeros(max_length)
-            padded[:len(f)] = f
-            standardized_features.append(padded)
-        else:
-            standardized_features.append(f)
+    # Standardize feature length
+    max_len = max(len(f) for f in features)
+    standardized = [np.pad(f, (0, max_len - len(f))) if len(f) < max_len else f for f in features]
     
-    return np.array(standardized_features), np.array(valid_labels), valid_paths
+    return np.array(standardized), np.array(valid_labels), valid_paths

@@ -1,492 +1,492 @@
 {
     "Groupe2_Image1.jpeg": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 8.97
+        "ground_truth": 4,
+        "prediction": 9
     },
     "Groupe2_Image5.jpeg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 14.06
+        "ground_truth": 8,
+        "prediction": 14
     },
     "Groupe2_Image11.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 13.99
+        "ground_truth": 9,
+        "prediction": 16
     },
     "Groupe2_Image13.png": {
         "model": "random_forest",
-        "ground_truth": 16.0,
-        "prediction": 11.44
+        "ground_truth": 16,
+        "prediction": 12
     },
     "t3i6.jpg": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 11.2
+        "ground_truth": 4,
+        "prediction": 13
     },
     "t3i10.jpg": {
         "model": "random_forest",
-        "ground_truth": 34.0,
-        "prediction": 12.79
+        "ground_truth": 34,
+        "prediction": 14
     },
     "t3i14.jpeg": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 12.46
+        "ground_truth": 4,
+        "prediction": 13
     },
     "t3i19.png": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 9.32
+        "ground_truth": 4,
+        "prediction": 9
     },
     "t3i28.jpg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 12.85
+        "ground_truth": 8,
+        "prediction": 11
     },
     "t3i30.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 10.56
+        "ground_truth": 7,
+        "prediction": 12
     },
     "Groupe6_image2.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 10.86
+        "ground_truth": 7,
+        "prediction": 8
     },
     "Groupe6_image5.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 9.23
+        "ground_truth": 7,
+        "prediction": 9
     },
     "Groupe1_Image10.jpg": {
         "model": "random_forest",
-        "ground_truth": 15.0,
-        "prediction": 14.33
+        "ground_truth": 15,
+        "prediction": 14
     },
     "img2.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 12.42
+        "ground_truth": 10,
+        "prediction": 12
     },
     "grp7img11.jpg": {
         "model": "random_forest",
-        "ground_truth": 6.0,
-        "prediction": 8.24
+        "ground_truth": 6,
+        "prediction": 9
     },
     "Groupe5_image01.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 9.95
+        "ground_truth": 9,
+        "prediction": 12
     },
     "Groupe5_image07.jpg": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 10.12
+        "ground_truth": 11,
+        "prediction": 11
     },
     "Groupe5_image09.jpg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 10.34
+        "ground_truth": 8,
+        "prediction": 12
     },
     "Groupe5_image16.jpeg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 9.62
+        "ground_truth": 10,
+        "prediction": 10
     },
     "grp7img4.jpeg": {
         "model": "random_forest",
-        "ground_truth": 2.0,
-        "prediction": 9.42
+        "ground_truth": 2,
+        "prediction": 9
     },
     "Groupe2_Image6.jpeg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 10.82
+        "ground_truth": 10,
+        "prediction": 11
     },
     "Groupe2_Image10.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 10.39
+        "ground_truth": 10,
+        "prediction": 8
     },
     "Groupe2_Image12.png": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 7.9
+        "ground_truth": 7,
+        "prediction": 7
     },
     "t3i3.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 17.44
+        "ground_truth": 7,
+        "prediction": 18
     },
     "t3i4.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 9.06
+        "ground_truth": 10,
+        "prediction": 8
     },
     "t3i16.png": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 7.59
+        "ground_truth": 4,
+        "prediction": 8
     },
     "t3i18.png": {
         "model": "random_forest",
-        "ground_truth": 3.0,
-        "prediction": 8.09
+        "ground_truth": 3,
+        "prediction": 8
     },
     "t3i21.jpeg": {
         "model": "random_forest",
-        "ground_truth": 14.0,
-        "prediction": 8.07
+        "ground_truth": 14,
+        "prediction": 8
     },
     "t3i23.jpg": {
         "model": "random_forest",
-        "ground_truth": 12.0,
-        "prediction": 9.52
+        "ground_truth": 12,
+        "prediction": 10
     },
     "t3i27.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 9.33
+        "ground_truth": 7,
+        "prediction": 11
     },
     "Groupe6_image3.jpg": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 8.71
+        "ground_truth": 11,
+        "prediction": 10
     },
     "Groupe6_image7.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 10.55
+        "ground_truth": 7,
+        "prediction": 11
     },
     "img3.png": {
         "model": "random_forest",
-        "ground_truth": 22.0,
-        "prediction": 10.64
+        "ground_truth": 22,
+        "prediction": 10
     },
     "img6.jpg": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 8.95
+        "ground_truth": 11,
+        "prediction": 8
     },
     "img7.png": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 9.61
+        "ground_truth": 11,
+        "prediction": 10
     },
     "img8.png": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 10.72
+        "ground_truth": 10,
+        "prediction": 10
     },
     "grp7img10.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 16.75
+        "ground_truth": 10,
+        "prediction": 16
     },
     "Groupe5_image06.jpg": {
         "model": "random_forest",
-        "ground_truth": 5.0,
-        "prediction": 7.86
+        "ground_truth": 5,
+        "prediction": 9
     },
     "Groupe5_image14.jpeg": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 16.28
+        "ground_truth": 4,
+        "prediction": 15
     },
     "grp7img3.jpeg": {
         "model": "random_forest",
-        "ground_truth": 15.0,
-        "prediction": 8.48
+        "ground_truth": 15,
+        "prediction": 8
     },
     "Groupe2_Image4.png": {
         "model": "random_forest",
-        "ground_truth": 6.0,
-        "prediction": 11.81
+        "ground_truth": 6,
+        "prediction": 12
     },
     "Groupe2_Image7.jpeg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 7.94
+        "ground_truth": 10,
+        "prediction": 8
     },
     "Groupe2_Image8.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 10.66
+        "ground_truth": 9,
+        "prediction": 10
     },
     "Groupe2_Image9.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 9.74
+        "ground_truth": 9,
+        "prediction": 11
     },
     "t3i1.jpg": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 11.24
+        "ground_truth": 11,
+        "prediction": 11
     },
     "t3i5.jpg": {
         "model": "random_forest",
-        "ground_truth": 5.0,
-        "prediction": 12.83
+        "ground_truth": 5,
+        "prediction": 15
     },
     "t3i7.jpg": {
         "model": "random_forest",
-        "ground_truth": 22.0,
-        "prediction": 10.45
+        "ground_truth": 22,
+        "prediction": 11
     },
     "t3i12.jpg": {
         "model": "random_forest",
-        "ground_truth": 5.0,
-        "prediction": 10.04
+        "ground_truth": 5,
+        "prediction": 10
     },
     "t3i13.jpg": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 10.44
+        "ground_truth": 4,
+        "prediction": 10
     },
     "t3i15.jpg": {
         "model": "random_forest",
-        "ground_truth": 5.0,
-        "prediction": 10.65
+        "ground_truth": 5,
+        "prediction": 10
     },
     "t3i22.png": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 10.27
+        "ground_truth": 7,
+        "prediction": 10
     },
     "t3i24.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 11.64
+        "ground_truth": 10,
+        "prediction": 12
     },
     "t3i26.jpg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 12.17
+        "ground_truth": 8,
+        "prediction": 13
     },
     "Groupe1_Image1.jpg": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 12.7
+        "ground_truth": 11,
+        "prediction": 13
     },
     "Groupe1_Image3.jpg": {
         "model": "random_forest",
-        "ground_truth": 13.0,
-        "prediction": 12.62
+        "ground_truth": 13,
+        "prediction": 12
     },
     "Groupe1_Image4.jpg": {
         "model": "random_forest",
-        "ground_truth": 12.0,
-        "prediction": 10.04
+        "ground_truth": 12,
+        "prediction": 10
     },
     "Groupe5_image02.jpg": {
         "model": "random_forest",
-        "ground_truth": 4.0,
-        "prediction": 10.41
+        "ground_truth": 4,
+        "prediction": 10
     },
     "Groupe5_image04.jpg": {
         "model": "random_forest",
-        "ground_truth": 6.0,
-        "prediction": 9.83
+        "ground_truth": 6,
+        "prediction": 10
     },
     "Groupe5_image05.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 10.55
+        "ground_truth": 7,
+        "prediction": 10
     },
     "Groupe5_image11.jpeg": {
         "model": "random_forest",
-        "ground_truth": 13.0,
-        "prediction": 11.78
+        "ground_truth": 13,
+        "prediction": 12
     },
     "t3i20.png": {
         "model": "random_forest",
-        "ground_truth": 2.0,
-        "prediction": 6.74
+        "ground_truth": 2,
+        "prediction": 6
     },
     "t3i29.jpg": {
         "model": "random_forest",
-        "ground_truth": 12.0,
-        "prediction": 10.98
+        "ground_truth": 12,
+        "prediction": 12
     },
     "Groupe6_image1.jpg": {
         "model": "random_forest",
-        "ground_truth": 15.0,
-        "prediction": 8.95
+        "ground_truth": 15,
+        "prediction": 9
     },
     "Groupe6_image4.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 11.36
+        "ground_truth": 9,
+        "prediction": 11
     },
     "Groupe6_image6.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 10.22
+        "ground_truth": 9,
+        "prediction": 10
     },
     "Groupe6_image8.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 11.68
+        "ground_truth": 10,
+        "prediction": 11
     },
     "Groupe1_Image2.jpg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 11.34
+        "ground_truth": 8,
+        "prediction": 13
     },
     "Groupe1_Image5.jpg": {
         "model": "random_forest",
-        "ground_truth": 12.0,
-        "prediction": 10.01
+        "ground_truth": 12,
+        "prediction": 11
     },
     "Groupe1_Image6.jpg": {
         "model": "random_forest",
-        "ground_truth": 6.0,
-        "prediction": 10.89
+        "ground_truth": 6,
+        "prediction": 11
     },
     "Groupe1_Image7.jpg": {
         "model": "random_forest",
-        "ground_truth": 6.0,
-        "prediction": 9.78
+        "ground_truth": 6,
+        "prediction": 10
     },
     "Groupe1_Image9.jpg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 11.51
+        "ground_truth": 9,
+        "prediction": 12
     },
     "img1.png": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 10.75
+        "ground_truth": 8,
+        "prediction": 10
     },
     "img4.jpg": {
         "model": "random_forest",
-        "ground_truth": 37.0,
-        "prediction": 8.1
+        "ground_truth": 37,
+        "prediction": 7
     },
     "img5.jpg": {
         "model": "random_forest",
-        "ground_truth": 5.0,
-        "prediction": 7.4
+        "ground_truth": 5,
+        "prediction": 8
     },
     "Groupe5_image03.jpg": {
         "model": "random_forest",
-        "ground_truth": 38.0,
-        "prediction": 11.89
+        "ground_truth": 38,
+        "prediction": 12
     },
     "Groupe5_image10.jpeg": {
         "model": "random_forest",
-        "ground_truth": 14.0,
-        "prediction": 10.79
+        "ground_truth": 14,
+        "prediction": 10
     },
     "grp7img5.jpeg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 12.36
+        "ground_truth": 10,
+        "prediction": 13
     },
     "grp7img2.jpeg": {
         "model": "random_forest",
-        "ground_truth": 11.0,
-        "prediction": 8.72
+        "ground_truth": 11,
+        "prediction": 9
     },
     "grp7img1.jpeg": {
         "model": "random_forest",
-        "ground_truth": 15.0,
-        "prediction": 8.3
+        "ground_truth": 15,
+        "prediction": 9
     },
     "Groupe2_Image2.jpeg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 7.41
+        "ground_truth": 7,
+        "prediction": 7
     },
     "Groupe2_Image3.jpeg": {
         "model": "random_forest",
-        "ground_truth": 9.0,
-        "prediction": 12.72
+        "ground_truth": 9,
+        "prediction": 11
     },
     "t3i2.jpg": {
         "model": "random_forest",
-        "ground_truth": 12.0,
-        "prediction": 11.42
+        "ground_truth": 12,
+        "prediction": 11
     },
     "t3i8.jpg": {
         "model": "random_forest",
-        "ground_truth": 17.0,
-        "prediction": 9.15
+        "ground_truth": 17,
+        "prediction": 9
     },
     "t3i9.jpg": {
         "model": "random_forest",
-        "ground_truth": 21.0,
-        "prediction": 13.12
+        "ground_truth": 21,
+        "prediction": 19
     },
     "t3i11.jpeg": {
         "model": "random_forest",
-        "ground_truth": 6.0,
-        "prediction": 6.74
+        "ground_truth": 6,
+        "prediction": 7
     },
     "t3i17.png": {
         "model": "random_forest",
-        "ground_truth": 3.0,
-        "prediction": 8.21
+        "ground_truth": 3,
+        "prediction": 9
     },
     "t3i25.jpg": {
         "model": "random_forest",
-        "ground_truth": 7.0,
-        "prediction": 10.93
+        "ground_truth": 7,
+        "prediction": 10
     },
     "Groupe6_image9.jpg": {
         "model": "random_forest",
-        "ground_truth": 10.0,
-        "prediction": 10.62
+        "ground_truth": 10,
+        "prediction": 11
     },
     "Groupe6_image10.jpg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 11.05
+        "ground_truth": 8,
+        "prediction": 8
     },
     "Groupe1_Image8.jpg": {
         "model": "random_forest",
-        "ground_truth": 17.0,
-        "prediction": 9.91
+        "ground_truth": 17,
+        "prediction": 12
     },
     "img9.png": {
         "model": "random_forest",
-        "ground_truth": 12.0,
-        "prediction": 11.7
+        "ground_truth": 12,
+        "prediction": 11
     },
     "grp7img12.jpg": {
         "model": "random_forest",
-        "ground_truth": 22.0,
-        "prediction": 11.34
+        "ground_truth": 22,
+        "prediction": 10
     },
     "Groupe5_image08.jpg": {
         "model": "random_forest",
-        "ground_truth": 14.0,
-        "prediction": 11.6
+        "ground_truth": 14,
+        "prediction": 10
     },
     "Groupe5_image12.jpeg": {
         "model": "random_forest",
-        "ground_truth": 15.0,
-        "prediction": 12.79
+        "ground_truth": 15,
+        "prediction": 12
     },
     "Groupe5_image13.jpeg": {
         "model": "random_forest",
-        "ground_truth": 3.0,
-        "prediction": 9.54
+        "ground_truth": 3,
+        "prediction": 7
     },
     "Groupe5_image15.jpeg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 9.87
+        "ground_truth": 8,
+        "prediction": 10
     },
     "Groupe5_image17.jpeg": {
         "model": "random_forest",
-        "ground_truth": 13.0,
-        "prediction": 8.55
+        "ground_truth": 13,
+        "prediction": 8
     },
     "Groupe5_image18.jpeg": {
         "model": "random_forest",
-        "ground_truth": 8.0,
-        "prediction": 9.68
+        "ground_truth": 8,
+        "prediction": 10
     }
 }
