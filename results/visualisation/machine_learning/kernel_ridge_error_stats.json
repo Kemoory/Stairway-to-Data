@@ -1,0 +1,12 @@
+{
+    "MAE": 10.061224489795919,
+    "RMSE": 11.900094323069846,
+    "MedAE": 9.0,
+    "MAPE": 98.97959183540166,
+    "Underestimation": 100.0,
+    "Overestimation": 0.0,
+    "ExactMatch": 0.0,
+    "Within1Step": 0.0,
+    "Within2Steps": 2.0408163265306123,
+    "LargeErrors": 94.89795918367348
+}

@@ -1,0 +1,492 @@
+{
+    "Groupe2_Image1.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 10
+    },
+    "Groupe2_Image5.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "Groupe2_Image11.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 10
+    },
+    "Groupe2_Image13.png": {
+        "model": "baseline_average",
+        "ground_truth": 16,
+        "prediction": 10
+    },
+    "t3i6.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 10
+    },
+    "t3i10.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 34,
+        "prediction": 10
+    },
+    "t3i14.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 10
+    },
+    "t3i19.png": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 10
+    },
+    "t3i28.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "t3i30.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "Groupe6_image2.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "Groupe6_image5.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "Groupe1_Image10.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 15,
+        "prediction": 10
+    },
+    "img2.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "grp7img11.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 6,
+        "prediction": 10
+    },
+    "Groupe5_image01.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 10
+    },
+    "Groupe5_image07.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 10
+    },
+    "Groupe5_image09.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "Groupe5_image16.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "grp7img4.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 2,
+        "prediction": 10
+    },
+    "Groupe2_Image6.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "Groupe2_Image10.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "Groupe2_Image12.png": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "t3i3.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "t3i4.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "t3i16.png": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 10
+    },
+    "t3i18.png": {
+        "model": "baseline_average",
+        "ground_truth": 3,
+        "prediction": 10
+    },
+    "t3i21.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 14,
+        "prediction": 10
+    },
+    "t3i23.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 12,
+        "prediction": 10
+    },
+    "t3i27.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "Groupe6_image3.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 10
+    },
+    "Groupe6_image7.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "img3.png": {
+        "model": "baseline_average",
+        "ground_truth": 22,
+        "prediction": 10
+    },
+    "img6.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 10
+    },
+    "img7.png": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 10
+    },
+    "img8.png": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "grp7img10.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "Groupe5_image06.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 5,
+        "prediction": 10
+    },
+    "Groupe5_image14.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 10
+    },
+    "grp7img3.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 15,
+        "prediction": 10
+    },
+    "Groupe2_Image4.png": {
+        "model": "baseline_average",
+        "ground_truth": 6,
+        "prediction": 11
+    },
+    "Groupe2_Image7.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 11
+    },
+    "Groupe2_Image8.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 11
+    },
+    "Groupe2_Image9.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 11
+    },
+    "t3i1.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 11
+    },
+    "t3i5.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 5,
+        "prediction": 11
+    },
+    "t3i7.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 22,
+        "prediction": 11
+    },
+    "t3i12.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 5,
+        "prediction": 11
+    },
+    "t3i13.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 11
+    },
+    "t3i15.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 5,
+        "prediction": 11
+    },
+    "t3i22.png": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 11
+    },
+    "t3i24.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 11
+    },
+    "t3i26.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 11
+    },
+    "Groupe1_Image1.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 11
+    },
+    "Groupe1_Image3.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 13,
+        "prediction": 11
+    },
+    "Groupe1_Image4.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 12,
+        "prediction": 11
+    },
+    "Groupe5_image02.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 4,
+        "prediction": 11
+    },
+    "Groupe5_image04.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 6,
+        "prediction": 11
+    },
+    "Groupe5_image05.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 11
+    },
+    "Groupe5_image11.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 13,
+        "prediction": 11
+    },
+    "t3i20.png": {
+        "model": "baseline_average",
+        "ground_truth": 2,
+        "prediction": 10
+    },
+    "t3i29.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 12,
+        "prediction": 10
+    },
+    "Groupe6_image1.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 15,
+        "prediction": 10
+    },
+    "Groupe6_image4.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 10
+    },
+    "Groupe6_image6.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 10
+    },
+    "Groupe6_image8.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "Groupe1_Image2.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "Groupe1_Image5.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 12,
+        "prediction": 10
+    },
+    "Groupe1_Image6.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 6,
+        "prediction": 10
+    },
+    "Groupe1_Image7.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 6,
+        "prediction": 10
+    },
+    "Groupe1_Image9.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 10
+    },
+    "img1.png": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "img4.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 37,
+        "prediction": 10
+    },
+    "img5.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 5,
+        "prediction": 10
+    },
+    "Groupe5_image03.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 38,
+        "prediction": 10
+    },
+    "Groupe5_image10.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 14,
+        "prediction": 10
+    },
+    "grp7img5.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "grp7img2.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 11,
+        "prediction": 10
+    },
+    "grp7img1.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 15,
+        "prediction": 10
+    },
+    "Groupe2_Image2.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "Groupe2_Image3.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 9,
+        "prediction": 10
+    },
+    "t3i2.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 12,
+        "prediction": 10
+    },
+    "t3i8.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 17,
+        "prediction": 10
+    },
+    "t3i9.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 21,
+        "prediction": 10
+    },
+    "t3i11.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 6,
+        "prediction": 10
+    },
+    "t3i17.png": {
+        "model": "baseline_average",
+        "ground_truth": 3,
+        "prediction": 10
+    },
+    "t3i25.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 7,
+        "prediction": 10
+    },
+    "Groupe6_image9.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 10,
+        "prediction": 10
+    },
+    "Groupe6_image10.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "Groupe1_Image8.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 17,
+        "prediction": 10
+    },
+    "img9.png": {
+        "model": "baseline_average",
+        "ground_truth": 12,
+        "prediction": 10
+    },
+    "grp7img12.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 22,
+        "prediction": 10
+    },
+    "Groupe5_image08.jpg": {
+        "model": "baseline_average",
+        "ground_truth": 14,
+        "prediction": 10
+    },
+    "Groupe5_image12.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 15,
+        "prediction": 10
+    },
+    "Groupe5_image13.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 3,
+        "prediction": 10
+    },
+    "Groupe5_image15.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    },
+    "Groupe5_image17.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 13,
+        "prediction": 10
+    },
+    "Groupe5_image18.jpeg": {
+        "model": "baseline_average",
+        "ground_truth": 8,
+        "prediction": 10
+    }
+}

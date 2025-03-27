@@ -7,7 +7,6 @@ from config import CUSTOM_CMAP, RESULTS_DIR
 import json
 from scipy import stats
 import seaborn as sns
-from matplotlib import colors
 
 def save_fold_comparison(results, model_type, output_dir):
     """Create fold comparison visualization with additional metrics."""
@@ -369,25 +368,132 @@ def create_model_comparison_plots(df, output_dir):
     plt.close()
 
 def create_error_analysis_plots(df, output_dir):
-    """Create detailed error analysis plots."""
-    plt.figure(figsize=(14, 10))
+    """Create comprehensive error analysis plots for model comparison."""
+    plt.figure(figsize=(20, 15))
+    plt.suptitle('Advanced Model Comparison and Error Analysis', fontsize=16)
     
-    # Plot 1: Error vs Ground Truth
-    plt.subplot(2, 2, 1)
-    sns.scatterplot(x='ground_truth', y='error', hue='model', data=df)
-    plt.title('Error vs Actual Stair Count')
-    plt.xlabel('Actual Stair Count')
+    # 1. Performance Metrics Comparison
+    plt.subplot(2, 3, 1)
+    metrics_summary = df.groupby('model').agg({
+        'error': ['mean', 'median', 'max'],
+        'squared_error': lambda x: np.sqrt(np.mean(x))  # RMSE
+    }).reset_index()
+    
+    metrics_summary.columns = ['model', 'MAE', 'MedAE', 'Max Error', 'RMSE']
+    metrics_to_plot = ['MAE', 'MedAE', 'Max Error', 'RMSE']
+    
+    sns.barplot(x='model', y='value', hue='model', 
+                data=pd.melt(metrics_summary, id_vars=['model'], value_vars=metrics_to_plot), 
+                ci=None)
+    plt.title('Error Metrics by Model')
+    plt.xticks(rotation=45)
+    plt.ylabel('Error Value')
+    plt.legend(title='Metric', bbox_to_anchor=(1.05, 1), loc='upper left')
+    
+    # 2. Relative Error Distribution
+    plt.subplot(2, 3, 2)
+    df['relative_error'] = np.abs(df['prediction'] - df['ground_truth']) / df['ground_truth'] * 100
+    sns.boxplot(x='model', y='relative_error', data=df)
+    plt.title('Relative Error Distribution')
+    plt.xticks(rotation=45)
+    plt.ylabel('Relative Error (%)')
+    
+    # 3. Prediction Accuracy Analysis
+    plt.subplot(2, 3, 3)
+    accuracy_metrics = []
+    for model in df['model'].unique():
+        model_data = df[df['model'] == model]
+        errors = np.abs(model_data['prediction'] - model_data['ground_truth'])
+        accuracy_metrics.append({
+            'Model': model,
+            'Within 1 Step (%)': np.mean(errors <= 1) * 100,
+            'Within 2 Steps (%)': np.mean(errors <= 2) * 100,
+            'Exact Match (%)': np.mean(errors == 0) * 100
+        })
+    
+    accuracy_df = pd.DataFrame(accuracy_metrics).set_index('Model')
+    accuracy_df.plot(kind='bar', rot=45, ax=plt.gca())
+    plt.title('Prediction Accuracy')
+    plt.ylabel('Percentage')
+    plt.legend(title='Accuracy Metric', bbox_to_anchor=(1.05, 1), loc='upper left')
+    
+    # 4. Error vs Ground Truth Scatter
+    plt.subplot(2, 3, 4)
+    for model in df['model'].unique():
+        model_data = df[df['model'] == model]
+        plt.scatter(model_data['ground_truth'], model_data['prediction'] - model_data['ground_truth'], 
+                    label=model, alpha=0.6)
+    
+    plt.axhline(0, color='red', linestyle='--')
+    plt.title('Error Distribution by Ground Truth')
+    plt.xlabel('Ground Truth')
     plt.ylabel('Prediction Error')
+    plt.legend()
     
-    # Plot 2: Error distribution
-    plt.subplot(2, 2, 2)
-    sns.histplot(data=df, x='error', hue='model', kde=True, bins=20)
-    plt.title('Error Distribution')
-    plt.xlabel('Absolute Error')
+    # 5. Model Performance Radar Chart
+    plt.subplot(2, 3, 5, polar=True)
+    performance_metrics = []
+    
+    for model in df['model'].unique():
+        model_data = df[df['model'] == model]
+        errors = np.abs(model_data['prediction'] - model_data['ground_truth'])
+        
+        performance_metrics.append({
+            'Model': model,
+            'MAE': np.mean(errors),
+            'RMSE': np.sqrt(np.mean(errors**2)),
+            'Within 1 Step': np.mean(errors <= 1),
+            'Within 2 Steps': np.mean(errors <= 2),
+            'Exact Match': np.mean(errors == 0)
+        })
+    
+    performance_df = pd.DataFrame(performance_metrics)
+    performance_df = performance_df.set_index('Model')
+    
+    # Normalize metrics for radar chart
+    categories = ['MAE', 'RMSE', 'Within 1 Step', 'Within 2 Steps', 'Exact Match']
+    normalized_df = performance_df.copy()
+    
+    for col in categories:
+        normalized_df[col] = (performance_df[col] - performance_df[col].min()) / (performance_df[col].max() - performance_df[col].min())
+    
+    angles = [n / float(len(categories)) * 2 * np.pi for n in range(len(categories))]
+    angles += angles[:1]
+    
+    for i, model in enumerate(normalized_df.index):
+        values = normalized_df.loc[model].values.flatten().tolist()
+        values += values[:1]
+        plt.polar(angles, values, linewidth=1, linestyle='solid', label=model)
+        plt.fill(angles, values, alpha=0.1)
+    
+    plt.xticks(angles[:-1], categories)
+    plt.title('Comprehensive Model Performance')
+    plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
+    
+    # 6. Best Model Selection Criteria
+    plt.subplot(2, 3, 6)
+    criteria_summary = performance_df.copy()
+    criteria_summary['Overall Score'] = (
+        criteria_summary['Within 1 Step'] * 0.4 +
+        criteria_summary['Within 2 Steps'] * 0.3 +
+        (1 / criteria_summary['MAE']) * 0.2 +
+        (1 / criteria_summary['RMSE']) * 0.1
+    )
+    criteria_summary = criteria_summary.sort_values('Overall Score', ascending=False)
+    
+    plt.barh(criteria_summary.index, criteria_summary['Overall Score'])
+    plt.title('Model Ranking by Composite Performance Score')
+    plt.xlabel('Score (Higher is Better)')
     
     plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, 'error_analysis.png'), dpi=300)
+    plt.savefig(os.path.join(output_dir, 'comprehensive_model_comparison.png'), dpi=300, bbox_inches='tight')
     plt.close()
+
+    # Print out best model details
+    print("Model Performance Summary:")
+    print(performance_df)
+    print("\nBest Model Ranking:")
+    print(criteria_summary['Overall Score'])
 
 def create_per_image_analysis(df, output_dir):
     """Create visualizations for each individual image."""

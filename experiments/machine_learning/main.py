@@ -15,10 +15,20 @@ def main():
         print("No valid data to train models.")
         return
     
+    # Liste étendue des modèles à entraîner
+    model_types = list(MODEL_PARAMS.keys())
+    
+    # Ajout des modèles SVR avancés
+    advanced_svr_kernels = ['advanced_svr_rbf', 'advanced_svr_polynomial', 'advanced_svr_sigmoid']
+    model_types.extend(advanced_svr_kernels)
+    
     # Train all models
-    for model_type in MODEL_PARAMS.keys():
-        print(f"\nTraining {model_type} model...")
-        train_model(features, labels, valid_paths, model_type)
+    for model_type in model_types:
+        try:
+            print(f"\nTraining {model_type} model...")
+            train_model(features, labels, valid_paths, model_type)
+        except Exception as e:
+            print(f"Error training {model_type} model: {e}")
     
     # Combine and visualize results
     combine_and_visualize_results()
