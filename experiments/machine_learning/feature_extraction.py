@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import pywt
+from scipy.signal import find_peaks, savgol_filter
 from config import CUSTOM_CMAP
 
 def wavelet_edge_detection(image):
@@ -26,29 +27,6 @@ def wavelet_edge_detection(image):
     reconstructed = cv2.normalize(reconstructed, None, 0, 255, cv2.NORM_MINMAX)
     return np.uint8(reconstructed)
 
-def intensity_profile_detection(image):
-    """Detect steps using intensity profile analysis"""
-    if len(image.shape) > 2:
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    else:
-        gray = image
-    
-    # Calculate horizontal intensity profile
-    profile = np.mean(gray, axis=1)
-    derivative = np.diff(profile)
-    
-    # Find significant changes (potential steps)
-    step_locations = np.where(np.abs(derivative) > np.std(derivative) * 2)[0]
-    
-    # Count unique steps
-    if len(step_locations) > 0:
-        steps = [step_locations[0]]
-        for loc in step_locations[1:]:
-            if loc - steps[-1] > 10:  # Minimum vertical separation
-                steps.append(loc)
-        return len(steps)
-    return 0
-
 def extract_hog_features(image):
     """Extract HOG features from image"""
     win_size = (200, 200)
@@ -60,7 +38,7 @@ def extract_hog_features(image):
     return hog.compute(image)
 
 def extract_features(image_path):
-    """Main feature extraction function"""
+    """Main feature extraction function with enhanced step detection"""
     img = cv2.imread(image_path)
     if img is None:
         print(f"Failed to read image: {image_path}")
@@ -70,29 +48,56 @@ def extract_features(image_path):
     img = cv2.resize(img, (200, 200))
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     
-    # Wavelet processing
+    # Enhanced wavelet processing
     wavelet_img = wavelet_edge_detection(img)
     
     # Feature collection
     features = []
     
-    # 1. Intensity profile step count
-    features.append(intensity_profile_detection(img))
+    # 1. Improved Intensity Profile Step Detection
+    step_count = intensity_profile_detection(img)
+    features.append(step_count)
     
-    # 2. Wavelet-based features
-    edges = cv2.Canny(wavelet_img, 50, 150)
-    features.append(np.sum(edges > 0))  # Edge pixel count
+    # 2. Additional edge analysis
+    edges = cv2.Canny(wavelet_img, 30, 150)  # Adjusted threshold
+    edge_features = [
+        np.sum(edges > 0),  # Total edge pixels
+        cv2.countNonZero(edges),  # Non-zero edge pixels
+        np.mean(edges > 0)  # Edge pixel density
+    ]
+    features.extend(edge_features)
     
-    # 3. HOG features (reduced dimension)
-    hog_features = extract_hog_features(wavelet_img)
-    features.extend(hog_features[::20].flatten())
-    
-    # 4. Basic gradient features
+    # 3. Gradient-based features
     sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
     sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
-    features.extend([np.mean(np.abs(sobelx)), np.mean(np.abs(sobely))])
+    gradient_features = [
+        np.mean(np.abs(sobelx)), 
+        np.mean(np.abs(sobely)),
+        np.std(sobelx),  # Added standard deviation
+        np.std(sobely)   # Added standard deviation
+    ]
+    features.extend(gradient_features)
     
     return np.array(features)
+
+def intensity_profile_detection(image):
+    """Enhanced step detection using intensity profile"""
+    if len(image.shape) > 2:
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        gray = image
+    
+    # Calculate horizontal intensity profile
+    profile = np.mean(gray, axis=1)
+    
+    # Compute derivative with noise reduction
+    derivative = np.diff(profile)
+    smoothed_derivative = savgol_filter(derivative, window_length=11, polyorder=3)
+    
+    # Find peaks in derivative to detect potential step edges
+    peaks, _ = find_peaks(np.abs(smoothed_derivative), height=np.std(smoothed_derivative) * 2, distance=10)
+    
+    return len(peaks)
 
 def prepare_dataset(image_paths, labels):
     """Prepare dataset with extracted features"""

@@ -18,7 +18,9 @@ MODEL_PARAMS = {
     'random_forest': {'n_estimators': 100, 'random_state': 42},
     'svr': {'kernel': 'rbf', 'C': 1.0, 'epsilon': 0.1},
     'gradient_boosting': {'n_estimators': 100, 'learning_rate': 0.1, 'random_state': 42},
-    'mlp': {'hidden_layer_sizes': (100, 50), 'max_iter': 1000, 'random_state': 42}
+    'kernel_ridge': {},
+    'baseline_average': {}
+
 }
 
 # Paramètres d'évaluation
