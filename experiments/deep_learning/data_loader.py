@@ -5,7 +5,7 @@ from PIL import Image
 from config_dl import BATCH_SIZE, DATA_TRANSFORMS
 
 def load_data(data_path='data/stairsData_dump'):
-    """Load image paths and labels from database dump."""
+    """Charger les chemins d'images et les labels depuis le dump de la base de données."""
     image_paths = []
     labels = []
     
@@ -56,6 +56,7 @@ class StairDataset(Dataset):
         return image, label
 
 def create_loaders(image_paths, labels, kfold, batch_size=BATCH_SIZE):
+    """Crée des loaders pour les données d'entrainement et de validation."""
     datasets = []
     for fold, (train_idx, val_idx) in enumerate(kfold.split(image_paths)):
         train_dataset = StairDataset(
@@ -75,3 +76,4 @@ def create_loaders(image_paths, labels, kfold, batch_size=BATCH_SIZE):
             DataLoader(val_dataset, batch_size=batch_size)
         ))
     return datasets
+

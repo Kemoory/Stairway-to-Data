@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from skimage import filters, feature, color, exposure
 import pywt  # Pour les ondelettes, parce que les vagues, c'est cool
 
 def preprocess_image_wavelet(image):

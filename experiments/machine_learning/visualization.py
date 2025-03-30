@@ -9,10 +9,10 @@ from scipy import stats
 import seaborn as sns
 
 def save_fold_comparison(results, model_type, output_dir):
-    """Create fold comparison visualization with additional metrics."""
+    """Creer une visualisation de comparaison des folds avec des metriques supplementaires."""
     df = pd.DataFrame(results)
     
-    plt.figure(figsize=(15, 18))  # Increased figure size
+    plt.figure(figsize=(15, 18))
     
     # RMSE
     plt.subplot(4, 2, 1)
@@ -63,53 +63,53 @@ def save_fold_comparison(results, model_type, output_dir):
     plt.close()
 
 def save_prediction_analysis(true, pred, model_type, output_dir):
-    """Focus on prediction visualization and call enhanced error analysis."""
-    # Basic prediction visualization
+    """Se concentre sur la visualisation des predictions et appelle l'analyse d'erreur amelioree."""
+    # Visualisation basique des predictions
     errors = np.array(pred) - np.array(true)
     
     plt.figure(figsize=(14, 6))
     
-    # Actual vs Predicted with error coloring
+    # Reel vs Predicted avec coloration des erreurs
     plt.subplot(1, 2, 1)
     sc = plt.scatter(true, pred, c=np.abs(errors), cmap=CUSTOM_CMAP, alpha=0.7)
-    plt.colorbar(sc, label='Absolute Error')
+    plt.colorbar(sc, label='Erreur Absolue')
     min_val = min(min(true), min(pred))
     max_val = max(max(true), max(pred))
     plt.plot([min_val, max_val], [min_val, max_val], 'b--')
-    plt.xlabel('Actual')
+    plt.xlabel('Reel')
     plt.ylabel('Predicted')
-    plt.title(f'Actual vs Predicted - {model_type}')
+    plt.title(f'Reel vs Predicted - {model_type}')
     plt.grid(True, alpha=0.3)
     
-    # Residual plot with trend line
+    # Graphique des residus avec ligne de tendance
     plt.subplot(1, 2, 2)
     plt.scatter(pred, errors, c=np.abs(errors), cmap=CUSTOM_CMAP, alpha=0.7)
     plt.axhline(0, color='red', linestyle='--')
     
-    # Add trend line
+    # Ajouter une ligne de tendance
     z = np.polyfit(pred, errors, 1)
     p = np.poly1d(z)
     plt.plot(pred, p(pred), "r--")
     
-    plt.xlabel('Predicted Value')
-    plt.ylabel('Residual')
-    plt.title('Residuals vs Predicted Values')
+    plt.xlabel('Valeur Predite')
+    plt.ylabel('Residu')
+    plt.title('Residus vs Valeurs Predites')
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
     plt.savefig(f"{output_dir}/{model_type}_prediction_visualization.png", dpi=300, bbox_inches='tight')
     plt.close()
     
-    # Call enhanced error analysis
+    # Appeler l'analyse d'erreur amelioree
     enhanced_error_analysis(true, pred, model_type, output_dir)
 
 def combine_and_visualize_results(output_dir=RESULTS_DIR):
-    """Combine results from all models and create comprehensive visualizations."""
-    # Find all result files
+    """Combiner les resultats de tous les modeles et creer des visualisations completes."""
+    # Trouver tous les fichiers de resultats
     model_files = [f for f in os.listdir(output_dir) if f.endswith('_results.json')]
     
     if not model_files:
-        print("No model result files found.")
+        print("Aucun fichier de resultat de modele trouve.")
         return None
     
     combined_data = []
@@ -122,21 +122,21 @@ def combine_and_visualize_results(output_dir=RESULTS_DIR):
             with open(file_path, 'r') as f:
                 data = json.load(f)
                 
-                # Handle different JSON formats
+                # Gerer les differents formats JSON
                 if isinstance(data, dict):
                     for image_name, evaluations in data.items():
-                        # Case 1: evaluations is a list of dicts
+                        # Cas 1: evaluations est une liste de dictionnaires
                         if isinstance(evaluations, list):
                             for eval_item in evaluations:
                                 if isinstance(eval_item, dict):
                                     combined_data.append(process_evaluation(image_name, model_name, eval_item))
-                        # Case 2: evaluations is a single dict
+                        # Cas 2: evaluations est un seul dictionnaire
                         elif isinstance(evaluations, dict):
                             combined_data.append(process_evaluation(image_name, model_name, evaluations))
-                        # Case 3: evaluations is a direct value (unlikely but possible)
+                        # Cas 3: evaluations est une valeur directe (peu probable mais possible)
                         else:
-                            print(f"Unexpected format in {file} for image {image_name}")
-                # Handle case where JSON is a list directly
+                            print(f"Format inattendu dans {file} pour l'image {image_name}")
+                # Gerer le cas ou JSON est une liste directement
                 elif isinstance(data, list):
                     for item in data:
                         if isinstance(item, dict):
@@ -146,37 +146,37 @@ def combine_and_visualize_results(output_dir=RESULTS_DIR):
                                 item
                             ))
         except (json.JSONDecodeError, KeyError) as e:
-            print(f"Error processing {file}: {str(e)}")
+            print(f"Erreur lors du traitement de {file}: {str(e)}")
             continue
     
     if not combined_data:
-        print("No valid data found in result files.")
+        print("Aucune donnee valide trouvee dans les fichiers de resultats.")
         return None
     
-    # Create DataFrame
+    # Creer un DataFrame
     df = pd.DataFrame(combined_data)
     
-    # Calculate metrics
+    # Calculer les metriques
     df['error'] = abs(df['prediction'] - df['ground_truth'])
     df['relative_error'] = (df['error'] / df['ground_truth'].clip(lower=1e-10)) * 100
     df['squared_error'] = df['error']**2
     
-    # Save combined results
+    # Sauvegarder les resultats combines
     combined_json_path = os.path.join(output_dir, 'combined_results.json')
     df.to_json(combined_json_path, orient='records', indent=4)
     
-    # Create visualizations
+    # Creer des visualisations
     try:
         create_model_comparison_plots(df, output_dir)
         create_error_analysis_plots(df, output_dir)
         create_per_image_analysis(df, output_dir)
     except Exception as e:
-        print(f"Error generating visualizations: {str(e)}")
+        print(f"Erreur lors de la generation des visualisations: {str(e)}")
     
     return df
 
 def enhanced_error_analysis(true, pred, model_type, output_dir):
-    """Comprehensive error analysis with advanced visualizations."""
+    """Analyse d'erreur approfondie avec visualisations avancees"""
     errors = np.array(pred) - np.array(true)
     abs_errors = np.abs(errors)
     relative_errors = abs_errors / (np.array(true) + 1e-10)  # Avoid division by zero
@@ -196,30 +196,30 @@ def enhanced_error_analysis(true, pred, model_type, output_dir):
     }
     
     plt.figure(figsize=(20, 20))
-    plt.suptitle(f'Advanced Error Analysis - {model_type}', y=1.02, fontsize=16)
+    plt.suptitle(f'Analyse d erreur approfondie - {model_type}', y=1.02, fontsize=16)
     
     # 1. Error Distribution with Kernel Density
     plt.subplot(3, 3, 1)
     sns.histplot(errors, kde=True, bins=20, color='skyblue')
     plt.axvline(0, color='red', linestyle='--', alpha=0.7)
-    plt.xlabel('Prediction Error (Predicted - Actual)')
-    plt.ylabel('Frequency')
-    plt.title('Error Distribution with Density')
+    plt.xlabel('Erreur de prediction (Predite - Reel)')
+    plt.ylabel('Frequence')
+    plt.title('Distribution des erreurs avec densite')
     plt.grid(True, alpha=0.3)
     
     # 2. Quantile-Quantile Plot
     plt.subplot(3, 3, 2)
     stats.probplot(errors, dist="norm", plot=plt)
-    plt.title('Q-Q Plot of Errors')
+    plt.title('Diagramme Q-Q des erreurs')
     plt.grid(True, alpha=0.3)
     
     # 3. Error Magnitude vs Actual Value
     plt.subplot(3, 3, 3)
     plt.scatter(true, abs_errors, c=abs_errors, cmap=CUSTOM_CMAP, alpha=0.6)
-    plt.colorbar(label='Absolute Error')
-    plt.xlabel('Actual Value')
-    plt.ylabel('Absolute Error')
-    plt.title('Error Magnitude vs Actual Value')
+    plt.colorbar(label='Erreur absolue')
+    plt.xlabel('Valeur reelle')
+    plt.ylabel('Erreur absolue')
+    plt.title('Erreur en fonction de la valeur reelle')
     plt.grid(True, alpha=0.3)
     
     # 4. Cumulative Error Distribution
@@ -228,9 +228,9 @@ def enhanced_error_analysis(true, pred, model_type, output_dir):
     cum_dist = np.arange(1, len(sorted_errors)+1) / len(sorted_errors)
     plt.plot(sorted_errors, cum_dist, linewidth=2)
     plt.fill_between(sorted_errors, 0, cum_dist, alpha=0.2)
-    plt.xlabel('Absolute Error Threshold')
-    plt.ylabel('Cumulative Proportion')
-    plt.title('Cumulative Error Distribution')
+    plt.xlabel('Seuil d erreur absolue')
+    plt.ylabel('Proportion cumulative')
+    plt.title('Distribution cumulative des erreurs')
     plt.grid(True, alpha=0.3)
     
     # Add vertical lines for key percentiles
@@ -242,26 +242,26 @@ def enhanced_error_analysis(true, pred, model_type, output_dir):
     # 5. Error Type Breakdown
     plt.subplot(3, 3, 5)
     error_types = {
-        'Underestimation': error_stats['Underestimation'],
-        'Overestimation': error_stats['Overestimation'],
-        'Exact Match': error_stats['ExactMatch']
+        'Sous estimation': error_stats['Underestimation'],
+        'Sur estimation': error_stats['Overestimation'],
+        'Concordance exacte': error_stats['ExactMatch']
     }
     plt.pie(error_types.values(), labels=error_types.keys(), 
             autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99'])
-    plt.title('Error Type Distribution')
+    plt.title('Type d erreur')
     
     # 6. Error Tolerance Analysis
     plt.subplot(3, 3, 6)
     tolerance_levels = {
-        'Exact Match': error_stats['ExactMatch'],
-        '±1 Step': error_stats['Within1Step'] - error_stats['ExactMatch'],
-        '±2 Steps': error_stats['Within2Steps'] - error_stats['Within1Step'],
-        'Large Errors': error_stats['LargeErrors']
+        'Concordance exacte': error_stats['ExactMatch'],
+        '±1 marche': error_stats['Within1Step'] - error_stats['ExactMatch'],
+        '±2 marches': error_stats['Within2Steps'] - error_stats['Within1Step'],
+        'Erreurs importantes': error_stats['LargeErrors']
     }
     plt.bar(tolerance_levels.keys(), tolerance_levels.values(), 
             color=['#2ca02c', '#98df8a', '#d62728', '#ff9896'])
-    plt.ylabel('Percentage of Predictions')
-    plt.title('Error Tolerance Analysis')
+    plt.ylabel('Pourcentage de predictions')
+    plt.title('Analyse de tolerance')
     
     # 7. Error by Value Range (Boxplot)
     plt.subplot(3, 3, 7)
@@ -269,9 +269,9 @@ def enhanced_error_analysis(true, pred, model_type, output_dir):
     error_df['ValueRange'] = pd.cut(error_df['Actual'], bins=5)
     sns.boxplot(x='ValueRange', y='Error', data=error_df)
     plt.xticks(rotation=45)
-    plt.xlabel('Actual Value Range')
-    plt.ylabel('Prediction Error')
-    plt.title('Error Distribution by Value Range')
+    plt.xlabel('Intervalle de valeur reelle')
+    plt.ylabel('Erreur de prediction')
+    plt.title('Distribution des erreurs par intervalle de valeur reelle')
     
     # 8. Metrics Summary Table
     plt.subplot(3, 3, 8)
@@ -280,26 +280,26 @@ def enhanced_error_analysis(true, pred, model_type, output_dir):
         ["RMSE", f"{error_stats['RMSE']:.2f}"],
         ["MedAE", f"{error_stats['MedAE']:.2f}"],
         ["MAPE", f"{error_stats['MAPE']:.2f}%"],
-        ["±1 Step Accuracy", f"{error_stats['Within1Step']:.1f}%"],
-        ["±2 Steps Accuracy", f"{error_stats['Within2Steps']:.1f}%"]
+        ["±1 mache de precision", f"{error_stats['Within1Step']:.1f}%"],
+        ["±2 marches de precision", f"{error_stats['Within2Steps']:.1f}%"]
     ]
     plt.table(cellText=metrics_table, 
-              colLabels=["Metric", "Value"], 
+              colLabels=["Metrique", "Valeur"], 
               loc='center', 
               cellLoc='center',
               colWidths=[0.4, 0.4])
     plt.axis('off')
-    plt.title('Key Performance Metrics')
+    plt.title('Metriques de performance')
     
     # 9. Error Autocorrelation Plot
     plt.subplot(3, 3, 9)
     pd.plotting.autocorrelation_plot(errors)
     plt.xlim(0, min(20, len(errors)//2))
-    plt.title('Error Autocorrelation')
+    plt.title('Autocorrelation des erreurs')
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(f"{output_dir}/{model_type}_advanced_error_analysis.png", dpi=300, bbox_inches='tight')
+    plt.savefig(f"{output_dir}/{model_type}_error_analysis.png", dpi=300, bbox_inches='tight')
     plt.close()
     
     # Save error statistics to JSON
@@ -308,7 +308,7 @@ def enhanced_error_analysis(true, pred, model_type, output_dir):
         json.dump(error_stats, f, indent=4)
 
 def process_evaluation(image_name, model_name, eval_dict):
-    """Process a single evaluation record into standardized format."""
+    """Traiter un seul enregistrement d'evaluation dans un format standardise."""
     return {
         'image': image_name,
         'model': model_name,
@@ -317,10 +317,10 @@ def process_evaluation(image_name, model_name, eval_dict):
     }
 
 def create_model_comparison_plots(df, output_dir):
-    """Create comparison plots between different models with enhanced metrics."""
+    """Creer des graphiques de comparaison entre differents modeles avec des metriques ameliorees."""
     plt.figure(figsize=(18, 12))
     
-    # Calculate comprehensive model statistics
+    # Calculer des statistiques completes des modeles
     model_stats = df.groupby('model').agg({
         'error': ['mean', 'median', 'std', 'max', 'min'],
         'relative_error': ['mean', 'median', 'std'],
@@ -329,50 +329,50 @@ def create_model_comparison_plots(df, output_dir):
     model_stats.columns = ['_'.join(col).strip() for col in model_stats.columns.values]
     model_stats['rmse'] = np.sqrt(model_stats['squared_error_mean'])
     
-    # Plot 1: Error metrics comparison
+    # Graphique 1: Comparaison des metriques d'erreur
     plt.subplot(2, 2, 1)
     model_stats[['error_mean', 'error_median', 'rmse']].plot(kind='bar', ax=plt.gca())
-    plt.title('Model Error Metrics Comparison')
-    plt.ylabel('Error Value')
+    plt.title('Comparaison des Metriques d Erreur des Modeles')
+    plt.ylabel('Valeur d Erreur')
     plt.xticks(rotation=45)
     plt.grid(axis='y', alpha=0.3)
     plt.legend(['MAE', 'MedAE', 'RMSE'])
     
-    # Plot 2: Relative error comparison
+    # Graphique 2: Comparaison des erreurs relatives
     plt.subplot(2, 2, 2)
     model_stats[['relative_error_mean', 'relative_error_median']].plot(kind='bar', ax=plt.gca())
-    plt.title('Relative Error Comparison')
-    plt.ylabel('Relative Error (%)')
+    plt.title('Comparaison des Erreurs Relatives')
+    plt.ylabel('Erreur Relative (%)')
     plt.xticks(rotation=45)
     plt.grid(axis='y', alpha=0.3)
-    plt.legend(['Mean Relative Error', 'Median Relative Error'])
+    plt.legend(['Erreur Relative Moyenne', 'Erreur Relative Medianne'])
     
-    # Plot 3: Error distribution
+    # Graphique 3: Distribution des erreurs
     plt.subplot(2, 2, 3)
     sns.boxplot(x='model', y='error', data=df)
-    plt.title('Error Distribution by Model')
-    plt.ylabel('Absolute Error')
+    plt.title('Distribution des Erreurs par Modele')
+    plt.ylabel('Erreur Absolue')
     plt.xticks(rotation=45)
     
-    # Plot 4: Error consistency (std dev)
+    # Graphique 4: Constance des erreurs (ecart-type)
     plt.subplot(2, 2, 4)
     model_stats[['error_std', 'relative_error_std']].plot(kind='bar', ax=plt.gca())
-    plt.title('Error Consistency (Standard Deviation)')
-    plt.ylabel('Standard Deviation')
+    plt.title('Constance des Erreurs (Ecart-type)')
+    plt.ylabel('Ecart-type')
     plt.xticks(rotation=45)
     plt.grid(axis='y', alpha=0.3)
-    plt.legend(['Absolute Error Std', 'Relative Error Std'])
+    plt.legend(['Ecart-type Erreur Absolue', 'Ecart-type Erreur Relative'])
     
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'model_comparison.png'), dpi=300)
     plt.close()
 
 def create_error_analysis_plots(df, output_dir):
-    """Create comprehensive error analysis plots for model comparison."""
+    """Creer des graphiques d'analyse d'erreur complets pour la comparaison des modeles."""
     plt.figure(figsize=(20, 15))
-    plt.suptitle('Advanced Model Comparison and Error Analysis', fontsize=16)
+    plt.suptitle('Comparaison Avancee des Modeles et Analyse d Erreur', fontsize=16)
     
-    # 1. Performance Metrics Comparison
+    # 1. Comparaison des Metriques de Performance
     plt.subplot(2, 3, 1)
     metrics_summary = df.groupby('model').agg({
         'error': ['mean', 'median', 'max'],
@@ -385,20 +385,20 @@ def create_error_analysis_plots(df, output_dir):
     sns.barplot(x='model', y='value', hue='model', 
                 data=pd.melt(metrics_summary, id_vars=['model'], value_vars=metrics_to_plot), 
                 ci=None)
-    plt.title('Error Metrics by Model')
+    plt.title('Metriques d Erreur par Modele')
     plt.xticks(rotation=45)
-    plt.ylabel('Error Value')
-    plt.legend(title='Metric', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.ylabel('Valeur d Erreur')
+    plt.legend(title='Metrique', bbox_to_anchor=(1.05, 1), loc='upper left')
     
-    # 2. Relative Error Distribution
+    # 2. Distribution des Erreurs Relatives
     plt.subplot(2, 3, 2)
     df['relative_error'] = np.abs(df['prediction'] - df['ground_truth']) / df['ground_truth'] * 100
     sns.boxplot(x='model', y='relative_error', data=df)
-    plt.title('Relative Error Distribution')
+    plt.title('Distribution des Erreurs Relatives')
     plt.xticks(rotation=45)
-    plt.ylabel('Relative Error (%)')
+    plt.ylabel('Erreur Relative (%)')
     
-    # 3. Prediction Accuracy Analysis
+    # 3. Analyse de Precision des Predictions
     plt.subplot(2, 3, 3)
     accuracy_metrics = []
     for model in df['model'].unique():
@@ -413,11 +413,11 @@ def create_error_analysis_plots(df, output_dir):
     
     accuracy_df = pd.DataFrame(accuracy_metrics).set_index('Model')
     accuracy_df.plot(kind='bar', rot=45, ax=plt.gca())
-    plt.title('Prediction Accuracy')
-    plt.ylabel('Percentage')
-    plt.legend(title='Accuracy Metric', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.title('Precision des Predictions')
+    plt.ylabel('Pourcentage')
+    plt.legend(title='Metrique de Precision', bbox_to_anchor=(1.05, 1), loc='upper left')
     
-    # 4. Error vs Ground Truth Scatter
+    # 4. Erreur vs Ground Truth Scatter
     plt.subplot(2, 3, 4)
     for model in df['model'].unique():
         model_data = df[df['model'] == model]
@@ -425,12 +425,12 @@ def create_error_analysis_plots(df, output_dir):
                     label=model, alpha=0.6)
     
     plt.axhline(0, color='red', linestyle='--')
-    plt.title('Error Distribution by Ground Truth')
+    plt.title('Distribution des Erreurs par Ground Truth')
     plt.xlabel('Ground Truth')
-    plt.ylabel('Prediction Error')
+    plt.ylabel('Erreur de Prediction')
     plt.legend()
     
-    # 5. Model Performance Radar Chart
+    # 5. Graphique Radar de Performance des Modeles
     plt.subplot(2, 3, 5, polar=True)
     performance_metrics = []
     
@@ -450,7 +450,7 @@ def create_error_analysis_plots(df, output_dir):
     performance_df = pd.DataFrame(performance_metrics)
     performance_df = performance_df.set_index('Model')
     
-    # Normalize metrics for radar chart
+    # Normaliser les metriques pour le graphique radar
     categories = ['MAE', 'RMSE', 'Within 1 Step', 'Within 2 Steps', 'Exact Match']
     normalized_df = performance_df.copy()
     
@@ -467,10 +467,10 @@ def create_error_analysis_plots(df, output_dir):
         plt.fill(angles, values, alpha=0.1)
     
     plt.xticks(angles[:-1], categories)
-    plt.title('Comprehensive Model Performance')
+    plt.title('Performance Complete des Modeles')
     plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
     
-    # 6. Best Model Selection Criteria
+    # 6. Critere de Selection du Meilleur Modele
     plt.subplot(2, 3, 6)
     criteria_summary = performance_df.copy()
     criteria_summary['Overall Score'] = (
@@ -482,39 +482,39 @@ def create_error_analysis_plots(df, output_dir):
     criteria_summary = criteria_summary.sort_values('Overall Score', ascending=False)
     
     plt.barh(criteria_summary.index, criteria_summary['Overall Score'])
-    plt.title('Model Ranking by Composite Performance Score')
-    plt.xlabel('Score (Higher is Better)')
+    plt.title('Classement des Modeles par Score Composite de Performance')
+    plt.xlabel('Score (Plus haut est meilleur)')
     
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'comprehensive_model_comparison.png'), dpi=300, bbox_inches='tight')
     plt.close()
 
-    # Print out best model details
-    print("Model Performance Summary:")
+    # Afficher les details du meilleur modele
+    print("Resume de Performance des Modeles:")
     print(performance_df)
-    print("\nBest Model Ranking:")
+    print("\nClassement des Meilleurs Modeles:")
     print(criteria_summary['Overall Score'])
 
 def create_per_image_analysis(df, output_dir):
-    """Create visualizations for each individual image."""
+    """Creer des visualisations pour chaque image individuelle."""
     image_dir = os.path.join(output_dir, 'per_image_analysis')
     os.makedirs(image_dir, exist_ok=True)
     
     for image_name, group in df.groupby('image'):
         plt.figure(figsize=(12, 6))
         
-        # Prediction comparison
+        # Comparaison des predictions
         plt.subplot(1, 2, 1)
         sns.barplot(x='model', y='prediction', data=group)
         plt.axhline(y=group['ground_truth'].iloc[0], color='r', linestyle='--')
-        plt.title(f'Predictions for {image_name[:20]}...')
-        plt.ylabel('Stair Count')
+        plt.title(f'Predictions pour {image_name[:20]}...')
+        plt.ylabel('Nombre de Marches')
         
-        # Error comparison
+        # Comparaison des erreurs
         plt.subplot(1, 2, 2)
         sns.barplot(x='model', y='error', data=group)
-        plt.title('Prediction Errors')
-        plt.ylabel('Absolute Error')
+        plt.title('Erreurs de Prediction')
+        plt.ylabel('Erreur Absolue')
         
         plt.tight_layout()
         safe_name = "".join(c for c in image_name if c.isalnum() or c in ('_', '.')).rstrip()

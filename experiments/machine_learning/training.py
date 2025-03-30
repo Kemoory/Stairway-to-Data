@@ -7,10 +7,10 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from config import MODEL_DIR, RESULTS_DIR, CV_FOLDS, RANDOM_STATE
 from visualization import save_fold_comparison, save_prediction_analysis
-from models import get_model  # <-- Ajoutez cette ligne pour importer get_model
+from models import get_model
 
 def train_model(features, labels, image_paths, model_type, output_dir=RESULTS_DIR):
-    """Train a model with k-fold cross-validation."""
+    """Entraine un modele avec validation croisee k-fold."""
     os.makedirs(output_dir, exist_ok=True)
     
     all_results = []
@@ -26,7 +26,7 @@ def train_model(features, labels, image_paths, model_type, output_dir=RESULTS_DI
         y_train, y_test = labels[train_index], labels[test_index]
         test_paths = [image_paths[i] for i in test_index]
         
-        model = get_model(model_type)  # <-- Maintenant get_model est défini
+        model = get_model(model_type)
         model.fit(X_train, y_train)
         
         train_pred = model.predict(X_train)
@@ -34,9 +34,8 @@ def train_model(features, labels, image_paths, model_type, output_dir=RESULTS_DI
         test_pred = model.predict(X_test)
         test_pred = np.round(test_pred).astype(int)
         
-        # Calculate metrics
+        # Evaluation de la performance
         metrics = {
-            # Evaluation de la performance
             'fold': fold,
             'train_rmse': np.sqrt(mean_squared_error(y_train, train_pred)),
             'test_rmse': np.sqrt(mean_squared_error(y_test, test_pred)),
@@ -62,22 +61,22 @@ def train_model(features, labels, image_paths, model_type, output_dir=RESULTS_DI
         all_test_labels.extend(y_test.tolist())
         all_test_paths.extend(test_paths)
     
-    # Save fold comparison
+    # Sauvegarde de la comparaison des plis
     save_fold_comparison(all_results, model_type, output_dir)
     
-    # Save prediction analysis
+    # Sauvegarde de l analyse des predictions
     save_prediction_analysis(all_test_labels, all_test_preds, model_type, output_dir)
     
-    # Train final model on all data
+    # Entrainement du modele final sur toutes les donnees
     final_model = get_model(model_type)
     final_model.fit(features, labels)
     
-    # Save the model
+    # Sauvegarde du modele
     model_path = os.path.join(MODEL_DIR, f"{model_type}_model.pkl")
     joblib.dump(final_model, model_path)
-    print(f"Model saved to {model_path}")
+    print(f"Modele sauvegarde dans {model_path}")
     
-    # Save results to JSON
+    # Sauvegarde des resultats en JSON
     results_json = {}
     for path, actual, pred in zip(all_test_paths, all_test_labels, all_test_preds):
         image_name = os.path.basename(path)

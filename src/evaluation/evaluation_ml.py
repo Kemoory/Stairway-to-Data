@@ -7,8 +7,8 @@ from sklearn.metrics import mean_absolute_error as mae, mean_squared_error as ms
 
 def extract_features(image):
     """
-    Extract features from an image for stair counting.
-    Returns a feature vector for the given image.
+    Extraire des caracteristiques d'une image pour le comptage des marches.
+    Retourne un vecteur de caracteristiques pour l'image donnee.
     """
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     resized = cv2.resize(gray, (200, 200))

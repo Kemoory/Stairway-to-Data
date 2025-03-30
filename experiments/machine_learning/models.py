@@ -9,23 +9,22 @@ from sklearn.linear_model import ElasticNet, Ridge
 import xgboost as xgb
 
 from config import MODEL_PARAMS
-
 class BaselineAverageRegressor(BaseEstimator, RegressorMixin):
-    """A baseline model that always predicts the mean of the training data."""
+    """Modele de base qui predit toujours la moyenne des donnees d'entrainement."""
     def __init__(self):
         self.mean_value = None
     
     def fit(self, X, y):
-        """Store the mean of the training labels."""
+        """Stockez la moyenne des libelles d'entrainement."""
         self.mean_value = np.mean(y)
         return self
     
     def predict(self, X):
-        """Always return the mean value."""
+        """Retournez toujours la valeur moyenne."""
         return np.full(len(X), self.mean_value)
 
 def polynomial_regression_model(params=None):
-    """Create a Polynomial Regression model with Ridge regularization"""
+    """Cree un mod le de Regression Polynomiale avec regularisation Ridge"""
     if params is None:
         params = MODEL_PARAMS.get('polynomial_regression', {})
     return make_pipeline(
@@ -34,7 +33,7 @@ def polynomial_regression_model(params=None):
     )
 
 def elastic_net_model(params=None):
-    """Create an Elastic Net Regression model"""
+    """Cree un modele de Regression Elastic Net"""
     if params is None:
         params = MODEL_PARAMS.get('elastic_net', {})
     return ElasticNet(
@@ -45,7 +44,7 @@ def elastic_net_model(params=None):
     )
 
 def xgboost_model(params=None):
-    """Create an XGBoost Regression model"""
+    """Cree un modele de Regression XGBoost"""
     if params is None:
         params = MODEL_PARAMS.get('xgboost', {})
     return xgb.XGBRegressor(
@@ -58,7 +57,7 @@ def xgboost_model(params=None):
     )
 
 def advanced_svr_models(params=None):
-    """Create multiple SVR models with different kernels"""
+    """Cree plusieurs modeles SVR avec des noyaux differents"""
     if params is None:
         params = MODEL_PARAMS.get('advanced_svr', {})
     kernels = params.get('kernels', ['rbf', 'polynomial', 'sigmoid'])
@@ -84,7 +83,7 @@ def advanced_svr_models(params=None):
     return svr_models
 
 def get_model(model_type):
-    """Get initialized model based on type."""
+    """Obtenir un modele initialiser en fonction de son type"""
     if model_type == 'random_forest':
         return RandomForestRegressor(**MODEL_PARAMS['random_forest'])
     elif model_type == 'svr':

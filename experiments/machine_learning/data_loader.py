@@ -1,7 +1,7 @@
 import os
 
 def load_data(data_path='data/stairsData_dump'):
-    """Load image paths and labels from database dump."""
+    """Charger les chemins d'images et les labels depuis le dump de la base de données."""
     image_paths = []
     labels = []
     

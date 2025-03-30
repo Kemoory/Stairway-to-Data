@@ -1,14 +1,14 @@
 import os
 from matplotlib.colors import LinearSegmentedColormap
 
-# Chemins des répertoires (inchangés)
+# Chemins des répertoires
 DATA_DIR = 'data'
 MODEL_DIR = 'src/models'
 RESULTS_DIR = 'results/visualisation/machine_learning'
 os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
 
-# Colormap personnalisée (inchangée)
+# Colormap personnalisée
 CUSTOM_CMAP = LinearSegmentedColormap.from_list('custom_YlOrRd', 
                                             ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', 
                                              '#fd8d3c', '#fc4e2a', '#e31a1c', '#bd0026', '#800026'])
@@ -39,6 +39,6 @@ MODEL_PARAMS = {
     }
 }
 
-# Paramètres d'évaluation (inchangés)
+# Paramètres d'évaluation
 CV_FOLDS = 5
 RANDOM_STATE = 42
