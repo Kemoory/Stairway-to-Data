@@ -9,7 +9,7 @@ Ce projet a pour objectif de détecter et de compter automatiquement le nombre d
 - **Acquisition des images** : Base de données structurée avec annotations manuelles
 - **Prétraitement avancé** : Filtrage adaptatif, ondelettes et techniques d'amélioration de contraste
 - **Détection multi-méthodes** : Combinaison de contours, lignes et approches géométriques
-- **Modèles ML** : Implémentation de K-means, KNN, Random Forest et SVR
+- **Modèles ML** : Implémentation de Xgboost, Elastic Net, Random Forest et SVR
 - **Évaluation rigoureuse** : Métriques de régression et analyse comparative
 - **Interface utilisateur** : GUI interactive pour exploration des résultats
 
@@ -98,22 +98,6 @@ results/
 ```
 
 ## Résultats Visuels
-#### Modèles de Machine Learning
-
-Voici une comparaison des performances des différents modèles de machine learning :
-
-**Comparaison des Modèles**
-
-Figure 1 : Comparaison des performances des modèles (K-means, KNN, Random Forest, SVR).
-
-![Comparaison des Modèles](results/visualisation/machine_learning/model_evaluations/model_comparison.png)
-
-
-**Analyse des Erreurs**
-
-Figure 2 : Analyse des erreurs pour les prédictions des modèles de machine learning.
-
-![Analyse des erreurs](results/visualisation/machine_learning/model_evaluations/error_analysis.png)
 
 #### Algorithmes Classiques
 
@@ -121,22 +105,32 @@ Résultats globaux des algorithmes de détection :
 
 **Comparaison des Modèles**
 
-Figure 3 : Résumé global des performances des algorithmes classiques.
+Figure 1 : Résumé global des performances des algorithmes classiques.
 
-![Global](results/visualisation/algorithm/overall_summary.png)
+![Global](results/visualisation/algorithm/model_evaluation/overall_summary.png)
 
 **Analyse des Erreurs**
 
-Figure 4 : Calcul des erreurs selon différente méthode
+Figure 2 : Calcul des erreurs selon différente méthode
 
-![Error](results/visualisation/algorithm/Figure_1.png)
+![Error](results/visualisation/algorithm/model_evaluation/Figure_1.png)
 
-## Contributions
-Les contributions sont gérées via :
-1. Issues GitHub pour les problèmes et suggestions
-2. Branches dédiées pour les nouvelles fonctionnalités
-3. Tests unitaires obligatoires pour les modifications
-4. Documentation des changements dans le CHANGELOG
+#### Modèles de Machine Learning
+
+Voici une comparaison des performances des différents modèles de machine learning :
+
+**Comparaison des Modèles**
+
+Figure 3 : Comparaison des performances des modèles (Xgboost, Gradient Boosting, Random Forest, SVR).
+
+![Comparaison des Modèles](results/visualisation/machine_learning/model_evaluations/model_comparison.png)
+
+
+**Analyse des Erreurs**
+
+Figure 4 : Analyse des erreurs pour les prédictions des modèles de machine learning.
+
+![Analyse des erreurs](results/visualisation/machine_learning/model_evaluations/comprehensive_model_comparison.png)
 
 ## Licence
 [En cours de définition - Contacter l'auteur pour utilisation]
