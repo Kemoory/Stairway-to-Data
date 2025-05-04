@@ -145,13 +145,13 @@ def save_results(results, output_dir=RESULTS_DIR):
             y_true = np.array(fold_result['metrics'].get('test_actual', []))
             y_pred = np.array(fold_result['metrics'].get('test_pred', []))
             
-    plot_qq(y_true, y_pred, model_type, fold, model_dir)
-    plot_cumulative_error_distribution(y_true, y_pred, model_type, fold, model_dir)
-    plot_error_vs_actual(y_true, y_pred, model_type, fold, model_dir)
-    plot_density_distribution(y_true, y_pred, model_type, fold, model_dir)
-    plot_error_by_value_range(y_true, y_pred, model_type, fold, model_dir)
-    plot_error_autocorrelation(y_true, y_pred, model_type, fold, model_dir)
-    
+        plot_qq(y_true, y_pred, model_type, fold, model_dir)
+        plot_cumulative_error_distribution(y_true, y_pred, model_type, fold, model_dir)
+        plot_error_vs_actual(y_true, y_pred, model_type, fold, model_dir)
+        plot_density_distribution(y_true, y_pred, model_type, fold, model_dir)
+        plot_error_by_value_range(y_true, y_pred, model_type, fold, model_dir)
+        plot_error_autocorrelation(y_true, y_pred, model_type, fold, model_dir)
+
     # Tableau récapitulatif des performances
     df = pd.DataFrame([{
         'Model': res['model'],
