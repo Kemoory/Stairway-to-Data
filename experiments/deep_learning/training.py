@@ -36,6 +36,7 @@ def train_model(model_type, train_loader, val_loader, device, fold):
             optimizer.zero_grad()
             outputs = model(images).flatten()
             loss = criterion(outputs, labels)
+            torch.autograd.set_detect_anomaly(True)
             loss.backward()
             optimizer.step()
             epoch_train_loss.append(loss.item())

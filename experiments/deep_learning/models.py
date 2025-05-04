@@ -51,57 +51,105 @@ class VisionTransformer(nn.Module):
     def forward(self, x):
         return self.model(x)
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
 class ConvBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=1):
+    """Block de convolution amélioré avec connexion résiduelle optionnelle"""
+    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=1, use_residual=False):
         super(ConvBlock, self).__init__()
+        self.use_residual = use_residual and (in_channels == out_channels)
+        
         self.conv = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
         self.bn = nn.BatchNorm2d(out_channels)
-        self.relu = nn.ReLU(inplace=True)
+        # On désactive inplace=True pour éviter les erreurs durant le backward pass
+        self.relu = nn.ReLU(inplace=False)
     
     def forward(self, x):
-        x = self.conv(x)
-        x = self.bn(x)
-        x = self.relu(x)
-        return x
+        identity = x
+        
+        out = self.conv(x)
+        out = self.bn(out)
+        out = self.relu(out)
+        
+        if self.use_residual:
+            out = out + identity  # Utilisation de out = out + identity au lieu de out += identity
+            
+        return out
+
+class AttentionModule(nn.Module):
+    """Module d'attention amélioré avec compression et expansion"""
+    def __init__(self, in_channels, reduction_ratio=4):
+        super(AttentionModule, self).__init__()
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.max_pool = nn.AdaptiveMaxPool2d(1)
+        
+        reduced_channels = max(in_channels // reduction_ratio, 8)
+        
+        # Utiliser deux MLP séparés pour éviter les problèmes avec les graphes de calcul
+        self.avg_mlp = nn.Sequential(
+            nn.Conv2d(in_channels, reduced_channels, 1, bias=False),
+            nn.ReLU(inplace=False),
+            nn.Conv2d(reduced_channels, in_channels, 1, bias=False)
+        )
+        
+        self.max_mlp = nn.Sequential(
+            nn.Conv2d(in_channels, reduced_channels, 1, bias=False),
+            nn.ReLU(inplace=False),
+            nn.Conv2d(reduced_channels, in_channels, 1, bias=False)
+        )
+        
+        self.sigmoid = nn.Sigmoid()
+    
+    def forward(self, x):
+        avg_out = self.avg_mlp(self.avg_pool(x))
+        max_out = self.max_mlp(self.max_pool(x))
+        
+        attention = self.sigmoid(avg_out + max_out)
+        
+        return x * attention
 
 class StairFeatureExtractor(nn.Module):
+    """Extracteur de caractéristiques amélioré avec connexions résiduelles"""
     def __init__(self):
         super(StairFeatureExtractor, self).__init__()
-        # Encoder path (downsampling)
+        
+        # Encoder path (downsampling) avec des connexions résiduelles
         self.enc1 = nn.Sequential(
             ConvBlock(3, 64),
-            ConvBlock(64, 64)
+            ConvBlock(64, 64, use_residual=True)
         )
         self.pool1 = nn.MaxPool2d(2)
         
         self.enc2 = nn.Sequential(
             ConvBlock(64, 128),
-            ConvBlock(128, 128)
+            ConvBlock(128, 128, use_residual=True)
         )
         self.pool2 = nn.MaxPool2d(2)
         
         self.enc3 = nn.Sequential(
             ConvBlock(128, 256),
             ConvBlock(256, 256),
-            ConvBlock(256, 256)
+            ConvBlock(256, 256, use_residual=True)
         )
         self.pool3 = nn.MaxPool2d(2)
         
         self.enc4 = nn.Sequential(
             ConvBlock(256, 512),
             ConvBlock(512, 512),
-            ConvBlock(512, 512)
+            ConvBlock(512, 512, use_residual=True)
         )
         self.pool4 = nn.MaxPool2d(2)
         
-        # Bridge
+        # Bridge avec connexions résiduelles
         self.bridge = nn.Sequential(
             ConvBlock(512, 512),
-            ConvBlock(512, 512)
+            ConvBlock(512, 512, use_residual=True)
         )
         
     def forward(self, x):
-        # Encoder path
+        # Encoder path avec skip connections
         e1 = self.enc1(x)
         p1 = self.pool1(e1)
         
@@ -120,83 +168,107 @@ class StairFeatureExtractor(nn.Module):
         # Return multi-scale features
         return b, e4, e3, e2, e1
 
+class MultiScaleFusion(nn.Module):
+    """Module de fusion multi-échelle amélioré"""
+    def __init__(self, channels):
+        super(MultiScaleFusion, self).__init__()
+        
+        # Adaptations des dimensions pour chaque niveau
+        self.adapt_bridge = nn.Conv2d(channels[0], channels[0], 1)
+        self.adapt_e4 = nn.Conv2d(channels[1], channels[1], 1)
+        self.adapt_e3 = nn.Conv2d(channels[2], channels[2], 1)
+        self.adapt_e2 = nn.Conv2d(channels[3], channels[3], 1)
+        self.adapt_e1 = nn.Conv2d(channels[4], channels[4], 1)
+        
+        # Pooling pour obtenir des caractéristiques globales
+        self.global_pool = nn.AdaptiveAvgPool2d(1)
+        
+    def forward(self, features):
+        b, e4, e3, e2, e1 = features
+        
+        # Adapter chaque niveau
+        b_adapted = self.adapt_bridge(b)
+        e4_adapted = self.adapt_e4(e4)
+        e3_adapted = self.adapt_e3(e3)
+        e2_adapted = self.adapt_e2(e2)
+        e1_adapted = self.adapt_e1(e1)
+        
+        # Appliquer le pooling global à chaque niveau
+        b_feat = self.global_pool(b_adapted).flatten(1)
+        e4_feat = self.global_pool(e4_adapted).flatten(1) 
+        e3_feat = self.global_pool(e3_adapted).flatten(1)
+        e2_feat = self.global_pool(e2_adapted).flatten(1)
+        e1_feat = self.global_pool(e1_adapted).flatten(1)
+        
+        # Concaténer pour la fusion
+        return torch.cat([b_feat, e4_feat, e3_feat, e2_feat, e1_feat], dim=1)
 
 class StairNetDepth(nn.Module):
-    def __init__(self, config):
+    """StairNetDepth amélioré avec fusion multi-échelle et attention"""
+    def __init__(self, config=None):
         super(StairNetDepth, self).__init__()
         
         # Feature extractor backbone
         self.feature_extractor = StairFeatureExtractor()
         
-        # Global average pooling and regression
+        # Modules d'attention pour différentes échelles
+        self.attention_bridge = AttentionModule(512)
+        self.attention_e4 = AttentionModule(512)
+        self.attention_e3 = AttentionModule(256)
+        self.attention_e2 = AttentionModule(128)
+        self.attention_e1 = AttentionModule(64)
+        
+        # Module de fusion multi-échelle
+        self.fusion = MultiScaleFusion([512, 512, 256, 128, 64])
+        
+        # Global pooling
         self.global_pool = nn.AdaptiveAvgPool2d(1)
         
-        # Attention modules for different scales
-        self.attention1 = nn.Sequential(
-            nn.Conv2d(512, 128, 1),
-            nn.BatchNorm2d(128),
-            nn.ReLU(),
-            nn.Conv2d(128, 512, 1),
-            nn.Sigmoid()
-        )
-        
-        self.attention2 = nn.Sequential(
-            nn.Conv2d(512, 128, 1),
-            nn.BatchNorm2d(128),
-            nn.ReLU(),
-            nn.Conv2d(128, 512, 1),
-            nn.Sigmoid()
-        )
-        
-        # Final regression layers
-        self.fc1 = nn.Linear(1408, 256)  # 512 + 256 + 128 + 64 = 960
+        # Dropout adaptatif
         self.dropout = nn.Dropout(0.5)
-        self.fc2 = nn.Linear(256, 64)
-        self.fc3 = nn.Linear(64, 1)
+        
+        # Couches fully connected pour la régression avec dimensions adaptées
+        # 512 + 512 + 256 + 128 + 64 = 1472
+        self.fc1 = nn.Linear(1472, 512)
+        self.bn1 = nn.BatchNorm1d(512)
+        self.fc2 = nn.Linear(512, 128)
+        self.bn2 = nn.BatchNorm1d(128)
+        self.fc3 = nn.Linear(128, 1)
+        
+        # ReLU séparés pour éviter inplace=True
+        self.relu1 = nn.ReLU(inplace=False)
+        self.relu2 = nn.ReLU(inplace=False)
         
     def forward(self, x):
-        # Extract multi-scale features
-        b, e4, e3, e2, e1 = self.feature_extractor(x)
+        # Extraire les caractéristiques multi-échelles
+        features = self.feature_extractor(x)
+        b, e4, e3, e2, e1 = features
         
-        # Apply attention to bridge features
-        att1 = self.attention1(b)
-        b_att = b * att1
+        # Appliquer l'attention à chaque niveau en créant des copies pour éviter les modifications inplace
+        b_att = self.attention_bridge(b.clone())
+        e4_att = self.attention_e4(e4.clone())
+        e3_att = self.attention_e3(e3.clone())
+        e2_att = self.attention_e2(e2.clone())
+        e1_att = self.attention_e1(e1.clone())
         
-        # Apply attention to e4 features
-        att2 = self.attention2(e4)
-        e4_att = e4 * att2
+        # Fusion des caractéristiques multi-échelles
+        fused_features = self.fusion((b_att, e4_att, e3_att, e2_att, e1_att))
         
-        # Global average pooling on attended features
-        b_feat = self.global_pool(b_att).view(x.size(0), -1)  # 512
-        e4_feat = self.global_pool(e4_att).view(x.size(0), -1)  # 256
-        e3_feat = self.global_pool(e3).view(x.size(0), -1)  # 256
-        e2_feat = self.global_pool(e2).view(x.size(0), -1)  # 128
-        
-        # S'assurer que toutes les dimensions sont correctes avant la concaténation
-        # Prendre les 128 premiers canaux de e3 et 64 premiers de e2 si nécessaire
-        e3_feat_slice = e3_feat[:, :128] if e3_feat.size(1) > 128 else e3_feat
-        e2_feat_slice = e2_feat[:, :64] if e2_feat.size(1) > 64 else e2_feat
-        
-        # Redimensionner les tenseurs si nécessaire
-        if e3_feat_slice.size(1) < 128:
-            padding = torch.zeros(x.size(0), 128 - e3_feat_slice.size(1), device=x.device)
-            e3_feat_slice = torch.cat([e3_feat_slice, padding], dim=1)
-            
-        if e2_feat_slice.size(1) < 64:
-            padding = torch.zeros(x.size(0), 64 - e2_feat_slice.size(1), device=x.device)
-            e2_feat_slice = torch.cat([e2_feat_slice, padding], dim=1)
-        
-        # Concatenate features for regression
-        combined = torch.cat([b_feat, e4_feat, e3_feat, e2_feat], dim=1)  # Sans troncature
-        
-        # Regression path
-        x = F.relu(self.fc1(combined))
+        # Chemin de régression avec normalisations et activations
+        x = self.fc1(fused_features)
+        x = self.bn1(x)
+        x = self.relu1(x)
         x = self.dropout(x)
-        x = F.relu(self.fc2(x))
+        
+        x = self.fc2(x)
+        x = self.bn2(x)
+        x = self.relu2(x)
+        
         x = self.fc3(x)
         
         return x
 
+# Mise à jour de la fonction get_model pour inclure le nouveau modèle
 def get_model(model_type, config):
     if model_type == 'resnet18':
         return ResNet18(config)

@@ -10,8 +10,8 @@ def main():
     image_paths, labels = load_data()
     
     # Liste des modèles à entraîner
-    model_types = ['resnet18', 'simple_cnn', 'vit', 'stairnet_depth']
-    
+    #model_types = ['resnet18', 'simple_cnn', 'vit', 'stairnet_depth']
+    model_types = ['stairnet_depth']
     # Entraînement des modèles
     for model_type in model_types:
         if model_type in MODEL_CONFIGS:

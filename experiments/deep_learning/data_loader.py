@@ -71,8 +71,9 @@ def create_loaders(image_paths, labels, kfold, batch_size=BATCH_SIZE):
             transform=DATA_TRANSFORMS
         )
         
+        # Add drop_last=True to the training DataLoader
         datasets.append((
-            DataLoader(train_dataset, batch_size=batch_size, shuffle=True),
+            DataLoader(train_dataset, batch_size=batch_size, shuffle=True, drop_last=True),  # Modified line
             DataLoader(val_dataset, batch_size=batch_size)
         ))
     return datasets
