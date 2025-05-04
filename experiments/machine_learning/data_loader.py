@@ -28,6 +28,11 @@ def load_data(data_path='data/stairsData_dump'):
                 labels.append(label)
             else:
                 print(f"File not found: {image_path}")
-    
+    subset_size = int(len(image_paths) * 0.2)
     print(f"Collected {len(image_paths)} image paths and {len(labels)} labels")
     return image_paths, labels
+    
+    '''
+    print(f"Subset size: {subset_size}")
+    return image_paths[:subset_size], labels[:subset_size]
+    '''
