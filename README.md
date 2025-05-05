@@ -19,25 +19,33 @@ Ce projet a pour objectif de détecter et de compter automatiquement le nombre d
 ├── data/                  # Données brutes et traitées
 │   ├── raw/               # Images originales
 │   ├── processed/         # Images prétraitées
-│   ├── data_annotations.json # Vérité terrain
+│   ├── data_annotations.json # Vérité terrain (pas utile)
+|   ├── stairsData_dump    # Base de donnée
+|   ├── labels.ods         # Annotations (pas utile)
 │ 
 ├── src/                   # Code source principal
 │   ├── preprocessing/     # Techniques de prétraitement
 │   ├── models/            # Algorithmes de détection
 │   ├── evaluation/        # Métriques et évaluation
 │   ├── gui/               # Interface graphique
-│   └── utils.py           # Fonctions utilitaires
+│   ├── experiments/  
+|   |    ├── machine_learning/  # Entrainement modèles ML
+|   |    └── deep_learning/     # Entrainement modèles Deep learning
+|   ├── visualization.py    # Affichage graphiques des prédictions
+│   └── config.py           # Configuration pour l'accès à la base de données
 │
 ├── results/               # Résultats d'expérimentation
 │   ├── algorithm/         # Résultats méthodes classiques
+|   ├── deep_learning/     # Performances des modèles deep learning
 │   └── machine_learning/  # Performances des modèles ML
-│
-├── experiments/           Scripts d'expérimentation
-├── tests/                 Tests unitaires
+|
 └── main.py                Point d'entrée principal
 ```
 
 ## Installation
+
+Pour récupérer le projet et installer les librairies :
+
 ```bash
 git clone https://github.com/Kemoory/Stairway-to-heaven.git
 cd Stairway-to-heaven
@@ -46,10 +54,27 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
+Pour la base de données, nous utilisons Postgresql. A la racine du projet exécutez ces commandes :
+
+```bash
+createdb -U <username> <database_name>
+psql -U <username> -d <database_name> -f data/stairsData_dump
+```
+
+Ensuite configurer le fichier config.py pour pourvoir exécuter le code en se servant de la base de données.
+
 ## Utilisation
 Exécuter le pipeline complet avec interface graphique :
 ```bash
 python main.py --gui
+```
+Pour le machine learning exclusivement :
+```bash
+python src/experiments/machine_learning/main.py
+```
+Pour le deep learning exclusivement :
+```bash
+python src/experiments/deep_learning/main.py
 ```
 
 ## Dépendances principales
