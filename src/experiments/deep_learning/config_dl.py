@@ -49,3 +49,11 @@ MODEL_CONFIGS = {
     'vit': {'pretrained': True, 'image_size': IMAGE_SIZE},
     'stairnet_depth': {'pretrained': True}
 }
+
+db_config={
+    'dbname': 'stairDatas',
+    'user': 'zack',
+    'password': 'zack',
+    'host': 'localhost',
+    'port': '5432'
+}

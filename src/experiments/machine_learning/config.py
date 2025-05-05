@@ -39,6 +39,14 @@ MODEL_PARAMS = {
     }
 }
 
+db_config={
+    'dbname': 'stairDatas',
+    'user': 'zack',
+    'password': 'zack',
+    'host': 'localhost',
+    'port': '5432'
+}
+
 # Paramètres d'évaluation
 CV_FOLDS = 5
 RANDOM_STATE = 42
